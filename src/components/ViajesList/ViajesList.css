@@ -1,0 +1,144 @@
+/* Estilos para el formulario */
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+.viajes-container h1 {
+    font-size: 16px;
+    margin-top: 50px;
+    margin-bottom: 1rem;
+}
+.filtros-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 1.5rem;
+}
+
+.filtros-form input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.filtros-form input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.whatsapp-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.whatsapp-btn:hover:not(:disabled) {
+    background-color: #1ebe57;
+}
+
+.filtros-form h5 {
+    font-size: 13px;
+}
+.filtros-form h6 {
+    font-size: 11px;
+    color: red;
+    margin-top: 10px;
+}
+/* ViajesList.css */
+.viaje-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px 0;
+    padding-bottom: 1px;
+}
+
+.viaje-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.viaje-header img {
+    width: 100px;
+}
+
+.viaje-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.viaje-info div {
+    text-align: center;
+}
+
+.viaje-horario {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.viaje-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.viaje-precio {
+    font-size: 21px;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.viaje-precio span {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+}
+
+
+input[type="date"] {
+    width: 100%; /* Asegura que el campo ocupe todo el ancho disponible */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #555;
+    background-color: #fff;
+    outline: none;
+}
+
+input[type="date"]:focus {
+    border-color: #007bff;
+}
+
+input[type="date"] {
+    background-color: #fff !important;
+    border: 1px solid #ccc;
+}
+
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

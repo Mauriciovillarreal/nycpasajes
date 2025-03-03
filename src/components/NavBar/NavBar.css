@@ -1,0 +1,49 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Agrega sombra para destacar */
+    z-index: 1000; /* Asegura que quede por encima de otros elementos */
+    margin-top: -10px;
+}
+
+nav img {
+    width: 380px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+    }
+
+    nav img {
+        width: 120px;
+        margin-bottom: 5px;
+        margin-top: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+}
+
+/* Ajuste para evitar que el contenido quede oculto debajo del navbar fijo */
+body {
+    padding-top: 70px; /* Ajusta este valor según la altura de tu navbar */
+}

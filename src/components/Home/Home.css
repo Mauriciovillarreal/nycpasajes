@@ -1,0 +1,41 @@
+.Home {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.Home h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.Home a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: #f3f3f3;
+    padding: 15px 30px;
+    border-radius: 10px;
+    transition: 0.3s;
+    width: 90%;
+    text-align: center;
+    margin: 10px;
+}
+
+.Home a:hover {
+    background-color: #fa6d6d;
+}
+
+.home-video {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+
+    margin-top: 25px;
+    object-fit: cover;
+}
