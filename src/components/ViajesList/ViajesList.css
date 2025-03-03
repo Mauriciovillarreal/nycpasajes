@@ -29,14 +29,16 @@
 
 .whatsapp-btn {
     width: 100%;
-    padding: 1rem;
-    background-color: #25D366;
-    color: white;
+    padding: 1px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 6px;
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: 1px solid rgb(209, 209, 209);
+    margin-bottom: 15px;
 }
 
 .whatsapp-btn:disabled {
@@ -44,8 +46,9 @@
     cursor: not-allowed;
 }
 
-.whatsapp-btn:hover:not(:disabled) {
-    background-color: #1ebe57;
+
+.whatsapp-btn img {
+    width: 40px;
 }
 
 .filtros-form h5 {
@@ -58,9 +61,9 @@
 }
 /* ViajesList.css */
 .viaje-card {
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: solid 1px rgb(199, 199, 199);
     padding: 10px;
     margin: 10px 0;
     padding-bottom: 1px;

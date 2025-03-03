@@ -32,7 +32,6 @@ export const ViajesList = () => {
         obtenerViajes();
     }, []);
 
-    // Manejar cambios en los inputs
     const handleChange = (e) => {
         setFiltros({
             ...filtros,
@@ -40,16 +39,18 @@ export const ViajesList = () => {
         });
     };
 
-    // Filtrar viajes según origen y destino seleccionados
     const viajesFiltrados = viajes.filter(viaje =>
         (filtros.origen ? viaje.origen === filtros.origen : true) &&
         (filtros.destino ? viaje.destino === filtros.destino : true)
     );
 
-    // Construir enlace de WhatsApp con mensaje dinámico
-    const abrirWhatsApp = () => {
-        const numero = "5491139505311";
-        const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${filtros.origen}\n📍 *Destino:* ${filtros.destino}\n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
+    const abrirWhatsApp = (viaje) => {
+        const numero = "5491140507287";
+        const mensaje = `Hola, quiero consultar sobre este viaje:
+        \n📍 *Empresa:* ${viaje.empresa}
+        \n🚐 *Origen:* ${viaje.origen}
+        \n📍 *Destino:* ${viaje.destino}
+        \n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
 
         const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
         const urlApp = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
@@ -65,11 +66,11 @@ export const ViajesList = () => {
         <Container className="viajes-container">
             <h1>Busca tus pasajes</h1>
             <form className="filtros-form">
-                {/* Origen */}
                 <h5>Origen</h5>
                 <input
                     type="text"
                     name="origen"
+                    placeholder='Seleccionar origen'
                     value={filtros.origen}
                     onChange={handleChange}
                     list="lista-origenes"
@@ -80,11 +81,11 @@ export const ViajesList = () => {
                     ))}
                 </datalist>
 
-                {/* Destino */}
                 <h5>Destino</h5>
                 <input
                     type="text"
                     name="destino"
+                    placeholder='Seleccionar destino'
                     value={filtros.destino}
                     onChange={handleChange}
                     list="lista-destinos"
@@ -95,8 +96,6 @@ export const ViajesList = () => {
                     ))}
                 </datalist>
 
-                {/* Fecha */}
-                {/* Fecha */}
                 <h5>Fecha de viaje</h5>
                 <Form.Group controlId="fecha">
                     <Form.Control
@@ -106,11 +105,8 @@ export const ViajesList = () => {
                         onChange={handleChange}
                     />
                 </Form.Group>
-
-                <h6>*Para consultar por WhatsApp, llenar todos los campos</h6>
             </form>
 
-            {/* Lista de viajes filtrados */}
             <div className="viajes-list">
                 {viajesFiltrados.length > 0 ? (
                     viajesFiltrados.map(item => (
@@ -129,25 +125,17 @@ export const ViajesList = () => {
                                     <p className="viaje-horario">{item.horaLlegada}</p>
                                 </div>
                             </div>
-
                             <p className="viaje-precio"><span>Desde ARS </span>{item.precio},00</p>
+                            <button className="whatsapp-btn" onClick={() => abrirWhatsApp(item)}>
+                                <img src="./img/wap.png" alt="" />
+                                Consultar
+                            </button>
                         </div>
-
-
                     ))
                 ) : (
-                    <p>No se encontraron viajes, Igual podes consultar por WhatsApp</p>
+                    <p>No se encontraron viajes, Igual puedes consultar por WhatsApp</p>
                 )}
             </div>
-
-            {/* Botón de WhatsApp */}
-            <button
-                onClick={abrirWhatsApp}
-                disabled={!filtros.origen || !filtros.destino}
-                className="whatsapp-btn"
-            >
-                Consultar por WhatsApp
-            </button>
         </Container>
     );
 };
