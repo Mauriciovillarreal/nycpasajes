@@ -48,7 +48,7 @@ export const ViajesList = () => {
 
     // Construir enlace de WhatsApp con mensaje dinámico
     const abrirWhatsApp = () => {
-        const numero = "5491140507287";
+        const numero = "5491139505311";
         const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${filtros.origen}\n📍 *Destino:* ${filtros.destino}\n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
 
         const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
@@ -105,8 +105,9 @@ export const ViajesList = () => {
                         value={filtros.fecha}
                         onChange={handleChange}
                     />
-                </Form.Group>   
-                        <h6>*Para consultar por WhatsApp, llenar todos los campos</h6>
+                </Form.Group>
+
+                <h6>*Para consultar por WhatsApp, llenar todos los campos</h6>
             </form>
 
             {/* Lista de viajes filtrados */}
