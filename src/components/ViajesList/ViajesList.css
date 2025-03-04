@@ -141,7 +141,7 @@ input[type="date"] {
 }
 
 input[type="date"]:focus {
-    border-color: #007bff;
+    border-color: #c4c4c4;
 }
 
 input[type="date"] {
@@ -153,4 +153,51 @@ input[type="date"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+/* Cambia el color de fondo del calendario */
+.react-datepicker {
+    background-color: #0063c5;
+    border: 1px solid #c92800;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cambia el color de los días seleccionados */
+.react-datepicker__day--selected {
+    background-color: #a8a8a8 !important;
+    color: white !important;
+    border-radius: 50%;
+}
+
+/* Hover sobre días */
+.react-datepicker__day:hover {
+    background-color: #a8454530 !important;
+    border-radius: 50%;
+}
+
+/* Cambia el fondo y borde del input */
+.react-datepicker-wrapper .form-control {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 100px;
+}
+
+/* Cambia el color del mes y los botones de navegación */
+.react-datepicker__current-month, 
+.react-datepicker__navigation {
+    color: #000000 !important;
+}
+
+/* Cambia el color de los fines de semana */
+.react-datepicker__day--weekend {
+    color: red !important;
+}
+
+.mi-datepicker {
+    border: 2px solid #a1a1a1;
+    border-radius: 8px;
+    padding: 8px;
 }

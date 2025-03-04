@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { db } from '../../services/config';
 import { collection, getDocs, query } from 'firebase/firestore';
 import { Container, Form } from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const ViajesList = () => {
     const [viajes, setViajes] = useState([]);
@@ -97,14 +99,16 @@ export const ViajesList = () => {
                 </datalist>
 
                 <h5>Fecha de viaje</h5>
-                <Form.Group controlId="fecha">
-                    <Form.Control
-                        type="date"
-                        name="fecha"
-                        value={filtros.fecha}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
+                <DatePicker
+    selected={filtros.fecha ? new Date(filtros.fecha) : null}
+    onChange={(date) => setFiltros({ ...filtros, fecha: date.toISOString().split('T')[0] })}
+    dateFormat="dd-MM-yyyy"
+    placeholderText="Seleccionar fecha"
+    customInput={<Form.Control />}
+    className="form-control"
+/>
+
+
             </form>
 
             <div className="viajes-list">

@@ -1,8 +1,5 @@
-# EntregasReactJS
-Entregas curso ReactJS
-
-# Tienda Maurinho
-Este es un proyecto e-commerce básico que se utiliza para el curso de ReactJS en CoderHouse. La aplicación me permite ver un listado de anteojos y realizar compras en línea, los productos y las ordenes se almacen en Firebase.
+# Tienda NYC Pasajes
+Pasajes y mas
 
 ## Tecnologías Utilizadas
 - React
