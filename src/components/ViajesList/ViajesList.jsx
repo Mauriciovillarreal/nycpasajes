@@ -47,10 +47,10 @@ export const ViajesList = () => {
     const abrirWhatsApp = (viaje) => {
         const numero = "5491140507287";
         const mensaje = `Hola, quiero consultar sobre este viaje:
-        \n📍 *Empresa:* ${viaje.empresa}
-        \n🚐 *Origen:* ${viaje.origen}
-        \n📍 *Destino:* ${viaje.destino}
-        \n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
+        \n*Empresa:* ${viaje.empresa || "Cualquier empresa"}
+        \n*Origen:* ${viaje.origen}
+        \n*Destino:* ${viaje.destino}
+        \n*Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
 
         const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
         const urlApp = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
@@ -133,9 +133,16 @@ export const ViajesList = () => {
                         </div>
                     ))
                 ) : (
-                    <p>No se encontraron viajes, Igual puedes consultar por WhatsApp</p>
+                    <div className="sin-resultados">
+                        <p>No se encontraron viajes con los criterios seleccionados, pero puedes consultar igualmente.</p>
+                        <button className="whatsapp-btn" onClick={() => abrirWhatsApp({ origen: filtros.origen, destino: filtros.destino })}>
+                            <img src="./img/wap.png" alt="" />
+                            Consultar
+                        </button>
+                    </div>
                 )}
             </div>
+
         </Container>
     );
 };

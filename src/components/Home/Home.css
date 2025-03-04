@@ -19,7 +19,7 @@
     font-size: 15px;
     color: rgb(0, 0, 0);
     background-color: #f3f3f3;
-    padding: 15px 30px;
+    padding: 12px 1px;
     border-radius: 10px;
     transition: 0.3s;
     width: 90%;
@@ -38,4 +38,21 @@
 
     margin-top: 25px;
     object-fit: cover;
+}
+
+.info {
+    background-color: #f3f3f3;
+    margin: 30px;
+    font-size: 14px;
+    color: #000000;
+    padding: 10px;
+
+}
+
+.info h2 {
+    font-size: 13px;
+}
+
+.info h6 {
+    font-size: 12px;
 }

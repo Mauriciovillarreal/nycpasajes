@@ -8,10 +8,14 @@
     margin-bottom: 1rem;
 }
 .filtros-form {
+    border: solid 1px rgb(199, 199, 199);
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 3px;
     margin-bottom: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(202, 202, 202);
 }
 
 .filtros-form input {
@@ -38,6 +42,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     border: 1px solid rgb(209, 209, 209);
+   
     margin-bottom: 15px;
 }
 
@@ -48,7 +53,10 @@
 
 
 .whatsapp-btn img {
-    width: 40px;
+    width: 38px;
+    margin-bottom: 3px;
+    padding: 1px;
+    margin-right: 5px;
 }
 
 .filtros-form h5 {
@@ -67,6 +75,7 @@
     padding: 10px;
     margin: 10px 0;
     padding-bottom: 1px;
+    box-shadow: 2px 2px 10px rgb(202, 202, 202);
 }
 
 .viaje-header {
