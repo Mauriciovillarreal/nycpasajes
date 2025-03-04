@@ -47,12 +47,9 @@ export const ViajesList = () => {
     );
 
     const abrirWhatsApp = (viaje) => {
-        const numero = "5491140507287";
-        const mensaje = `Hola, quiero consultar sobre este viaje:
-        \n*Empresa:* ${viaje.empresa || "Cualquier empresa"}
-        \n*Origen:* ${viaje.origen}
-        \n*Destino:* ${viaje.destino}
-        \n*Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
+        const numero = "5491139505311";
+       const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${filtros.origen}\n📍 *Destino:* ${filtros.destino}\n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
+    
 
         const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
         const urlApp = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
@@ -100,13 +97,13 @@ export const ViajesList = () => {
 
                 <h5>Fecha de viaje</h5>
                 <DatePicker
-    selected={filtros.fecha ? new Date(filtros.fecha) : null}
-    onChange={(date) => setFiltros({ ...filtros, fecha: date.toISOString().split('T')[0] })}
-    dateFormat="dd-MM-yyyy"
-    placeholderText="Seleccionar fecha"
-    customInput={<Form.Control />}
-    className="form-control"
-/>
+                    selected={filtros.fecha ? new Date(filtros.fecha) : null}
+                    onChange={(date) => setFiltros({ ...filtros, fecha: date.toISOString().split('T')[0] })}
+                    dateFormat="dd-MM-yyyy"
+                    placeholderText="Seleccionar fecha"
+                    customInput={<Form.Control />}
+                    className="form-control"
+                />
 
 
             </form>

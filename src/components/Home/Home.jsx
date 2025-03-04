@@ -10,7 +10,7 @@ export const Home = () => {
                 <h1>Agencia de Turismo y Pasajes</h1>
                 <Link to="/nosotros">Nosotros</Link>
                 <Link to="/catalogo">Buscar pasajes</Link>
-                <Link to="http://wa.me/5491140507287">WhatsApp</Link>
+                <Link to="http://wa.me/5491139505311">WhatsApp</Link>
                 <Link to="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr">Instagram</Link>
             </div>
             <div className='info'>
@@ -28,8 +28,8 @@ export const Home = () => {
                 <h2>¿Donde quedan las terminales/paradas?</h2>
                 <h6>Morón terminal - Av. Rivadavia 17415</h6>
                 <h6>Vergata y Gaona - Reyes Catolicos 218</h6>
-                <h6>Morón terminal - Av. Rivadavia 17415</h6>
-                <h6>Morón terminal - Av. Rivadavia 17415</h6>
+                <h6>Liniers - Av. Gral. Paz 16880</h6>
+                <h6>Retiro - Av. siempre viva 123</h6>
             </div>
 
         </Container>
