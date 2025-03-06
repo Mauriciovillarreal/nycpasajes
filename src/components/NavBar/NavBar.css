@@ -6,7 +6,7 @@
     z-index: 1050; /* Asegura que el navbar esté por encima de otros elementos */
     background-color: white; /* Evita transparencia al hacer scroll */
 
-    padding: 10px 0;
+
 }
 
 .NaVBar img {
