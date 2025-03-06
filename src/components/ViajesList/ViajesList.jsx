@@ -2,9 +2,7 @@ import './ViajesList.css';
 import { useEffect, useState } from 'react';
 import { db } from '../../services/config';
 import { collection, getDocs, query } from 'firebase/firestore';
-import { Container, Form } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { Container, Form, Button } from 'react-bootstrap';
 
 export const ViajesList = () => {
     const [viajes, setViajes] = useState([]);
@@ -13,8 +11,11 @@ export const ViajesList = () => {
     const [filtros, setFiltros] = useState({
         origen: '',
         destino: '',
-        fecha: ''
+        fecha: '',
+        regreso: '',
+        pasajeros: 1
     });
+    const [resultados, setResultados] = useState([]);
 
     useEffect(() => {
         const obtenerViajes = async () => {
@@ -41,30 +42,40 @@ export const ViajesList = () => {
         });
     };
 
-    const viajesFiltrados = viajes.filter(viaje =>
-        (filtros.origen ? viaje.origen === filtros.origen : true) &&
-        (filtros.destino ? viaje.destino === filtros.destino : true)
-    );
+    const handleSearch = (e) => {
+        e.preventDefault(); // Previene la recarga de la página
+
+        const normalizeText = (text) => text.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
+
+        const viajesFiltrados = viajes.filter(viaje =>
+            (!filtros.origen || normalizeText(viaje.origen).includes(normalizeText(filtros.origen))) &&
+            (!filtros.destino || normalizeText(viaje.destino).includes(normalizeText(filtros.destino)))
+        );
+        setResultados(viajesFiltrados);
+    };
+
 
     const abrirWhatsApp = (viaje) => {
         const numero = "5491139505311";
-       const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${filtros.origen}\n📍 *Destino:* ${filtros.destino}\n📅 *Fecha:* ${filtros.fecha || "Cualquier fecha"}\n\n¿Podrían darme más información?`;
-    
+        const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${viaje.origen}\n📍 *Destino:* ${viaje.destino}\n📅 *Fecha de ida:* ${filtros.fecha || "Cualquier fecha"}\n📅 *Fecha de regreso:* ${filtros.regreso || "Cualquier fecha"}\n👥 *Cantidad de pasajeros:* ${filtros.pasajeros}\n\n¿Podrían darme más información?`;
 
-        const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-        const urlApp = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+        const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
 
+        // Check if the user is on a mobile device and try to open the WhatsApp app
         if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
             window.location.href = urlApp;
         } else {
+            // Open WhatsApp in a new browser tab if not on a mobile device
             window.open(urlWeb, "_blank");
         }
     };
 
     return (
         <Container className="viajes-container">
-            <h1>Busca tus pasajes</h1>
             <form className="filtros-form">
+                <h1>Busca tus pasajes</h1>
                 <h5>Origen</h5>
                 <input
                     type="text"
@@ -95,22 +106,46 @@ export const ViajesList = () => {
                     ))}
                 </datalist>
 
-                <h5>Fecha de viaje</h5>
-                <DatePicker
-                    selected={filtros.fecha ? new Date(filtros.fecha) : null}
-                    onChange={(date) => setFiltros({ ...filtros, fecha: date.toISOString().split('T')[0] })}
-                    dateFormat="dd-MM-yyyy"
-                    placeholderText="Seleccionar fecha"
-                    customInput={<Form.Control />}
-                    className="form-control"
+                <div className='fecha-container '>
+
+                    <div className='fecha-item '>
+                        <h5>Ida</h5>
+                        <input
+                            type="date"
+                            name="fecha"
+                            value={filtros.fecha}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className='fecha-item '>
+                        <h5>Regreso (opcional)</h5>
+                        <input
+                            type="date"
+                            name="regreso"
+                            value={filtros.regreso}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+
+                </div>
+
+                <h5>Cantidad de pasajeros</h5>
+                <input
+                    type="number"
+                    name="pasajeros"
+                    value={filtros.pasajeros}
+                    onChange={handleChange}
+                    min="1"
                 />
 
-
+                <button variant="primary" onClick={handleSearch}>Buscar</button>
             </form>
 
-            <div className="viajes-list">
-                {viajesFiltrados.length > 0 ? (
-                    viajesFiltrados.map(item => (
+            <div className="viajes-resultados">
+                {resultados.length > 0 ? (
+                    resultados.map(item => (
                         <div className="viaje-card" key={item.id}>
                             <div className="viaje-header">
                                 <img src={item.img} alt="" />
@@ -134,16 +169,16 @@ export const ViajesList = () => {
                         </div>
                     ))
                 ) : (
-                    <div className="sin-resultados">
-                        <p>No se encontraron viajes con los criterios seleccionados, pero puedes consultar igualmente.</p>
-                        <button className="whatsapp-btn" onClick={() => abrirWhatsApp({ origen: filtros.origen, destino: filtros.destino })}>
-                            <img src="./img/wap.png" alt="" />
-                            Consultar
-                        </button>
+                    <div>
+                        {(filtros.origen || filtros.destino) && (
+                            <button className="whatsapp-btn" onClick={() => abrirWhatsApp({ origen: filtros.origen, destino: filtros.destino })}>
+                                <img src="./img/wap.png" alt="" />
+                                Consultar por este destino
+                            </button>
+                        )}
                     </div>
                 )}
             </div>
-
         </Container>
     );
 };
