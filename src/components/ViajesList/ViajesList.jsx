@@ -22,11 +22,20 @@ export const ViajesList = () => {
             try {
                 const misViajes = query(collection(db, "viajes"));
                 const respuesta = await getDocs(misViajes);
-                const listaViajes = respuesta.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const listaViajes = respuesta.docs.map(doc => {
+                    const data = doc.data();
+                    // Transformamos los destinos a un formato adecuado
+                    const destinos = Object.entries(data.destinos).map(([destino, precios]) => ({
+                        destino,
+                        precios: precios
+                    }));
+                    return { id: doc.id, ...data, destinos };
+                });
 
                 setViajes(listaViajes);
+                // Extraemos los origenes y destinos para los filtros
                 setOrigenes([...new Set(listaViajes.map(v => v.origen))]);
-                setDestinos([...new Set(listaViajes.map(v => v.destino))]);
+                setDestinos([...new Set(listaViajes.flatMap(v => v.destinos.map(d => d.destino)))]);
             } catch (error) {
                 console.error("Error obteniendo los viajes:", error);
             }
@@ -49,15 +58,16 @@ export const ViajesList = () => {
 
         const viajesFiltrados = viajes.filter(viaje =>
             (!filtros.origen || normalizeText(viaje.origen).includes(normalizeText(filtros.origen))) &&
-            (!filtros.destino || normalizeText(viaje.destino).includes(normalizeText(filtros.destino)))
+            (!filtros.destino || viaje.destinos.some(d => normalizeText(d.destino).includes(normalizeText(filtros.destino))))
         );
         setResultados(viajesFiltrados);
     };
 
 
-    const abrirWhatsApp = (viaje) => {
+
+    const abrirWhatsApp = (viaje, destinoSeleccionado) => {
         const numero = "5491139505311";
-        const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${viaje.origen}\n📍 *Destino:* ${viaje.destino}\n📅 *Fecha de ida:* ${filtros.fecha || "Cualquier fecha"}\n📅 *Fecha de regreso:* ${filtros.regreso || "Cualquier fecha"}\n👥 *Cantidad de pasajeros:* ${filtros.pasajeros}\n\n¿Podrían darme más información?`;
+        const mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${viaje.origen}\n📍 *Destino:* ${destinoSeleccionado.destino}\n📅 *Fecha de ida:* ${filtros.fecha || "Cualquier fecha"}\n📅 *Fecha de regreso:* ${filtros.regreso || "Cualquier fecha"}\n👥 *Cantidad de pasajeros:* ${filtros.pasajeros}\n\n¿Podrían darme más información?`;
 
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
@@ -71,6 +81,7 @@ export const ViajesList = () => {
             window.open(urlWeb, "_blank");
         }
     };
+
 
     return (
         <Container className="viajes-container">
@@ -143,31 +154,64 @@ export const ViajesList = () => {
                 <button variant="primary" onClick={handleSearch}>Buscar</button>
             </form>
 
-            <div className="viajes-resultados">
+            <div>
                 {resultados.length > 0 ? (
-                    resultados.map(item => (
-                        <div className="viaje-card" key={item.id}>
-                            <div className="viaje-header">
-                                <img src={item.img} alt="" />
-                            </div>
-                            <div className="viaje-info">
-                                <div>
-                                    <p>{item.origen}</p>
-                                    <p className="viaje-horario">{item.horaSalida}</p>
+                    resultados.map(item => {
+                        const destinoSeleccionado = item.destinos.find(destino => destino.destino === filtros.destino);
+
+                        return destinoSeleccionado ? (
+                            <div key={item.id} className='detalleViaje'>
+                                <div className="viaje-header">
+                                    <img src={item.img} alt="" />
                                 </div>
-                                <p> → </p>
-                                <div>
-                                    <p>{item.destino}</p>
-                                    <p className="viaje-horario">{item.horaLlegada}</p>
+                                <div className='viajeInfo'>
+                                    <div>
+                                        <p>{item.origen}</p>
+                                    </div>
+                                    <div>
+                                        →
+                                    </div>
+                                    <div>
+                                        <p>{destinoSeleccionado.destino}</p>
+                                    </div>
                                 </div>
+
+                                <div className='precios'>
+                                    <div>
+                                        <h6>
+                                            <span>SEMICAMA</span>
+                                        </h6>
+                                        <div className='precioDetalle'>
+                                            <h3>
+                                                <span>DESDE</span> <b>${destinoSeleccionado.precios.semiCama} </b>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6>
+                                            <span>CAMA</span>
+                                        </h6>
+                                        <div className='precioDetalle'>
+                                            <h3>
+                                                <span>DESDE</span> <b> ${destinoSeleccionado.precios.cama}</b>
+                                            </h3>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div className='notaBaja'>
+                                    <h2>Precios por tramo</h2>
+                                </div>
+
+                                <button className="whatsapp-btn" onClick={() => abrirWhatsApp(item, destinoSeleccionado)}>
+                                    <img src="./img/wap.png" alt="" />
+                                    Consultar
+                                </button>
                             </div>
-                            <p className="viaje-precio"><span>Desde ARS </span>{item.precio},00</p>
-                            <button className="whatsapp-btn" onClick={() => abrirWhatsApp(item)}>
-                                <img src="./img/wap.png" alt="" />
-                                Consultar
-                            </button>
-                        </div>
-                    ))
+                        ) : null;
+                    })
                 ) : (
                     <div>
                         {(filtros.origen || filtros.destino) && (
@@ -178,7 +222,10 @@ export const ViajesList = () => {
                         )}
                     </div>
                 )}
+
             </div>
+
+
         </Container>
     );
 };
