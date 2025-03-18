@@ -10,18 +10,7 @@ export const Home = () => {
                 <h1>Agencia de Turismo y Pasajes</h1>
             </div>
 
-            <Link to="http://wa.me/5491139505311" >
-        <div className='promomdq'>
-
-        </div>
-            
-            </Link>
-            <Link to="http://wa.me/5491139505311" className='promo'>
-            
-            </Link>
-            <Link to="http://wa.me/5491139505311" className='promo'>
-            
-            </Link>
+         
          
 
 

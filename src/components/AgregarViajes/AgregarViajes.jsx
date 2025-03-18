@@ -1,49 +1,116 @@
-// AgregarViaje.js
-
 import React, { useEffect } from "react";
 import { AgregarDatos } from "../AgregarDatos/AgregarDatos";
-AgregarDatos
+
 const AgregarViaje = () => {
     console.log("Renderizando AgregarViaje");
-    // Datos que se van a agregar
-    const datos = {
-        id: "6",
-        origen: "Terminal Morón",
-        empresa: "Sierras de Córdoba",
-        img: "./img/sdc.jpg",
-        destinos: {
-          "Morón Córdoba": {
-            semiCama: 24800,
-            cama: 28800
-          },
-          "Morón Villa Carlos Paz": {
-            semiCama: 26400,
-            cama: 30800
-          },
-          Cosquín: {
-            semiCama: 29200,
-            cama: 32000
-          },
-          "Morón Villa Maria": {
-            semiCama: 15200,
-            cama: 22400
-          },
-          "Morón La Falda": {
-            semiCama: 29200,
-            cama: 32000
-          }
-        }
-      };
-      
-      
 
+    // Datos que se van a agregar
+    const datos = 
+
+    {"empresa": "Sierras Cordobesas",
+        "rutas": [
+          {
+            "id": "Sierras Cordobesas",
+            
+            "destino_final": "Mina Clavero",
+            "img": "./img/sierras-cordobesas.jpg",
+            "paradas": {
+              "paradas1": [
+                {
+                  "nombre": "Retiro",
+                  "precioSemi": 0,
+                  "precioCama": 0
+                },
+                {
+                  "nombre": "Liniers",
+                  "precioSemi": 0,
+                  "precioCama": 0
+                },
+                {
+                  "nombre": "Vergara y Gaona",
+                  "precioSemi": 0,
+                  "precioCama": 0
+                },
+                {
+                  "nombre": "Moreno las Piedras",
+                  "precioSemi": 0,
+                  "precioCama": 0
+                }
+              ],
+              "paradas2": [
+                {
+                  "nombre": "Rio Cuarto",
+                  "precioSemi": 32000,
+                  "precioCama": 40000
+                },
+                {
+                  "nombre": "Achiras",
+                  "precioSemi": 40000,
+                  "precioCama": 51600
+                },
+                {
+                  "nombre": "Villa del Carmen",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Papagayos",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Villa Larca",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Cortaderas",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Carpinteria",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Merlo San Luis",
+                  "precioSemi": 40000,
+                  "precioCama": 55000
+                },
+                {
+                  "nombre": "Villa Dolores",
+                  "precioSemi": 43000,
+                  "precioCama": 57000
+                },
+                {
+                  "nombre": "V. de las Rosas",
+                  "precioSemi": 43700,
+                  "precioCama": 58000
+                },
+                {
+                  "nombre": "Nono",
+                  "precioSemi": 45000,
+                  "precioCama": 58000
+                },
+                {
+                  "nombre": "Mina Clavero",
+                  "precioSemi": 45000,
+                  "precioCama": 58000
+                }
+              ]
+            }
+          }
+        ]
+      }
+      
+      
 
 
     useEffect(() => {
         console.log("Ejecutando AgregarDatos...");
         AgregarDatos(datos);
-    }, []); // Solo se ejecuta una vez cuando el componente se monta
-
+    }, []);
 
     return (
         <div>
