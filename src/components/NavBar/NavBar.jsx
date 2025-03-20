@@ -2,6 +2,7 @@ import './NavBar.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -14,12 +15,12 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {/* Cambiar Link por un <a> normal */}
-            <a href="/Nosotros" className="navbar-brand">
+            <Link to="/Nosotros" className="navbar-brand">
               Agencias
-            </a>
-            <a href="/catalogo" className="navbar-brand">
+            </Link>
+            <Link to="/catalogo" className="navbar-brand">
               Buscar pasajes
-            </a>
+            </Link>
             <a href="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr" className="navbar-brand">
               Instagram
             </a>
