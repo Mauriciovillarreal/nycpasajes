@@ -7,13 +7,13 @@ import './Footer.css';
 export const Footer = () => {
   return (
     <footer className="custom-footer">
+   
         <Row className="align-items-center">
         <Col md={6} className="footer-info">
             <img src="./img/logonyc.png" alt="Logo" className="footer-logo" />
         
           
           </Col>
-      <Container>
           <Col md={6} className="carousel-col">
             <Carousel interval={2000} pause={false}>
               <Carousel.Item>
@@ -45,7 +45,7 @@ export const Footer = () => {
               </Carousel.Item>
             </Carousel>
           </Col>
-      </Container>
+  
           <Col md={6} className="footer-info">
             
             <p>Compra tus pasajes ahora</p>
