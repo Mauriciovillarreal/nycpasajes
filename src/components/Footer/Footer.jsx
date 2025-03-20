@@ -10,10 +10,8 @@ export const Footer = () => {
       <Container>
 
         <div className="align-items-center">
-        <div md={6} className="footer-info">
-            
-        
-          
+          <div md={6} className="footer-info">
+            <img src="./img/logonyc.png" alt="Logonyc" className='footer-logo' />
           </div>
           <div md={6} className="carousel-div">
             <Carousel interval={2000} pause={false}>
@@ -46,21 +44,21 @@ export const Footer = () => {
               </Carousel.Item>
             </Carousel>
           </div>
-  
+
           <div md={6} className="footer-info">
-            
+
             <p>Compra tus pasajes ahora</p>
             <p>Encuentra las mejores ofertas para tus viajes.</p>
-          
+
           </div>
-      
+
         </div>
       </Container>
-        <div>
-          <div className="text-center copyright">
-            <p>&copy; {new Date().getFullYear()} NYC Travel. Todos los derechos reservados.</p>
-          </div>
+      <div>
+        <div className="text-center copyright">
+          <p>&copy; {new Date().getFullYear()} NYC Travel. Todos los derechos reservados.</p>
         </div>
+      </div>
     </footer>
   );
 };
