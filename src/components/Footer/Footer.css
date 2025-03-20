@@ -1,0 +1,72 @@
+.custom-footer {
+    background-color: #ffffff;
+    /* Color de fondo claro */
+    padding: 30px 0 0 0 ;
+    border-top: 1px solid rgb(233, 233, 233);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+}
+
+.carousel-item img {
+
+    object-fit: contain;
+    height: 200px;
+    width: 100%;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    border-top: 1px solid rgb(240, 240, 240);
+}
+
+.footer-logo {
+    text-align: center;
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+.copyright {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: rgb(235, 235, 235);
+    margin-top: 20px;
+    color: #313131;
+    font-size: 13px;
+}
+
+.carousel-col {
+    padding: 0 20px;
+}
+
+.footer-info {
+    padding: 0 20px;
+}
+
+
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    /* Asegura que los elementos se apilen verticalmente */
+    align-items: center;
+    /* Centra los elementos verticalmente */
+    padding: 0 20px;
+
+}
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}

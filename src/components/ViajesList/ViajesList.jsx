@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/config";
-import { Container } from "react-bootstrap";
-import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer and toast
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
 import './ViajesList.css';
+import Select from 'react-select';
+import Swal from 'sweetalert2';
 
 const ViajesList = () => {
     const [routes, setRoutes] = useState([]);
@@ -38,7 +37,11 @@ const ViajesList = () => {
 
     const handleSearch = () => {
         if (!origin || !destination || !date) {
-            toast.error("Por favor, complete todos los campos"); // Use toast.error instead of alert
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos incompletos',
+                text: 'Por favor, complete todos los campos',
+            });
             return;
         }
 
@@ -46,25 +49,19 @@ const ViajesList = () => {
             const paradas1 = r.paradas.paradas1;
             const paradas2 = r.paradas.paradas2;
 
-            const normalizedOrigin = normalizeText(origin);
-            const normalizedDestination = normalizeText(destination);
+            const originStop1 = paradas1.find(p => p.nombre === origin.value);
+            const originStop2 = paradas2.find(p => p.nombre === origin.value);
 
-            const originStop1 = paradas1.find(p => normalizeText(p.nombre).includes(normalizedOrigin));
-            const originStop2 = paradas2.find(p => normalizeText(p.nombre).includes(normalizedOrigin));
-
-            const destinationStop1 = paradas1.find(p => normalizeText(p.nombre).includes(normalizedDestination));
-            const destinationStop2 = paradas2.find(p => normalizeText(p.nombre).includes(normalizedDestination));
+            const destinationStop1 = paradas1.find(p => p.nombre === destination.value);
+            const destinationStop2 = paradas2.find(p => p.nombre === destination.value);
 
             return (originStop1 && destinationStop2) || (originStop2 && destinationStop1);
         });
 
         if (foundRoutes.length > 0) {
             setFoundRoutes(foundRoutes);
-
             const route = foundRoutes[0];
-
             setEmpresaImagen(route.img);
-            console.log("Ruta encontrada:", route);
 
             const paradas1 = route.paradas.paradas1;
             const paradas2 = route.paradas.paradas2;
@@ -72,10 +69,10 @@ const ViajesList = () => {
             let originStopResult = null;
             let destinationStopResult = null;
 
-            const originStop1Result = paradas1.find(p => normalizeText(p.nombre).includes(normalizeText(origin)));
-            const originStop2Result = paradas2.find(p => normalizeText(p.nombre).includes(normalizeText(origin)));
-            const destinationStop1Result = paradas1.find(p => normalizeText(p.nombre).includes(normalizeText(destination)));
-            const destinationStop2Result = paradas2.find(p => normalizeText(p.nombre).includes(normalizeText(destination)));
+            const originStop1Result = paradas1.find(p => p.nombre === origin.value);
+            const originStop2Result = paradas2.find(p => p.nombre === origin.value);
+            const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
+            const destinationStop2Result = paradas2.find(p => p.nombre === destination.value);
 
             if (originStop1Result && destinationStop2Result) {
                 originStopResult = originStop1Result;
@@ -102,7 +99,11 @@ const ViajesList = () => {
                         cama: originStopResult.precioCama
                     };
                 } else {
-                    toast.error("No se encontraron precios disponibles para las paradas seleccionadas"); // Use toast.error instead of alert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sin precios',
+                        text: 'No se encontraron precios disponibles para las paradas seleccionadas',
+                    });
                     return;
                 }
 
@@ -110,16 +111,36 @@ const ViajesList = () => {
                 setOriginStop(originStopResult);
                 setDestinationStop(destinationStopResult);
             } else {
-                toast.error("Ruta no válida. Asegúrate de seleccionar un origen y un destino correcto."); // Use toast.error instead of alert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ruta no válida',
+                    text: 'Asegúrate de seleccionar un origen y un destino correcto.',
+                });
             }
         } else {
-            toast.error("Ruta no válida. Asegúrate de seleccionar un origen y  y un destino correcto."); // Use toast.error instead of alert
+            Swal.fire({
+                icon: 'error',
+                title: 'Ruta no encontrada',
+                text: 'Asegúrate de seleccionar un origen y un destino correcto.',
+            });
         }
     };
 
+
+    const allStops = routes.reduce((acc, route) => {
+        const paradas1 = route.paradas.paradas1.map(p => ({ value: p.nombre, label: p.nombre }));
+        const paradas2 = route.paradas.paradas2.map(p => ({ value: p.nombre, label: p.nombre }));
+        return [...acc, ...paradas1, ...paradas2];
+    }, []);
+
+    const uniqueStops = Array.from(new Set(allStops.map(a => a.value)))
+        .map(value => {
+            return allStops.find(a => a.value === value)
+        });
+
     const abrirWhatsApp = () => {
         const numero = "5491139505311";
-        let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${origin}\n📍 *Destino:* ${destination}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
+        let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${origin?.value || "No especificado"}\n📍 *Destino:* ${destination?.value || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
 
         if (returnDate) {
             mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
@@ -140,51 +161,59 @@ const ViajesList = () => {
 
     return (
         <div>
-
-
-        <Container className="viajes-container">
-            <div>
+            <div className="viajes-container">
                 <div className="filtros-form">
                     <h2 className="search-title">Busca tus pasajes</h2>
-                    <div className="input-container">
+                    <div>
                         <label>Origen</label>
-                        <input
-                            type="text"
-                            value={origin}
-                            onChange={e => setOrigin(e.target.value)}
-                            placeholder="Escribe el origen"
-                            className="input-field"
-                        />
+                        <div className="custom-select">
+
+                            <Select
+                                value={origin}
+                                onChange={setOrigin}
+                                options={uniqueStops}
+                                placeholder="Escribe el origen"
+                            />
+
+                        </div>
                     </div>
                     <div className="input-container">
                         <label>Destino</label>
-                        <input
-                            type="text"
+                        <Select
                             value={destination}
-                            onChange={e => setDestination(e.target.value)}
+                            onChange={setDestination}
+                            options={uniqueStops}
                             placeholder="Escribe el destino"
-                            className="input-field"
+
                         />
                     </div>
-                    <div className="input-container">
-                        <label>Fecha de ida</label>
-                        <input
-                            name="fecha"
-                            type="date"
-                            value={date}
-                            onChange={e => setDate(e.target.value)}
-                            className="input-field"
-                        />
-                    </div>
-                    <div className="input-container">
-                        <label>Fecha de regreso (opcional)</label>
-                        <input
-                            name="fechaRegreso"
-                            type="date"
-                            value={returnDate}
-                            onChange={e => setReturnDate(e.target.value)}
-                            className="input-field"
-                        />
+                    <div className="date-picker-container">
+                        <div className="input-container izq">
+                            <label>Partida</label>
+                            <div className="input-with-icon">
+                                <input
+                                    name="fecha"
+                                    type="date"
+                                    value={date}
+                                    onChange={e => setDate(e.target.value)}
+                                    className="input-field"
+                                />
+                                <i className="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                        <div className="input-container der">
+                            <label>Regreso (opcional)</label>
+                            <div className="input-with-icon ">
+                                <input
+                                    name="fechaRegreso"
+                                    type="date"
+                                    value={returnDate}
+                                    onChange={e => setReturnDate(e.target.value)}
+                                    className="input-field"
+                                />
+                                <i className="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
                     </div>
                     <div className="input-container">
                         <label>Cantidad de pasajeros</label>
@@ -193,10 +222,21 @@ const ViajesList = () => {
                             value={passengers}
                             onChange={e => setPassengers(e.target.value)}
                             min="1"
-                            className="input-field"
+                            className="input-field pasajeros"
                         />
                     </div>
-                    <button onClick={handleSearch} className="search-button">Buscar</button>
+                    <button onClick={handleSearch} className="search-button">Buscar pasajes</button>
+
+                </div>
+
+                <div className="Consultas">
+                    <label>Si no encontras tu origen o destino, podes consultar por WhatsApp</label>
+                    <a href="https://wa.me/5491139505311" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
+                        <button className="btnConsultas">
+                            <img src="./img/wap.png" alt="WhatsApp" className="whatsapp-icon" />
+                            Consultas
+                        </button>
+                    </a>
                 </div>
 
                 {foundRoutes.length > 0 && (
@@ -249,9 +289,9 @@ const ViajesList = () => {
                         })}
                     </div>
                 )}
+
+
             </div>
-            <ToastContainer />
-        </Container>
         </div>
     );
 };

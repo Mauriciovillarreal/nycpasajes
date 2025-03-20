@@ -15,7 +15,7 @@ function NavBar() {
           <Nav className="me-auto">
             {/* Cambiar Link por un <a> normal */}
             <a href="/Nosotros" className="navbar-brand">
-              Nosotros
+              Agencias
             </a>
             <a href="/catalogo" className="navbar-brand">
               Buscar pasajes

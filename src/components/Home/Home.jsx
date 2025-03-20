@@ -2,6 +2,7 @@ import './Home.css';
 import React from 'react'
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Cartelera } from '../Cartelera/Cartelera';
 
 export const Home = () => {
     return (
@@ -10,7 +11,7 @@ export const Home = () => {
                 <h1>Agencia de Turismo y Pasajes</h1>
             </div>
 
-         
+          <Cartelera />
          
 
 

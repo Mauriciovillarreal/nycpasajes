@@ -1,27 +1,42 @@
-
-
-.Nosotros {
-    color: #333;
-    margin-top: 30px;
+.agencias {
+    background: white;
+    border: 1px solid rgb(221, 221, 221);
+    margin-top: 20px;
+    text-align: left;
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 
-.Nosotros h6 {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    font-weight: 400;
-}
-
-.Nosotros h5 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    color: #000000;
-}
-
-iframe {
+.agencias iframe {
     width: 100%;
-    height: 300px;
+    height: 200px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.agencias h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.agencias h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #444;
+}
+
+.agencias p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.agencias p:last-child {
+    margin-bottom: 0;
+}
+
+.datosAgencia {
+    padding: 0px 10px 20px 10px;
 }

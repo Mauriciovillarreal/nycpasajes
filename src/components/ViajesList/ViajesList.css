@@ -5,10 +5,12 @@
   
   .filtros-form {
     flex-direction: column;
-
-    border: 1px solid #ddd;
+    background-color: #ffffff;
     padding: 10px; 
     margin-bottom: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .search-title {
@@ -38,16 +40,17 @@ label {
 }
 
 .input-field:focus {
-    border-color: #646464;
+    border-color:  #2185f8;
 }
 
 .search-button {
     border: 1px solid #ddd;
     background-color: white;
     margin-top: 25px;
-    padding: 10px;
+    padding: 6px;
     color: black;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 
@@ -62,7 +65,7 @@ label {
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(226, 226, 226);
     margin-bottom: 15px;
 }
 
@@ -120,29 +123,31 @@ label {
 }
 
 .detalleViaje {
-    margin-bottom: 12px;
-    border: 1px solid #ddd;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    border: 1px solid rgb(0, 0, 0);
     padding: 10px 10px 0px 10px;
+    border-radius: 10px;
 }
 
 .viaje-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     padding-bottom: 10px;
-
+    border-bottom: 1px solid rgb(224, 224, 224);
 }
 
+
 .viaje-header img {
-    width: 100px;
+    width: 130px;
 }
 
 .viajeInfo {
     display: grid;
     grid-template-columns: 45% 10% 45%;
     text-align: center;
-
+    border-bottom: 1px solid rgb(224, 224, 224);
     padding-top: 18px;
+    padding-bottom: 13px;
 }
 
 .viajeInfo p {
@@ -170,7 +175,7 @@ label {
 }
 
 .precioDetalle {
-    margin-top: 20
+    margin-top: -30px;
 }
 
 .notaBaja h2 {
@@ -184,4 +189,80 @@ h3 span {
 
 .precioDetalle b {
     font-size: 19px;
+}
+
+.input-field {
+    background-color: white;
+}
+
+
+.input-with-icon {
+    margin: 0px 0px 0px 0px;
+    position: relative;
+}
+
+.input-with-icon input {
+    padding-right: 30px; /* Espacio para el icono */
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    padding: 6px;
+}
+
+.date-picker-container {
+    
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.izq {
+    margin-right: 10px;
+}
+
+.der {
+    margin-left: 10px;
+}
+.input-field {
+    font-size: 16px; /* Aumentar el tamaño del texto */
+    padding: 4px 4px; /* Espaciado adicional */
+    width: 100%; /* Asegurar que el campo ocupe todo el ancho disponible */
+}
+
+.pasajeros {
+    padding-left: 14px;
+}
+
+.btnConsultas {
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgb(221, 221, 221);
+    color: black;
+    margin-bottom: 20px;
+}
+.Consultas {
+    margin: 20px 10px;
+    padding: 4px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.whatsapp-icon {
+    width: 35px;
+}
+p {
+    margin-bottom: 1px !important;
+}
+.routes-list {
+    margin: 10px;
+    border-radius: 20px;
+}
+
+@media (min-width: 768px) {
+    .input-with-icon i  {
+        display: none;
+    }
 }
