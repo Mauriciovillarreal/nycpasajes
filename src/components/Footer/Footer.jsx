@@ -1,20 +1,21 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import './Footer.css';
 
 export const Footer = () => {
   return (
     <footer className="custom-footer">
-   
-        <Row className="align-items-center">
-        <Col md={6} className="footer-info">
-            <img src="./img/logonyc.png" alt="Logo" className="footer-logo" />
+      <Container>
+
+        <div className="align-items-center">
+        <div md={6} className="footer-info">
+            
         
           
-          </Col>
-          <Col md={6} className="carousel-col">
+          </div>
+          <div md={6} className="carousel-div">
             <Carousel interval={2000} pause={false}>
               <Carousel.Item>
                 <img className="d-block w-100" src="./img/urquiza.jpg" alt="Urquiza" />
@@ -44,21 +45,22 @@ export const Footer = () => {
                 <img className="d-block w-100" src="./img/singer.jpg" alt="singer" />
               </Carousel.Item>
             </Carousel>
-          </Col>
+          </div>
   
-          <Col md={6} className="footer-info">
+          <div md={6} className="footer-info">
             
             <p>Compra tus pasajes ahora</p>
             <p>Encuentra las mejores ofertas para tus viajes.</p>
           
-          </Col>
+          </div>
       
-        </Row>
-        <Row>
-          <Col className="text-center copyright">
+        </div>
+      </Container>
+        <div>
+          <div className="text-center copyright">
             <p>&copy; {new Date().getFullYear()} NYC Travel. Todos los derechos reservados.</p>
-          </Col>
-        </Row>
+          </div>
+        </div>
     </footer>
   );
 };
