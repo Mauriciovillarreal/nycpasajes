@@ -5,6 +5,8 @@ import NavBar from "./components/NavBar/NavBar";
 import { Nosotros } from "./components/Nosotros/Nosotros";
 import ViajesList from "./components/ViajesList/ViajesList";
 import { Footer } from "./components/Footer/Footer";
+import AgregarViaje from "./components/AgregarViajes/AgregarViajes";
+import RutasFiltradas from "./components/RutasFiltradas/RutasFiltradas";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/catalogo" element={<ViajesList />} />
         <Route path="/Nosotros" element={<Nosotros />} />
+        <Route path="/agregarviajes" element={<AgregarViaje />} />
+        <Route path="/verrutas" element={<RutasFiltradas />} />
       </Routes>
       <Footer />
       </HashRouter>

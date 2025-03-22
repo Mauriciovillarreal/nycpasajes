@@ -7,102 +7,149 @@ const AgregarViaje = () => {
     // Datos que se van a agregar
     const datos = 
 
-    {"empresa": "Sierras Cordobesas",
-        "rutas": [
-          {
-            "id": "Sierras Cordobesas",
-            
-            "destino_final": "Mina Clavero",
-            "img": "./img/sierras-cordobesas.jpg",
-            "paradas": {
-              "paradas1": [
-                {
-                  "nombre": "Retiro",
-                  "precioSemi": 0,
-                  "precioCama": 0
-                },
-                {
-                  "nombre": "Liniers",
-                  "precioSemi": 0,
-                  "precioCama": 0
-                },
-                {
-                  "nombre": "Vergara y Gaona",
-                  "precioSemi": 0,
-                  "precioCama": 0
-                },
-                {
-                  "nombre": "Moreno las Piedras",
-                  "precioSemi": 0,
-                  "precioCama": 0
-                }
-              ],
-              "paradas2": [
-                {
-                  "nombre": "Rio Cuarto",
-                  "precioSemi": 32000,
-                  "precioCama": 40000
-                },
-                {
-                  "nombre": "Achiras",
-                  "precioSemi": 40000,
-                  "precioCama": 51600
-                },
-                {
-                  "nombre": "Villa del Carmen",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Papagayos",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Villa Larca",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Cortaderas",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Carpinteria",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Merlo San Luis",
-                  "precioSemi": 40000,
-                  "precioCama": 55000
-                },
-                {
-                  "nombre": "Villa Dolores",
-                  "precioSemi": 43000,
-                  "precioCama": 57000
-                },
-                {
-                  "nombre": "V. de las Rosas",
-                  "precioSemi": 43700,
-                  "precioCama": 58000
-                },
-                {
-                  "nombre": "Nono",
-                  "precioSemi": 45000,
-                  "precioCama": 58000
-                },
-                {
-                  "nombre": "Mina Clavero",
-                  "precioSemi": 45000,
-                  "precioCama": 58000
-                }
-              ]
-            }
+    {
+      "empresa": "Chevallier",
+      "rutas": [
+        {
+          "id": "Chevallier",
+          "destino_final": "Bariloche",
+          "img": "./img/chevallier.jpg",
+          "paradas": {
+            "paradas1": [
+              {
+                "nombre": "Retiro"
+              },
+              {
+                "nombre": "Liniers"
+              },
+              {
+                "nombre": "Vergara y Gaona"
+              },
+              {
+                "nombre": "Moreno las Piedras"
+              },
+              {
+                "nombre": "Lujan BSAS"
+              }
+            ],
+            "paradas2": [
+              {
+                "nombre": "Mercedes",
+                "precioSemi": "6300",
+                "precioCama": "10000"
+              },
+              {
+                "nombre": "Chivilcoy",
+                "precioSemi": "10200",
+                "precioCama": "15000"
+              },
+              {
+                "nombre": "Bragado",
+                "precioSemi": "13100",
+                "precioCama": "19000"
+              },
+              {
+                "nombre": "9 de Julio",
+                "precioSemi": "15200",
+                "precioCama": "24000"
+              },
+              {
+                "nombre": "Carlos Casares",
+                "precioSemi": "18050",
+                "precioCama": "29000"
+              },
+              {
+                "nombre": "Pehuajo",
+                "precioSemi": "21850",
+                "precioCama": "34000"
+              },
+              {
+                "nombre": "Trenque Launquen",
+                "precioSemi": "25650",
+                "precioCama": "41000"
+              },
+              {
+                "nombre": "Pellegrini",
+                "precioSemi": "28500",
+                "precioCama": "46000"
+              },
+              {
+                "nombre": "Santa Rosa LPA",
+                "precioSemi": "40800",
+                "precioCama": "49800"
+              },
+              {
+                "nombre": "Padre Buodo",
+                "precioSemi": "41175",
+                "precioCama": "60800"
+              },
+              {
+                "nombre": "Río Colorado",
+                "precioSemi": "49250",
+                "precioCama": "72800"
+              },
+              {
+                "nombre": "Choele Choel",
+                "precioSemi": "56375",
+                "precioCama": "83800"
+              },
+              {
+                "nombre": "Chimpay",
+                "precioSemi": "58275",
+                "precioCama": "85800"
+              },
+              {
+                "nombre": "Villa Regina",
+                "precioSemi": "60650",
+                "precioCama": "89800"
+              },
+              {
+                "nombre": "Gral Roca RN",
+                "precioSemi": "63025",
+                "precioCama": "84050"
+              },
+              {
+                "nombre": "Allen Acc Axion",
+                "precioSemi": "64450",
+                "precioCama": "86300"
+              },
+              {
+                "nombre": "Cipolletti",
+                "precioSemi": "66350",
+                "precioCama": "88100"
+              },
+              {
+                "nombre": "Neuquén",
+                "precioSemi": "66825",
+                "precioCama": "89450"
+              },
+              {
+                "nombre": "Plottier",
+                "precioSemi": "69675",
+                "precioCama": "92600"
+              },
+              {
+                "nombre": "V. El Chocón Ypf Pdor",
+                "precioSemi": "81800",
+                "precioCama": "113255"
+              },
+              {
+                "nombre": "Piedra Del Águila",
+                "precioSemi": "95860",
+                "precioCama": "121760"
+              },
+              {
+                "nombre": "Bariloche",
+                "precioSemi": "94400",
+                "precioCama": "113300"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
+    }
+    
+    
       
       
 

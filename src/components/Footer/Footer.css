@@ -76,7 +76,7 @@
 }
 
 .email-form h4 {
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -87,9 +87,11 @@
     color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 5px;
+    border: none;
 }
 
 .email-form input {
     border-radius: 0px;
     width: 100%;
+    border: 1px solid rgb(233, 233, 233);
 }

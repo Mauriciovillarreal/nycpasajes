@@ -10,10 +10,6 @@ const ViajesList = () => {
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
     const [date, setDate] = useState("");
-    const [price, setPrice] = useState(null);
-    const [originStop, setOriginStop] = useState(null);
-    const [destinationStop, setDestinationStop] = useState(null);
-    const [empresaImagen, setEmpresaImagen] = useState(null);
     const [foundRoutes, setFoundRoutes] = useState([]);
     const [returnDate, setReturnDate] = useState('');
     const [passengers, setPassengers] = useState(1);
@@ -61,71 +57,11 @@ const ViajesList = () => {
 
         if (foundRoutes.length > 0) {
             setFoundRoutes(foundRoutes);
-            const route = foundRoutes[0];
-            setEmpresaImagen(route.img);
-
-            const paradas1 = route.paradas.paradas1;
-            const paradas2 = route.paradas.paradas2;
-
-            let originStopResult = null;
-            let destinationStopResult = null;
-
-            const originStop1Result = paradas1.find(p => p.nombre === origin.value);
-            const originStop2Result = paradas2.find(p => p.nombre === origin.value);
-            const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
-            const destinationStop2Result = paradas2.find(p => p.nombre === destination.value);
-
             setTimeout(() => {
                 if (resultsRef.current) {
                     resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
             }, 200);
-
-            if (originStop1Result && destinationStop2Result) {
-                originStopResult = originStop1Result;
-                destinationStopResult = destinationStop2Result;
-            } else if (originStop2Result && destinationStop1Result) {
-                originStopResult = originStop2Result;
-                destinationStopResult = destinationStop1Result;
-            }
-
-            if (originStopResult && destinationStopResult) {
-                const originHasPrice = originStopResult.precioSemi && originStopResult.precioCama;
-                const destinationHasPrice = destinationStopResult.precioSemi && destinationStopResult.precioCama;
-
-                let priceToUse = null;
-
-                if (destinationHasPrice) {
-                    priceToUse = {
-                        semiCama: destinationStopResult.precioSemi,
-                        cama: destinationStopResult.precioCama
-                    };
-                } else if (originHasPrice) {
-                    priceToUse = {
-                        semiCama: originStopResult.precioSemi,
-                        cama: originStopResult.precioCama
-                    };
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Sin precios',
-                        text: 'No se encontraron precios disponibles para las paradas seleccionadas',
-                    });
-                    return;
-                }
-
-
-
-                setPrice(priceToUse);
-                setOriginStop(originStopResult);
-                setDestinationStop(destinationStopResult);
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ruta no válida',
-                    text: 'Asegúrate de seleccionar un origen y un destino correcto.',
-                });
-            }
         } else {
             Swal.fire({
                 icon: 'error',
@@ -134,7 +70,6 @@ const ViajesList = () => {
             });
         }
     };
-
 
     const allStops = routes.reduce((acc, route) => {
         const paradas1 = route.paradas.paradas1.map(p => ({ value: p.nombre, label: p.nombre }));
@@ -147,9 +82,9 @@ const ViajesList = () => {
             return allStops.find(a => a.value === value)
         });
 
-    const abrirWhatsApp = () => {
+    const abrirWhatsApp = (originStop, destinationStop, price) => {
         const numero = "5491139505311";
-        let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${origin?.value || "No especificado"}\n📍 *Destino:* ${destination?.value || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
+        let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${originStop?.nombre || "No especificado"}\n📍 *Destino:* ${destinationStop?.nombre || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
 
         if (returnDate) {
             mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
@@ -157,9 +92,13 @@ const ViajesList = () => {
 
         mensaje += `\n👥 *Cantidad de pasajeros:* ${passengers}`;
 
+        if(price) {
+            mensaje += `\n\n💰 *Precio semi-cama:* ARS${price.semiCama}\n💰 *Precio cama:* ARS${price.cama}`;
+        }
+
         const mensajeCodificado = encodeURIComponent(mensaje);
-        const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
-        const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
+        const urlWeb = `https://wa.me/<span class="math-inline">\{numero\}?text\=</span>{mensajeCodificado}`;
+        const urlApp = `whatsapp://send?phone=<span class="math-inline">\{numero\}&text\=</span>{mensajeCodificado}`;
 
         if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
             window.location.href = urlApp;
@@ -172,21 +111,17 @@ const ViajesList = () => {
         <div>
             <div className="viajes-container">
                 <div className="filtros-form">
-
                     <div className="formSarch">
-
                         <h2 className="search-title">Busca tus pasajes</h2>
                         <div>
                             <label>Origen</label>
                             <div className="custom-select">
-
                                 <Select
                                     value={origin}
                                     onChange={setOrigin}
                                     options={uniqueStops}
                                     placeholder="Escribe el origen"
                                 />
-
                             </div>
                         </div>
                         <div className="input-container">
@@ -196,7 +131,6 @@ const ViajesList = () => {
                                 onChange={setDestination}
                                 options={uniqueStops}
                                 placeholder="Escribe el destino"
-
                             />
                         </div>
                         <div className="date-picker-container">
@@ -238,11 +172,8 @@ const ViajesList = () => {
                             />
                         </div>
                         <button onClick={handleSearch} className="search-button">Buscar pasajes</button>
-
                     </div>
-
                 </div>
-
                 <div className="Consultas">
                     <label>Si no encontras tu origen o destino, podes consultar por WhatsApp</label>
                     <a href="https://wa.me/5491139505311" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
@@ -252,13 +183,44 @@ const ViajesList = () => {
                         </button>
                     </a>
                 </div>
-
-
                 <div ref={resultsRef}>
-
                     {foundRoutes.length > 0 && (
                         <div className="routes-list">
                             {foundRoutes.map((route, index) => {
+                                const paradas1 = route.paradas.paradas1;
+                                const paradas2 = route.paradas.paradas2;
+
+                                let originStopResult = null;
+                                let destinationStopResult = null;
+
+                                const originStop1Result = paradas1.find(p => p.nombre === origin.value);
+                                const originStop2Result = paradas2.find(p => p.nombre === origin.value);
+                                const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
+                                const destinationStop2Result = paradas2
+                                .find(p => p.nombre === destination.value);
+
+                                if (originStop1Result && destinationStop2Result) {
+                                    originStopResult = originStop1Result;
+                                    destinationStopResult = destinationStop2Result;
+                                } else if (originStop2Result && destinationStop1Result) {
+                                    originStopResult = originStop2Result;
+                                    destinationStopResult = destinationStop1Result;
+                                }
+
+                                let priceToUse = null;
+
+                                if (destinationStopResult && destinationStopResult.precioSemi && destinationStopResult.precioCama) {
+                                    priceToUse = {
+                                        semiCama: destinationStopResult.precioSemi,
+                                        cama: destinationStopResult.precioCama
+                                    };
+                                } else if (originStopResult && originStopResult.precioSemi && originStopResult.precioCama) {
+                                    priceToUse = {
+                                        semiCama: originStopResult.precioSemi,
+                                        cama: originStopResult.precioCama
+                                    };
+                                }
+
                                 return (
                                     <div key={index} className="detalleViaje">
                                         <div className="viaje-header">
@@ -268,11 +230,11 @@ const ViajesList = () => {
                                         </div>
                                         <div className="viajeInfo">
                                             <div>
-                                                <p>{originStop?.nombre}</p>
+                                                <p>{originStopResult?.nombre}</p>
                                             </div>
                                             <div>→</div>
                                             <div>
-                                                <p>{destinationStop?.nombre}</p>
+                                                <p>{destinationStopResult?.nombre}</p>
                                             </div>
                                         </div>
 
@@ -280,13 +242,13 @@ const ViajesList = () => {
                                             <div>
                                                 <h6><span>SEMICAMA</span></h6>
                                                 <div className='precioDetalle'>
-                                                    <h3><span>DESDE</span> <br /> <b>ARS{price?.semiCama}</b></h3>
+                                                    <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.semiCama}</b></h3>
                                                 </div>
                                             </div>
                                             <div>
                                                 <h6><span>CAMA</span></h6>
                                                 <div className='precioDetalle'>
-                                                    <h3><span>DESDE</span> <br /> <b>ARS{price?.cama}</b></h3>
+                                                    <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.cama}</b></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,8 +257,8 @@ const ViajesList = () => {
                                             <h2>Precios por tramo</h2>
                                         </div>
 
-                                        {price && (
-                                            <button onClick={abrirWhatsApp} className="whatsapp-btn">
+                                        {priceToUse && (
+                                            <button onClick={() => abrirWhatsApp(originStopResult, destinationStopResult, priceToUse)} className="whatsapp-btn">
                                                 <img src="./img/wap.png" alt="" />
                                                 Consultar
                                             </button>
@@ -306,10 +268,7 @@ const ViajesList = () => {
                             })}
                         </div>
                     )}
-
                 </div>
-
-
             </div>
         </div>
     );

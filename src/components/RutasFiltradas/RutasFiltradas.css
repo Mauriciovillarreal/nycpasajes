@@ -1,0 +1,66 @@
+.rutas-filtradas-container {
+  padding: 20px;
+}
+
+.rutas-filtradas-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.rutas-filtradas-input {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ruta-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ruta-empresa {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ruta-paradas-titulo,
+.paradas-iniciales-titulo,
+.paradas-intermedias-titulo {
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.paradas-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.parada-item {
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.paradas-iniciales-container,
+.destinos-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paradas-iniciales-lista,
+.destinos-lista {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paradas-iniciales-lista .parada-item,
+.destinos-lista .parada-item {
+  margin-right: 10px;
+}
