@@ -26,9 +26,9 @@ export const Home = () => {
             <div className='info'>
                 <h2>¿Donde quedan las terminales/paradas?</h2>
                 <h6>Morón terminal - Av. Rivadavia 17415</h6>
-                <h6>Vergata y Gaona - Reyes Catolicos 218</h6>
+                <h6>Vergara y Gaona - Reyes Catolicos 218</h6>
                 <h6>Liniers - Av. Gral. Paz 16880</h6>
-                <h6>Retiro - Av. siempre viva 123</h6>
+                <h6>Retiro - Av. Antártida Argentina y Calle 10 </h6>
             </div>
 
             <div className='ToWhatsApp'>

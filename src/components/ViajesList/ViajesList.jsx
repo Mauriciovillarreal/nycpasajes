@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/config";
 import './ViajesList.css';
@@ -17,6 +17,7 @@ const ViajesList = () => {
     const [foundRoutes, setFoundRoutes] = useState([]);
     const [returnDate, setReturnDate] = useState('');
     const [passengers, setPassengers] = useState(1);
+    const resultsRef = useRef(null);
 
     useEffect(() => {
         const fetchRoutes = async () => {
@@ -74,6 +75,12 @@ const ViajesList = () => {
             const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
             const destinationStop2Result = paradas2.find(p => p.nombre === destination.value);
 
+            setTimeout(() => {
+                if (resultsRef.current) {
+                    resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }, 200);
+
             if (originStop1Result && destinationStop2Result) {
                 originStopResult = originStop1Result;
                 destinationStopResult = destinationStop2Result;
@@ -106,6 +113,8 @@ const ViajesList = () => {
                     });
                     return;
                 }
+
+
 
                 setPrice(priceToUse);
                 setOriginStop(originStopResult);
@@ -163,69 +172,74 @@ const ViajesList = () => {
         <div>
             <div className="viajes-container">
                 <div className="filtros-form">
-                    <h2 className="search-title">Busca tus pasajes</h2>
-                    <div>
-                        <label>Origen</label>
-                        <div className="custom-select">
 
+                    <div className="formSarch">
+
+                        <h2 className="search-title">Busca tus pasajes</h2>
+                        <div>
+                            <label>Origen</label>
+                            <div className="custom-select">
+
+                                <Select
+                                    value={origin}
+                                    onChange={setOrigin}
+                                    options={uniqueStops}
+                                    placeholder="Escribe el origen"
+                                />
+
+                            </div>
+                        </div>
+                        <div className="input-container">
+                            <label>Destino</label>
                             <Select
-                                value={origin}
-                                onChange={setOrigin}
+                                value={destination}
+                                onChange={setDestination}
                                 options={uniqueStops}
-                                placeholder="Escribe el origen"
+                                placeholder="Escribe el destino"
+
                             />
-
                         </div>
-                    </div>
-                    <div className="input-container">
-                        <label>Destino</label>
-                        <Select
-                            value={destination}
-                            onChange={setDestination}
-                            options={uniqueStops}
-                            placeholder="Escribe el destino"
-
-                        />
-                    </div>
-                    <div className="date-picker-container">
-                        <div className="input-container izq">
-                            <label>Partida</label>
-                            <div className="input-with-icon">
-                                <input
-                                    name="fecha"
-                                    type="date"
-                                    value={date}
-                                    onChange={e => setDate(e.target.value)}
-                                    className="input-field"
-                                />
-                                <i className="fas fa-calendar-alt"></i>
+                        <div className="date-picker-container">
+                            <div className="input-container izq">
+                                <label>Partida</label>
+                                <div className="input-with-icon">
+                                    <input
+                                        name="fecha"
+                                        type="date"
+                                        value={date}
+                                        onChange={e => setDate(e.target.value)}
+                                        className="input-field"
+                                    />
+                                    <i className="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <div className="input-container der">
+                                <label>Regreso (opcional)</label>
+                                <div className="input-with-icon ">
+                                    <input
+                                        name="fechaRegreso"
+                                        type="date"
+                                        value={returnDate}
+                                        onChange={e => setReturnDate(e.target.value)}
+                                        className="input-field"
+                                    />
+                                    <i className="fas fa-calendar-alt"></i>
+                                </div>
                             </div>
                         </div>
-                        <div className="input-container der">
-                            <label>Regreso (opcional)</label>
-                            <div className="input-with-icon ">
-                                <input
-                                    name="fechaRegreso"
-                                    type="date"
-                                    value={returnDate}
-                                    onChange={e => setReturnDate(e.target.value)}
-                                    className="input-field"
-                                />
-                                <i className="fas fa-calendar-alt"></i>
-                            </div>
+                        <div className="input-container">
+                            <label>Cantidad de pasajeros</label>
+                            <input
+                                type="number"
+                                value={passengers}
+                                onChange={e => setPassengers(e.target.value)}
+                                min="1"
+                                className="input-field pasajeros"
+                            />
                         </div>
+                        <button onClick={handleSearch} className="search-button">Buscar pasajes</button>
+
                     </div>
-                    <div className="input-container">
-                        <label>Cantidad de pasajeros</label>
-                        <input
-                            type="number"
-                            value={passengers}
-                            onChange={e => setPassengers(e.target.value)}
-                            min="1"
-                            className="input-field pasajeros"
-                        />
-                    </div>
-                    <button onClick={handleSearch} className="search-button">Buscar pasajes</button>
 
                 </div>
 
@@ -239,56 +253,61 @@ const ViajesList = () => {
                     </a>
                 </div>
 
-                {foundRoutes.length > 0 && (
-                    <div className="routes-list">
-                        {foundRoutes.map((route, index) => {
-                            return (
-                                <div key={index} className="detalleViaje">
-                                    <div className="viaje-header">
-                                        {route.img && (
-                                            <img src={route.img} alt={`Logo de ${route.empresa}`} />
+
+                <div ref={resultsRef}>
+
+                    {foundRoutes.length > 0 && (
+                        <div className="routes-list">
+                            {foundRoutes.map((route, index) => {
+                                return (
+                                    <div key={index} className="detalleViaje">
+                                        <div className="viaje-header">
+                                            {route.img && (
+                                                <img src={route.img} alt={`Logo de ${route.empresa}`} />
+                                            )}
+                                        </div>
+                                        <div className="viajeInfo">
+                                            <div>
+                                                <p>{originStop?.nombre}</p>
+                                            </div>
+                                            <div>→</div>
+                                            <div>
+                                                <p>{destinationStop?.nombre}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="precios">
+                                            <div>
+                                                <h6><span>SEMICAMA</span></h6>
+                                                <div className='precioDetalle'>
+                                                    <h3><span>DESDE</span> <br /> <b>ARS{price?.semiCama}</b></h3>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h6><span>CAMA</span></h6>
+                                                <div className='precioDetalle'>
+                                                    <h3><span>DESDE</span> <br /> <b>ARS{price?.cama}</b></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className='notaBaja'>
+                                            <h2>Precios por tramo</h2>
+                                        </div>
+
+                                        {price && (
+                                            <button onClick={abrirWhatsApp} className="whatsapp-btn">
+                                                <img src="./img/wap.png" alt="" />
+                                                Consultar
+                                            </button>
                                         )}
                                     </div>
-                                    <div className="viajeInfo">
-                                        <div>
-                                            <p>{originStop?.nombre}</p>
-                                        </div>
-                                        <div>→</div>
-                                        <div>
-                                            <p>{destinationStop?.nombre}</p>
-                                        </div>
-                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
 
-                                    <div className="precios">
-                                        <div>
-                                            <h6><span>SEMICAMA</span></h6>
-                                            <div className='precioDetalle'>
-                                                <h3><span>DESDE</span> <br /> <b>ARS{price?.semiCama}</b></h3>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6><span>CAMA</span></h6>
-                                            <div className='precioDetalle'>
-                                                <h3><span>DESDE</span> <br /> <b>ARS{price?.cama}</b></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className='notaBaja'>
-                                        <h2>Precios por tramo</h2>
-                                    </div>
-
-                                    {price && (
-                                        <button onClick={abrirWhatsApp} className="whatsapp-btn">
-                                            <img src="./img/wap.png" alt="" />
-                                            Consultar
-                                        </button>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                )}
+                </div>
 
 
             </div>

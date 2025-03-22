@@ -5,12 +5,16 @@
   
   .filtros-form {
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #CA2A31;
     padding: 10px; 
     margin-bottom: 10px;
-    border-radius: 10px;
-    margin: 10px;
-    border: 1px solid rgb(0, 0, 0);
+    
+}
+
+.formSarch{
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .search-title {
@@ -45,12 +49,13 @@ label {
 
 .search-button {
     border: 1px solid #ddd;
-    background-color: white;
+    background-color:  #CA2A31;
     margin-top: 25px;
     padding: 6px;
-    color: black;
+    color: white;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
 }
 
 
@@ -207,7 +212,7 @@ h3 span {
 
 .input-with-icon i {
     position: absolute;
-    right: 14px;
+    right: 6px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;

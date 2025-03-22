@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore , collection , addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBplctb-cyWVoDC8hcFiFEQO0KYkL_SHr8",
+  apiKey:  import.meta.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "nycpasajes.firebaseapp.com",
   projectId: "nycpasajes",
   storageBucket: "nycpasajes.firebasestorage.app",
@@ -12,3 +12,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
+export { collection, addDoc };

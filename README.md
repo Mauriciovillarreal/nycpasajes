@@ -9,10 +9,7 @@ Pasajes y mas
 - React Bootstrap
 
 ## Funcionalidades
-- Ver una lsita de productos disponibles
-- Agregar productos al carrito
-- Ver el carrito de compras
-- Finalizar la simulación de ventas recibiendo un order od
+- Filtrar una lsita de viajes
 
 ### Instalación
 1. Clonar el repositorio en tu máquina local.
