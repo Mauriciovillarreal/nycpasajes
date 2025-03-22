@@ -83,30 +83,30 @@ const ViajesList = () => {
         });
 
     const abrirWhatsApp = (originStop, destinationStop, price) => {
-        const numero = "5491139505311";
-        let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${originStop?.nombre || "No especificado"}\n📍 *Destino:* ${destinationStop?.nombre || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
+    const numero = "5491139505311";
+    let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${originStop?.nombre || "No especificado"}\n📍 *Destino:* ${destinationStop?.nombre || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
 
-        if (returnDate) {
-            mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
-        }
+    if (returnDate) {
+        mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
+    }
 
-        mensaje += `\n👥 *Cantidad de pasajeros:* ${passengers}`;
+    mensaje += `\n👥 *Cantidad de pasajeros:* ${passengers}`;
 
-        if(price) {
-            mensaje += `\n\n💰 *Precio semi-cama:* ARS${price.semiCama}\n💰 *Precio cama:* ARS${price.cama}`;
-        }
+    if (price) {
+        mensaje += `\n\n💰 *Precio semi-cama:* ARS${price.semiCama}\n💰 *Precio cama:* ARS${price.cama}`;
+    }
 
-        const mensajeCodificado = encodeURIComponent(mensaje);
-        const urlWeb = `https://wa.me/<span class="math-inline">\{numero\}?text\=</span>{mensajeCodificado}`;
-        const urlApp = `whatsapp://send?phone=<span class="math-inline">\{numero\}&text\=</span>{mensajeCodificado}`;
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+    const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
 
-        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-            window.location.href = urlApp;
-        } else {
-            window.open(urlWeb, "_blank");
-        }
-    };
-
+    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        window.location.href = urlApp;
+    } else {
+        window.open(urlWeb, "_blank");
+    }
+};
+   
     return (
         <div>
             <div className="viajes-container">

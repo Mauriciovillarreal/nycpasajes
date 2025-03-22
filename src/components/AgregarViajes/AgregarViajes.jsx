@@ -140,8 +140,8 @@ const AgregarViaje = () => {
               },
               {
                 "nombre": "Bariloche",
-                "precioSemi": "94400",
-                "precioCama": "113300"
+                "precioSemi": "94400🔥",
+                "precioCama": "113300🔥"
               }
             ]
           }
