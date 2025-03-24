@@ -83,44 +83,37 @@ const ViajesList = () => {
 
     return (
         <div>
-        <div className="viajes-container">
-            <ViajesSearchForm
-                origin={origin}
-                setOrigin={setOrigin}
-                destination={destination}
-                setDestination={setDestination}
-                date={date}
-                setDate={setDate}
-                returnDate={returnDate}
-                setReturnDate={setReturnDate}
-                passengers={passengers}
-                setPassengers={setPassengers}
-                uniqueStops={uniqueStops}
-                handleSearch={handleSearch}
-            />
-            <div className="Consultas">
-                <label>Si no encontras tu origen o destino, podes consultar por WhatsApp</label>
-                <a href="https://wa.me/5491139505311" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
-                    <button className="btnConsultas">
-                        <img src="./img/wap.png" alt="WhatsApp" className="whatsapp-icon" />
-                        Consultas
-                    </button>
-                </a>
-            </div>
-            <div ref={resultsRef}>
-                {foundRoutes.length > 0 && (
-                    <ViajesResults 
-                        foundRoutes={foundRoutes} 
-                        date={date} 
-                        returnDate={returnDate} 
-                        passengers={passengers} 
-                        origin={origin} // Pasar origin
-                        destination={destination} // Pasar destination
-                    />
-                )}
+            <div className="viajes-container">
+                <ViajesSearchForm
+                    origin={origin}
+                    setOrigin={setOrigin}
+                    destination={destination}
+                    setDestination={setDestination}
+                    date={date}
+                    setDate={setDate}
+                    returnDate={returnDate}
+                    setReturnDate={setReturnDate}
+                    passengers={passengers}
+                    setPassengers={setPassengers}
+                    uniqueStops={uniqueStops}
+                    handleSearch={handleSearch}
+                />
+                <div className="Consultas">
+                    <label>Si no encontras tu origen o destino, podes consultar por WhatsApp</label>
+                    <a href="https://wa.me/5491139505311" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
+                        <button className="btnConsultas">
+                            <img src="./img/wap.png" alt="WhatsApp" className="whatsapp-icon" />
+                            Consultas
+                        </button>
+                    </a>
+                </div>
+                <div ref={resultsRef}>
+                    {foundRoutes.length > 0 && (
+                        <ViajesResults foundRoutes={foundRoutes} date={date} returnDate={returnDate} passengers={passengers}/>
+                    )}
+                </div>
             </div>
         </div>
-    </div>
     );
 };
 

@@ -76,9 +76,33 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
                 <div><p>{destinationStopResult?.nombre}</p></div>
             </div>
             <div className="precios">
-                {priceToUse?.semiCama && (<div><h6><span>SEMICAMA</span></h6><div className='precioDetalle'><h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.semiCama}</b></h3></div></div>)}
-                {priceToUse?.cama && (<div><h6><span>CAMA</span></h6><div className='precioDetalle'><h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.cama}</b></h3></div></div>)}
-                {priceToUse?.estandar && (<div><h6><span>ESTANDAR</span></h6><div className='precioDetalle'><h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.estandar}</b></h3></div></div>)}
+                {priceToUse?.semiCama && (
+                    <div>
+                        <h6><span>SEMICAMA</span></h6>
+                        <div className='precioDetalle'>
+                            <h3><span>DESDE</span></h3> {/* Agregado */}
+                            <h3><span>ARS</span> <b>{priceToUse?.semiCama}</b></h3>
+                        </div>
+                    </div>
+                )}
+                {priceToUse?.cama && (
+                    <div>
+                        <h6><span>CAMA</span></h6>
+                        <div className='precioDetalle'>
+                            <h3><span>DESDE</span></h3> {/* Agregado */}
+                            <h3><span>ARS</span> <b>{priceToUse?.cama}</b></h3>
+                        </div>
+                    </div>
+                )}
+                {priceToUse?.estandar && (
+                    <div>
+                        <h6><span>ESTANDAR</span></h6>
+                        <div className='precioDetalle'>
+                            <h3><span>DESDE</span></h3> {/* Agregado */}
+                            <h3><span>ARS</span> <b>{priceToUse?.estandar}</b></h3>
+                        </div>
+                    </div>
+                )}
             </div>
             <div className='notaBaja'>
                 <h2>Precios por tramo</h2>
