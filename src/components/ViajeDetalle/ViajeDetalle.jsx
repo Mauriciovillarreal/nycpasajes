@@ -35,11 +35,10 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
     let originStopResult = null;
     let destinationStopResult = null;
 
-    const originStop1Result = paradas1.find(p => p.nombre === origin.value);
-    const originStop2Result = paradas2.find(p => p.nombre === origin.value);
-    const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
-    const destinationStop2Result = paradas2.find(p => p.nombre === destination.value);
-
+    const originStop1Result = paradas1.find(p => p.nombre === origin?.value); // Access origin.value safely
+    const originStop2Result = paradas2.find(p => p.nombre === origin?.value); // Access origin.value safely
+    const destinationStop1Result = paradas1.find(p => p.nombre === destination?.value); // Access destination.value safely
+    const destinationStop2Result = paradas2.find(p => p.nombre === destination?.value); // Access destination.value safely
 
     if (originStop1Result && destinationStop2Result) {
         originStopResult = originStop1Result;
@@ -64,6 +63,12 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
             estandar: originStopResult.precioEstandar
         };
     }
+
+    console.log("Origin value:", origin?.value);
+    console.log("Destination value:", destination?.value);
+    console.log("Origin stop result:", originStopResult);
+    console.log("Destination stop result:", destinationStopResult);
+    console.log("Price to use:", priceToUse);
 
     return (
         <div className="detalleViaje">

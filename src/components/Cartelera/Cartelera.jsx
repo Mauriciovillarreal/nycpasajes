@@ -14,6 +14,21 @@ export const Cartelera = () => {
       imagen: './img/mdq.jpg',
       rutas: ['BSAS → MDQ', 'MDQ → BSAS'],
     },
+    {
+      nombre: 'Córdoba',
+      imagen: './img/cordoba.jpeg',
+      rutas: ['BSAS → CORDOBA', 'CORDOBA → BSAS'],
+    },
+    {
+      nombre: 'Pto. Iguazu',
+      imagen: './img/iguazu.jpeg',
+      rutas: ['BSAS → PTO. IGUAZU', 'PTO. IGUAZU → BSAS'],
+    },
+    {
+      nombre: 'Bariloche',
+      imagen: './img/bariloche.jpeg',
+      rutas: ['BSAS → BARILOCHE', 'BARILOCHE → BSAS'],
+    },
     // Puedes agregar más destinos aquí
   ];
 

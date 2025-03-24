@@ -32,7 +32,7 @@ function RutasFiltradas() {
             resultadosFiltrados = resultadosFiltrados.filter((ruta) =>
                 ruta.rutas.some((rutaItem) =>
                     Object.values(rutaItem.paradas || {}).flat().some((parada) =>
-                        parada.nombre.toLowerCase().includes(filtroParada.toLowerCase())
+                        parada && parada.nombre && parada.nombre.toLowerCase().includes(filtroParada.toLowerCase())
                     )
                 )
             );
@@ -73,7 +73,7 @@ function RutasFiltradas() {
                                                     <h5 className="paradas-iniciales-titulo">Paradas Iniciales:</h5>
                                                     <ul className="paradas-lista paradas-iniciales-lista">
                                                         {paradasLista.map((parada, paradaIndex) => (
-                                                            <li key={paradaIndex} className="parada-item">{parada.nombre}</li>
+                                                            <li key={paradaIndex} className="parada-item">{parada && parada.nombre}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -90,7 +90,7 @@ function RutasFiltradas() {
                                                     <h5 className="paradas-intermedias-titulo">Destinos:</h5>
                                                     <ul className="paradas-lista destinos-lista">
                                                         {paradasLista.map((parada, paradaIndex) => (
-                                                            <li key={paradaIndex} className="parada-item">{parada.nombre}</li>
+                                                            <li key={paradaIndex} className="parada-item">{parada && parada.nombre}</li>
                                                         ))}
                                                     </ul>
                                                 </div>

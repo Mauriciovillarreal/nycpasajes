@@ -13,7 +13,7 @@ const ViajesSearchForm = ({ origin, setOrigin, destination, setDestination, date
                             value={origin}
                             onChange={setOrigin}
                             options={uniqueStops}
-                            placeholder="Escribe el origen"
+                            placeholder="Selecciona el origen"
                         />
                     </div>
                 </div>
@@ -23,7 +23,7 @@ const ViajesSearchForm = ({ origin, setOrigin, destination, setDestination, date
                         value={destination}
                         onChange={setDestination}
                         options={uniqueStops}
-                        placeholder="Escribe el destino"
+                        placeholder="Selecciona el destino"
                     />
                 </div>
                 <div className="date-picker-container">

@@ -16,6 +16,11 @@ const ViajesList = () => {
     const [passengers, setPassengers] = useState(1);
     const resultsRef = useRef(null);
 
+    // Nuevos estados para el formulario de consulta
+    const [consultaOrigen, setConsultaOrigen] = useState("");
+    const [consultaDestino, setConsultaDestino] = useState("");
+    const [consultaFecha, setConsultaFecha] = useState("");
+
     useEffect(() => {
         const fetchRoutes = async () => {
             const querySnapshot = await getDocs(collection(db, "viajes"));
@@ -81,6 +86,14 @@ const ViajesList = () => {
             return allStops.find(a => a.value === value)
         });
 
+    // Función para construir la URL de WhatsApp
+    const handleWhatsAppConsulta = () => {
+        const mensaje = `Consulta: Origen: ${consultaOrigen}, Destino: ${consultaDestino}, Fecha: ${consultaFecha}`;
+        const encodedMensaje = encodeURIComponent(mensaje);
+        const whatsappUrl = `https://wa.me/5491139505311?text=${encodedMensaje}`;
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
         <div>
             <div className="viajes-container">
@@ -98,19 +111,59 @@ const ViajesList = () => {
                     uniqueStops={uniqueStops}
                     handleSearch={handleSearch}
                 />
-                <div className="Consultas">
-                    <label>Si no encontras tu origen o destino, podes consultar por WhatsApp</label>
-                    <a href="https://wa.me/5491139505311" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
-                        <button className="btnConsultas">
-                            <img src="./img/wap.png" alt="WhatsApp" className="whatsapp-icon" />
-                            Consultas
-                        </button>
-                    </a>
-                </div>
+
                 <div ref={resultsRef}>
                     {foundRoutes.length > 0 && (
-                        <ViajesResults foundRoutes={foundRoutes} date={date} returnDate={returnDate} passengers={passengers}/>
+                        <ViajesResults
+                            foundRoutes={foundRoutes}
+                            date={date}
+                            returnDate={returnDate}
+                            passengers={passengers}
+                            origin={origin}
+                            destination={destination}
+                        />
                     )}
+                </div>
+
+                <div className="containerConsultas">
+                    <div className="Consultas">
+                        <label>Si no encuentras tu origen o destino, puedes consultar por WhatsApp</label>
+                        <form>
+                            <div className="input-container">
+                                <label>Origen</label>
+                                <input
+                                    type="text"
+                                    className="input-field"
+                                    placeholder="Escribe el origen"
+                                    value={consultaOrigen}
+                                    onChange={(e) => setConsultaOrigen(e.target.value)}
+                                />
+                            </div>
+                            <div className="input-container">
+                                <label>Destino</label>
+                                <input
+                                    type="text"
+                                    className="input-field"
+                                    placeholder="Escribe el destino"
+                                    value={consultaDestino}
+                                    onChange={(e) => setConsultaDestino(e.target.value)}
+                                />
+                            </div>
+                            <div className="input-container">
+                                <label>Fecha</label>
+                                <input
+                                    type="date"
+                                    className="input-field"
+                                    value={consultaFecha}
+                                    onChange={(e) => setConsultaFecha(e.target.value)}
+                                />
+                            </div>
+                        </form>
+                        <button className="btnConsultas" onClick={handleWhatsAppConsulta}>
+                          
+                            Consulta
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
   position: relative;
   width: 95%;
   max-width: 500px;
-  margin: 30px auto;
+  margin: 1px 0px 50px 0px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -11,6 +11,12 @@
 .cartelera-image {
   width: 100%;
   display: block;
+  height: 400px;
+  transition: transform 6s ease; /* Agregamos una transición suave */
+}
+
+.cartelera-image:hover {
+  transform: scale(1.3); /* Zoom al 110% */
 }
 
 .cartelera-content-top {
@@ -25,7 +31,7 @@
 
 h1 span {
   font-family: "Kaushan Script", cursive;
-  font-size: 35px;
+  font-size: 40px;
   color: #CA2A31;
 }
 
