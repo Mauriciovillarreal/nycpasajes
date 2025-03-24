@@ -8,87 +8,48 @@ const AgregarViaje = () => {
     const datos = 
 
     {
-      "empresa": "Aguila de Junin",
+      "empresa": "Micromar",
       "rutas": [
         {
-          "destino_final": "Villa Gesell",
-          "img": "./img/junin.jpg",
+          "destino_final": "Mar del Plata",
+          "img": "./img/micromar.png",
           "paradas": {
             "paradas1": [
               {
-                "nombre": "Moreno las Piedras"
+                "nombre": "Dellepiane"
               },
               {
-                "nombre": "Paso del Rey"
+                "nombre": "Liniers"
               },
               {
-                "nombre": "Merlo BSAS"
-              },
-              {
-                "nombre": "San Antonio de Padua"
-              },
-              {
-                "nombre": "Ituzaingo"
-              },
-              {
-                "nombre": "Terminal Morón"
-              },
-              {
-                "nombre": "San Justo BSAS"
+                "nombre": "Retiro"
               }
             ],
             "paradas2": [
               {
-                "nombre": "Chascomús",
-                "precioEstandar": "12720"
+                "nombre": "Havanna MDQ",
+                "precioSemi": "44640",
+                "precioCama": "50160"
               },
               {
-                "nombre": "Lezama",
-                "precioEstandar": "15984"
+                "nombre": "Mar del Plata",
+                "precioSemi": "44640",
+                "precioCama": "50160"
               },
               {
-                "nombre": "Castelli",
-                "precioEstandar": "18360"
+                "nombre": "Punta Mogotes",
+                "precioSemi": "46720",
+                "precioCama": "52800"
               },
               {
-                "nombre": "Dolores",
-                "precioEstandar": "21152"
+                "nombre": "Chapadmalal",
+                "precioSemi": "46720",
+                "precioCama": "52800"
               },
               {
-                "nombre": "San Clemente",
-                "precioEstandar": "33320"
-              },
-              {
-                "nombre": "Las Toninas",
-                "precioEstandar": "34752"
-              },
-              {
-                "nombre": "Santa Teresita",
-                "precioEstandar": "35088"
-              },
-              {
-                "nombre": "Mar del Tuyu",
-                "precioEstandar": "35160"
-              },
-              {
-                "nombre": "La Lucila",
-                "precioEstandar": "35840"
-              },
-              {
-                "nombre": "San Bernardo",
-                "precioEstandar": "35976"
-              },
-                {
-                "nombre": "Mar de Ajo",
-                "precioEstandar": "35976"
-              },
-              {
-                "nombre": "Pinamar",
-                "precioEstandar": "35976"
-              },
-              {
-                "nombre": "Villa Gesell",
-                "precioEstandar": "38488"
+                "nombre": "Miramar",
+                "precioSemi": "49200",
+                "precioCama": "56400"
               }
             ]
           }

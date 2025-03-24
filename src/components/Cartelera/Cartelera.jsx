@@ -17,7 +17,7 @@ export const Cartelera = () => {
     {
       nombre: 'Córdoba',
       imagen: './img/cordoba.jpeg',
-      rutas: ['BSAS → CORDOBA', 'CORDOBA → BSAS'],
+      rutas: ['BSAS → CÓRDOBA', 'CÓRDOBA → BSAS'],
     },
     {
       nombre: 'Pto. Iguazu',
