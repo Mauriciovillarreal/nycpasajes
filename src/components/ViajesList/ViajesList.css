@@ -161,7 +161,7 @@ label {
 
 .detalleViaje h6 {
     font-size: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .detalleViaje h6 span {
@@ -171,21 +171,24 @@ label {
     border-radius: 50px;
 }
 
+.precio {
+    font-family: 50px!important ;
+}
+
 .precios {
-    display: grid;
-    grid-template-columns: 50% 50%;
+
     text-align: center;
     margin-top: 15px;
     margin-bottom: 10px;
 }
 
 .precioDetalle {
-    margin-top: -30px;
+    margin-top: -40px;
 }
 
 .notaBaja h2 {
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 h3 span {
@@ -249,7 +252,7 @@ h3 span {
     margin-bottom: 20px;
 }
 .Consultas {
-    margin: 20px 10px;
+    margin: 10px 10px;
     padding: 4px 10px;
     border: 1px solid black;
     border-radius: 10px;

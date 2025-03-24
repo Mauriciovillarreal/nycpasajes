@@ -18,8 +18,13 @@ const ViajesList = () => {
     useEffect(() => {
         const fetchRoutes = async () => {
             const querySnapshot = await getDocs(collection(db, "viajes"));
-            const routesData = querySnapshot.docs.flatMap(doc => doc.data().rutas || []);
-            console.log("Rutas obtenidas:", routesData);
+            const routesData = querySnapshot.docs.flatMap(doc => {
+                const data = doc.data();
+                return data.rutas.map(ruta => ({
+                    ...ruta,
+                    empresa: data.empresa // Agrega la propiedad empresa a cada ruta
+                }));
+            });
             setRoutes(routesData);
         };
         fetchRoutes();
@@ -82,31 +87,33 @@ const ViajesList = () => {
             return allStops.find(a => a.value === value)
         });
 
-    const abrirWhatsApp = (originStop, destinationStop, price) => {
-    const numero = "5491139505311";
-    let mensaje = `Hola, quiero consultar por un viaje:\n\n🚐 *Origen:* ${originStop?.nombre || "No especificado"}\n📍 *Destino:* ${destinationStop?.nombre || "No especificado"}\n📅 *Fecha de ida:* ${date || "Cualquier fecha"}`;
+    const abrirWhatsApp = (originStop, destinationStop, price, empresa) => {
+        const numero = "5491139505311";
+        let mensaje = `Hola, quiero consultar por un viaje con ${empresa}:\n\n *Origen:* ${originStop?.nombre || "No especificado"}\n *Destino:* ${destinationStop?.nombre || "No especificado"}\n *Fecha de ida:* ${date || "Cualquier fecha"}`;
 
-    if (returnDate) {
-        mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
-    }
+        if (returnDate) {
+            mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
+        }
 
-    mensaje += `\n👥 *Cantidad de pasajeros:* ${passengers}`;
+        mensaje += `\n *Cantidad de pasajeros:* ${passengers}`;
 
-    if (price) {
-        mensaje += `\n\n💰 *Precio semi-cama:* ARS${price.semiCama}\n💰 *Precio cama:* ARS${price.cama}`;
-    }
+        if (price) {
+            if (price.semiCama) mensaje += `\n *Precio semi-cama:* ARS${price.semiCama}`;
+            if (price.cama) mensaje += `\n *Precio cama:* ARS${price.cama}`;
+            if (price.estandar) mensaje += `\n *Precio estándar:* ARS${price.estandar}`;
+        }
 
-    const mensajeCodificado = encodeURIComponent(mensaje);
-    const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
-    const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+        const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
 
-    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        window.location.href = urlApp;
-    } else {
-        window.open(urlWeb, "_blank");
-    }
-};
-   
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            window.location.href = urlApp;
+        } else {
+            window.open(urlWeb, "_blank");
+        }
+    };
+
     return (
         <div>
             <div className="viajes-container">
@@ -197,30 +204,33 @@ const ViajesList = () => {
                                 const originStop2Result = paradas2.find(p => p.nombre === origin.value);
                                 const destinationStop1Result = paradas1.find(p => p.nombre === destination.value);
                                 const destinationStop2Result = paradas2
-                                .find(p => p.nombre === destination.value);
+                                    .find(p => p.nombre === destination.value);
 
-                                if (originStop1Result && destinationStop2Result) {
-                                    originStopResult = originStop1Result;
-                                    destinationStopResult = destinationStop2Result;
-                                } else if (originStop2Result && destinationStop1Result) {
-                                    originStopResult = originStop2Result;
-                                    destinationStopResult = destinationStop1Result;
-                                }
+                                if (originStop1Result && destinationStop2Result)
+                                    if (originStop1Result && destinationStop2Result) {
+                                        originStopResult = originStop1Result;
+                                        destinationStopResult = destinationStop2Result;
+                                    } else if (originStop2Result && destinationStop1Result) {
+                                        originStopResult = originStop2Result;
+                                        destinationStopResult = destinationStop1Result;
+                                    }
 
                                 let priceToUse = null;
 
-                                if (destinationStopResult && destinationStopResult.precioSemi && destinationStopResult.precioCama) {
+                                if (destinationStopResult && (destinationStopResult.precioSemi || destinationStopResult.precioCama || destinationStopResult.precioEstandar)) {
                                     priceToUse = {
                                         semiCama: destinationStopResult.precioSemi,
-                                        cama: destinationStopResult.precioCama
+                                        cama: destinationStopResult.precioCama,
+                                        estandar: destinationStopResult.precioEstandar
                                     };
-                                } else if (originStopResult && originStopResult.precioSemi && originStopResult.precioCama) {
+                                } else if (originStopResult && (originStopResult.precioSemi || originStopResult.precioCama || originStopResult.precioEstandar)) {
                                     priceToUse = {
                                         semiCama: originStopResult.precioSemi,
-                                        cama: originStopResult.precioCama
+                                        cama: originStopResult.precioCama,
+                                        estandar: originStopResult.precioEstandar
                                     };
                                 }
-
+                          
                                 return (
                                     <div key={index} className="detalleViaje">
                                         <div className="viaje-header">
@@ -239,18 +249,30 @@ const ViajesList = () => {
                                         </div>
 
                                         <div className="precios">
-                                            <div>
-                                                <h6><span>SEMICAMA</span></h6>
-                                                <div className='precioDetalle'>
-                                                    <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.semiCama}</b></h3>
+                                            {priceToUse?.semiCama && (
+                                                <div>
+                                                    <h6><span>SEMICAMA</span></h6>
+                                                    <div className='precioDetalle'>
+                                                        <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.semiCama}</b></h3>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <h6><span>CAMA</span></h6>
-                                                <div className='precioDetalle'>
-                                                    <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.cama}</b></h3>
+                                            )}
+                                            {priceToUse?.cama && (
+                                                <div>
+                                                    <h6><span>CAMA</span></h6>
+                                                    <div className='precioDetalle'>
+                                                        <h3><span>DESDE</span> <br /> <b>ARS{priceToUse?.cama}</b></h3>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
+                                            {priceToUse?.estandar && (
+                                                <div>
+                                                    <h6><span>ESTANDAR</span></h6>
+                                                    <div className='precioDetalle'>
+                                                        <h3><span>DESDE</span> <br /> <b >ARS{priceToUse?.estandar}</b></h3>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
 
                                         <div className='notaBaja'>
@@ -258,7 +280,7 @@ const ViajesList = () => {
                                         </div>
 
                                         {priceToUse && (
-                                            <button onClick={() => abrirWhatsApp(originStopResult, destinationStopResult, priceToUse)} className="whatsapp-btn">
+                                            <button onClick={() => abrirWhatsApp(originStopResult, destinationStopResult, priceToUse, route.empresa)} className="whatsapp-btn">
                                                 <img src="./img/wap.png" alt="" />
                                                 Consultar
                                             </button>
