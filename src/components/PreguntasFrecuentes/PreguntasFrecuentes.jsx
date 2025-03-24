@@ -4,6 +4,7 @@ import './PreguntasFrecuentes.css'; // Importa el archivo CSS
 export const PreguntasFrecuentes = () => {
     return (
         <div className="preguntas-frecuentes">
+            <h1>Información importante</h1>
             <div className="info">
                 <h2>¿Cómo comprar?</h2>
                 <h6>

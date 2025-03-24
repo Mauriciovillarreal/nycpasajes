@@ -25,8 +25,8 @@ export const Nosotros = () => {
             </div>
 
             <div className='agencias'>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52505.304923563344!2d-58.76804615330484!3d-34.665269108093426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbfe5561c2795%3A0x437cfadd7a503ee4!2sNyc%20travel!5e0!3m2!1ses-419!2sar!4v1742853246951!5m2!1ses-419!2sar"
-                       style={{ border: 0 }}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1806.6075701085706!2d-58.7284197901926!3d-34.66510170577591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbfe5561c2795%3A0x437cfadd7a503ee4!2sNyc%20travel!5e0!3m2!1ses-419!2sar!4v1742855028386!5m2!1ses-419!2sar"
+                    style={{ border: 0 }}
                     allowfullscreen
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
