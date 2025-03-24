@@ -157,11 +157,10 @@ const ViajesList = () => {
                                     value={consultaFecha}
                                     onChange={(e) => setConsultaFecha(e.target.value)}
                                 />
-                                 <i className="fas fa-calendar-alt"></i>
                             </div>
                         </form>
                         <button className="btnConsultas" onClick={handleWhatsAppConsulta}>
-                          
+
                             Consulta
                         </button>
                     </div>

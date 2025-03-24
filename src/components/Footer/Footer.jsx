@@ -57,7 +57,7 @@ export const Footer = () => {
           {message && <p className="message">{message}</p>}
 
           <div className="carousel-div">
-            <Carousel interval={2000} pause={false}>
+            <Carousel interval={500} pause={false}>
               <Carousel.Item>
                 <img className="d-block w-100" src="./img/urquiza.jpg" alt="Urquiza" />
               </Carousel.Item>
@@ -84,6 +84,12 @@ export const Footer = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img className="d-block w-100" src="./img/singer.jpg" alt="singer" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="d-block w-100" src="./img/20dej.jpg" alt="20 de Junio" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="d-block w-100" src="./img/andesmar.jpg" alt="Andesmar" />
               </Carousel.Item>
             </Carousel>
           </div>
