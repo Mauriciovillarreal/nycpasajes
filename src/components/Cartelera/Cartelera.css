@@ -1,21 +1,68 @@
-.Cartelera {
-    /* Asegúrate de que .Cartelera o un contenedor padre tenga un ancho definido */
-    overflow: hidden; /* Oculta el contenido que se desborda */
-  }
-  
-  .Cartelera img {
-    width: 100%;
-    margin: 10px 0px;
-    border-radius: 52px;
-    padding: 21px;
-    transition: transform 0.6s ease;
-  }
-  
-  .Cartelera img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño interno de la imagen */
-  }
-  
-  h3 {
-    padding-top: 40px;
-    text-align: center;
-  }
+.cartelera-card {
+  position: relative;
+  width: 85%;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cartelera-image {
+  width: 100%;
+  display: block;
+}
+
+.cartelera-content-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+h1 span {
+  font-family: "Kaushan Script", cursive;
+
+  font-size: 35px;
+  color: #CA2A31;
+}
+
+.cartelera-content-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.cartelera-content-top h1 {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cartelera-content-top p {
+  margin-bottom: 5px;
+}
+
+.cartelera-content-bottom p {
+  margin-bottom: 5px;
+}
+
+.cartelera-content-bottom button {
+  padding: 5px;
+  background-color: #CA2A31;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cartelera-content-bottom button:hover {
+  background-color: #CA2A31;
+}

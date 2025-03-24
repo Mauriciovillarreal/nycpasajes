@@ -1,15 +1,49 @@
-import React from 'react'
+import React from 'react';
+import { Container } from 'react-bootstrap';
 import './Cartelera.css';
-export const Cartelera = () => {
-  return (
-    <div className='Cartelera'>
-        <h3>Pasajes de micros baratos</h3>
-        <img src="./img/cartelera.jpeg" alt="" />
-        <img src="./img/cartelera2.jpeg" alt="" />
-        <img src="./img/cartelera3.jpeg" alt="" />
-        <img src="./img/cartelera4.jpeg" alt="" />
-        <img src="./img/carteler5.jpeg" alt="" />
 
-    </div>
-  )
-}
+export const Cartelera = () => {
+  const destinos = [
+    {
+      nombre: 'Mendoza',
+      imagen: './img/mendoza.jpg',
+      rutas: ['BSAS → MENDOZA', 'MENDOZA → BSAS'],
+    },
+    {
+      nombre: 'Mar del Plata',
+      imagen: './img/mdq.jpg',
+      rutas: ['BSAS → MDQ', 'MDQ → BSAS'],
+    },
+    // Puedes agregar más destinos aquí
+  ];
+
+  const whatsappNumber = '5491139505311';
+
+  const handleWhatsAppClick = (destino) => {
+    const whatsappMessage = `Hola, quiero más información sobre los descuentos a ${destino} de un 20%`;
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+  };
+
+  return (
+    <Container>
+      {destinos.map((destino) => (
+        <div key={destino.nombre} className='cartelera-card'>
+          <img src={destino.imagen} alt={destino.nombre} className="cartelera-image" />
+          <div className="cartelera-content-top">
+            <h1>
+              VIAJA A <div><span>{destino.nombre}</span></div>
+            </h1>
+            <p>HASTA UN 20% OFF</p>
+          </div>
+          <div className="cartelera-content-bottom">
+            {destino.rutas.map((ruta) => (
+              <p key={ruta}>{ruta}</p>
+            ))}
+            <button onClick={() => handleWhatsAppClick(destino.nombre)}>CONSULTAS</button>
+          </div>
+        </div>
+      ))}
+    </Container>
+  );
+};
