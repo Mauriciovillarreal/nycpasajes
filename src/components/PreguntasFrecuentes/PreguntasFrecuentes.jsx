@@ -42,7 +42,7 @@ export const PreguntasFrecuentes = () => {
                 <h6>Peso total permitido: Entre ambos, hasta 15 kg</h6>
                 <h6>Importante: Guardá siempre el ticket que te entrega el conductor al despachar tu equipaje</h6>
                 <h6>NO SE CONSIDERAN COMO EQUIPAJE:</h6>
-                <h6>Sillas, reposeras, sombrillas,heladeras, cañas de pescar, cajas y otros bulots que no sean valijas o bolsos</h6>
+                <h6>Sillas, reposeras, sombrillas,heladeras, cañas de pescar, cajas y otros bultos que no sean valijas o bolsos</h6>
             </div>
         </div>
     );
