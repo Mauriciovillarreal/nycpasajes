@@ -1,0 +1,183 @@
+/* Estilos para el formulario */
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.viajes-container {
+    margin-top: 8px;
+}
+
+.viajes-container h1 {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 1rem;
+}
+.filtros-form {
+    border: solid 1px rgb(199, 199, 199);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 1.5rem;
+}
+
+.filtros-form input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+
+    font-size: 1rem;
+}
+
+.filtros-form input:focus {
+    border-color: #ff0000;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.filtros-form button {
+    border: 1px solid rgb(209, 209, 209);
+    background-color: white;
+    margin-top: 25px;
+    padding: 12px;
+    color: black;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    padding: 1px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid rgb(209, 209, 209);
+   
+    margin-bottom: 15px;
+}
+
+.whatsapp-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.whatsapp-btn img {
+    width: 38px;
+    margin-bottom: 3px;
+    padding: 1px;
+    margin-right: 5px;
+}
+
+.filtros-form h5 {
+    padding-top: 10px;
+    font-size: 13px;
+}
+.filtros-form h6 {
+    font-size: 11px;
+    color: red;
+    margin-top: 10px;
+}
+/* ViajesList.css */
+.viaje-card {
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: solid 1px rgb(199, 199, 199);
+    padding: 10px;
+    margin: 10px 0;
+    padding-bottom: 1px;
+    box-shadow: 2px 2px 10px rgb(202, 202, 202);
+}
+
+.viaje-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.viaje-header img {
+    width: 100px;
+}
+
+.viaje-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.viaje-info div {
+    text-align: center;
+}
+
+.viaje-horario {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.viaje-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.viaje-precio {
+    font-size: 21px;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.viaje-precio span {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+}
+
+
+input[type="date"] {
+    width: 100%; /* Asegura que el campo ocupe todo el ancho disponible */
+    padding: 12px;
+    border: 1px solid #000000;
+    font-size: 16px;
+    color: #555;
+    background-color: #fff;
+    outline: none;
+    height: 45px;
+}
+
+input[type="date"]:focus {
+    border-color: #c4c4c4;
+}
+
+input[type="date"] {
+    background-color: #fff !important;
+    border: 1px solid #ccc;
+}
+
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.fecha-container {
+    display: flex;
+    gap: 20px; /* Espacio entre los dos inputs */
+    flex-wrap: wrap; /* Permite que los inputs se ajusten si no caben en la misma fila */
+}
+
+.fecha-item {
+    flex: 1; /* Los inputs ocuparán el mismo espacio */
+    min-width: 150px; /* Asegura que los inputs no se encojan demasiado */
+}
+
+h5 {
+    margin-bottom: 5px;
+}

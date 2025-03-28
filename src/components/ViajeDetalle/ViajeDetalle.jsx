@@ -1,33 +1,45 @@
 import React from 'react';
 import './ViajeDetalle.css';
+import Swal from 'sweetalert2';
 
 const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination }) => {
     const abrirWhatsApp = (originStop, destinationStop, price, empresa) => {
         const numero = "5491139505311";
         let mensaje = `Hola, quiero consultar por un viaje con ${empresa}:\n\n *Origen:* ${originStop?.nombre || "No especificado"}\n *Destino:* ${destinationStop?.nombre || "No especificado"}\n *Fecha de ida:* ${date || "Cualquier fecha"}`;
-
+    
         if (returnDate) {
             mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
         }
-
+    
         mensaje += `\n *Cantidad de pasajeros:* ${passengers}`;
-
+    
         if (price) {
             if (price.semiCama) mensaje += `\n *Precio semi-cama:* ARS${price.semiCama}`;
             if (price.cama) mensaje += `\n *Precio cama:* ARS${price.cama}`;
             if (price.estandar) mensaje += `\n *Precio estándar:* ARS${price.estandar}`;
         }
-
+    
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
         const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
-
-        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-            window.location.href = urlApp;
-        } else {
-            window.open(urlWeb, "_blank");
-        }
+    
+        // Mostrar alerta antes de redirigir a WhatsApp
+        Swal.fire({
+            icon: 'success',
+            title: 'Consulta lista para enviar',
+            text: 'Serás redirigido a WhatsApp para enviar tu consulta.',
+            confirmButtonText: 'Ir a WhatsApp'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                    window.location.href = urlApp;
+                } else {
+                    window.open(urlWeb, "_blank");
+                }
+            }
+        });
     };
+    
 
     const paradas1 = route.paradas.paradas1;
     const paradas2 = route.paradas.paradas2;
@@ -64,11 +76,7 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
         };
     }
 
-    console.log("Origin value:", origin?.value);
-    console.log("Destination value:", destination?.value);
-    console.log("Origin stop result:", originStopResult);
-    console.log("Destination stop result:", destinationStopResult);
-    console.log("Price to use:", priceToUse);
+
 
     return (
         <div className="detalleViaje">

@@ -1,6 +1,6 @@
 .custom-footer {
     background-color: #ffffff;
-    padding: 20px 0 0 0 ;
+    padding: 20px 0 0 0;
     border-top: 1px solid rgb(233, 233, 233);
 }
 
@@ -17,6 +17,10 @@
     margin-bottom: 50px;
     border-bottom: 1px solid rgb(240, 240, 240);
     border-top: 1px solid rgb(240, 240, 240);
+}
+
+.carousel-div {
+    margin-bottom: -30px;
 }
 
 .footer-logo {
@@ -45,9 +49,7 @@
     font-size: 13px;
 }
 
-.carousel-col {
-    padding: 0 20px;
-}
+
 
 .footer-info {
     padding: 0 20px;
@@ -70,29 +72,70 @@
     margin-bottom: 40px;
     margin-top: 10px;
 }
- 
+
 .email-form {
-    margin-bottom: 40px;
-    width: 100%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 15px;
 }
 
 .email-form h4 {
     font-size: 14px;
-    text-align: center;
 }
 
-.email-form button {
+.inputEmail {
+    display: flex;
     width: 100%;
-    margin-top: 10px;
-    background-color: black;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 5px;
+}
+
+.inputEmail input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+
+.inputEmail button {
+    padding: 10px 15px;
+    background-color: rgb(235, 235, 235);
+    color: rgb(0, 0, 0);
     border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
 }
 
-.email-form input {
-    border-radius: 0px;
-    width: 100%;
-    border: 1px solid rgb(233, 233, 233);
+.insta {
+    width: 30px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .email-form {
+        width: 90%;
+        /* Aumenta el ancho en móviles */
+    }
+
+    .inputEmail {
+        flex-direction: column;
+        /* Cambia la dirección a columna en móviles */
+    }
+
+    .inputEmail input {
+        border-radius: 4px;
+        /* Bordes redondeados en móviles */
+        margin-bottom: 10px;
+        /* Espacio entre input y botón */
+    }
+
+    .inputEmail button {
+        border-radius: 4px;
+        /* Bordes redondeados en móviles */
+    }
 }

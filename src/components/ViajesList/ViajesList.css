@@ -212,3 +212,13 @@ label {
     display: none;
   }
 }
+
+
+@media (min-width: 991px) {
+  .viajes-container  {
+    margin: 0px 300px;
+  }
+}
+
+
+

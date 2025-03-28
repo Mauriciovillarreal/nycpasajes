@@ -5,6 +5,7 @@ import './ViajesList.css';
 import Swal from 'sweetalert2';
 import ViajesSearchForm from "../ViajesSearchForm/ViajesSearchForm";
 import ViajesResults from "../ViajesResults/ViajesResults";
+import { Container } from "react-bootstrap";
 
 const ViajesList = () => {
     const [routes, setRoutes] = useState([]);
@@ -86,13 +87,32 @@ const ViajesList = () => {
             return allStops.find(a => a.value === value)
         });
 
-    // Función para construir la URL de WhatsApp
     const handleWhatsAppConsulta = () => {
-        const mensaje = `Consulta: Origen: ${consultaOrigen}, Destino: ${consultaDestino}, Fecha: ${consultaFecha}`;
+        if (!consultaOrigen || !consultaDestino || !consultaFecha) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos incompletos',
+                text: 'Por favor, completa todos los campos',
+            });
+            return;
+        }
+
+        const mensaje = `Hola quiero consultar sobre un viaje:\n\nOrigen: ${consultaOrigen}\nDestino: ${consultaDestino}\nFecha: ${consultaFecha}`;
         const encodedMensaje = encodeURIComponent(mensaje);
         const whatsappUrl = `https://wa.me/5491139505311?text=${encodedMensaje}`;
-        window.open(whatsappUrl, '_blank');
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Consulta lista para enviar',
+            text: 'Serás redirigido a WhatsApp para enviar tu consulta.',
+            confirmButtonText: 'Ir a WhatsApp'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(whatsappUrl, '_blank');
+            }
+        });
     };
+
 
     return (
         <div>
@@ -160,12 +180,13 @@ const ViajesList = () => {
                             </div>
                         </form>
                         <button className="btnConsultas" onClick={handleWhatsAppConsulta}>
-
-                            Consulta
+                            Enviar Consulta
                         </button>
                     </div>
                 </div>
+
             </div>
+
         </div>
     );
 };

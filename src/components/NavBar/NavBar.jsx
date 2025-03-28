@@ -13,17 +13,14 @@ function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* Cambiar Link por un <a> normal */}
-            <Link to="/Nosotros" className="navbar-brand">
+          <Nav className="ms-auto"> {/* Cambiado a ms-auto */}
+            <Link to="/Nosotros" className="navbar-brand navBarMe">
               Agencias
             </Link>
-            <Link to="/catalogo" className="navbar-brand">
-              Buscar pasajes
+            <Link to="/catalogo" className="navbar-brand navBarMe">
+              Buscar Servicios
             </Link>
-            <a href="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr" className="navbar-brand">
-              Instagram
-            </a>
+         
           </Nav>
         </Navbar.Collapse>
       </Container>

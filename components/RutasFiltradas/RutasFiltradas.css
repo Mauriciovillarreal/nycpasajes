@@ -1,0 +1,55 @@
+/* RutasFiltradas.css */
+
+.rutas-filtradas-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .rutas-filtradas-input-container {
+    margin-bottom: 20px;
+  }
+  
+  .rutas-filtradas-input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .ruta-item {
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .ruta-empresa {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .ruta-id {
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .ruta-paradas-titulo {
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .paradas-iniciales-titulo,
+  .paradas-intermedias-titulo {
+    color: #999;
+    margin-bottom: 5px;
+  }
+  
+  .paradas-lista {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .parada-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }

@@ -4,5 +4,14 @@
 }
 
 .preguntas-frecuentes h2 {
-    font-size: 16px;
+    font-size: 17px;
 }
+
+@media (min-width: 990px) {
+    .infoGropu {
+
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+    }
+
+  }

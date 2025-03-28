@@ -1,41 +1,61 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import './Footer.css';
-import { db, collection, addDoc } from '../../services/config';
+import { db, collection, addDoc, getDocs, query, where } from '../../services/config';
+
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
 
     try {
-      await addDoc(collection(db, 'subscribers'), { email });
-      setMessage('¡Te has suscrito con éxito!');
+      const subscribersCollection = collection(db, 'subscribers');
+      const q = query(subscribersCollection, where('email', '==', email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Email ya registrado',
+          text: 'Este email ya está suscrito.',
+        });
+        return;
+      }
+
+      await addDoc(subscribersCollection, { email });
+      Swal.fire({
+        icon: 'success',
+        title: 'Suscripción exitosa',
+        text: '¡Te has suscrito con éxito!',
+      });
       setEmail('');
     } catch (error) {
-      setMessage('Hubo un error. Intenta de nuevo.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un error. Intenta de nuevo.',
+      });
     }
   };
 
   return (
     <footer className="custom-footer">
       <Container>
-        <div>
+        <div className="footer-content">
           <div className="footer-info">
             <img src="./img/logonyc.png" alt="Logonyc" className="footer-logo" />
           </div>
 
-          {/* Formulario de suscripción sin React Bootstrap */}
           <form onSubmit={handleSubscribe} className="email-form">
             <h4>Suscríbete para descuentos exclusivos y los mejores precios para tu próximo viaje</h4>
-
-            <div className='inputEmail'>
-
+            <div className="inputEmail">
               <input
                 type="email"
                 id="email"
@@ -44,20 +64,13 @@ export const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-
-
-
-              <button type="submit" >
-                Suscribirse
-              </button>
-
-
+              <button type="submit">Suscribirse</button>
             </div>
           </form>
-          {message && <p className="message">{message}</p>}
 
           <div className="carousel-div">
             <Carousel interval={500} pause={false}>
+              {/* Carousel Items... */}
               <Carousel.Item>
                 <img className="d-block w-100" src="./img/urquiza.jpg" alt="Urquiza" />
               </Carousel.Item>
@@ -95,9 +108,11 @@ export const Footer = () => {
           </div>
 
           <div className="footer-info">
+            <Link href="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr" className="navbar-brand">
+              Instagram
+            </Link>
             <p>Compra tus pasajes ahora</p>
             <p>Encuentra las mejores ofertas para tus viajes.</p>
-
           </div>
         </div>
       </Container>
