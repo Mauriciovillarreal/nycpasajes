@@ -38,9 +38,6 @@
 
 }
 
-.me-auto a:hover {
-    background-color: #fa6d6d;
-}
 
 .navbar-brand {
     display: flex;
@@ -49,9 +46,9 @@
 }
 
 .navbar-brand img {
-    padding-top: 4px;
-    max-height: 40px;
-    /* Ajusta la altura máxima de la imagen si es necesario */
+    padding-top: 1px;
+    width: 70px;
+    margin-left: 14px;
 }
 
 /* Ajusta el espaciado entre los elementos del navbar */
@@ -71,16 +68,23 @@
     /* Usar !important como último recurso */
 }
 
-.navBarMe {
-    border: 1px solid rgb(173, 173, 173);
-    padding: 10px;
-    padding: 10px;
-    border-radius: 2px;
-}
 
+
+.navBarMe p {
+    border-bottom: 3px solid rgba(173, 173, 173, 0);
+
+}
+.navBarMe:hover p {
+    border-bottom: 3px solid #CA2A31;
+    box-sizing: border-box;
+
+ }
 
 @media (max-width: 991px) {
     .navBarMe {
         border: none;
+        text-align: center;
+        margin: 5px !important;
     }
+
   }

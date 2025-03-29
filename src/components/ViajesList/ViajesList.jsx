@@ -117,20 +117,80 @@ const ViajesList = () => {
     return (
         <div>
             <div className="viajes-container">
-                <ViajesSearchForm
-                    origin={origin}
-                    setOrigin={setOrigin}
-                    destination={destination}
-                    setDestination={setDestination}
-                    date={date}
-                    setDate={setDate}
-                    returnDate={returnDate}
-                    setReturnDate={setReturnDate}
-                    passengers={passengers}
-                    setPassengers={setPassengers}
-                    uniqueStops={uniqueStops}
-                    handleSearch={handleSearch}
-                />
+
+
+                <div className="containerForm">
+
+                    <div>
+                        <ViajesSearchForm
+                            origin={origin}
+                            setOrigin={setOrigin}
+                            destination={destination}
+                            setDestination={setDestination}
+                            date={date}
+                            setDate={setDate}
+                            returnDate={returnDate}
+                            setReturnDate={setReturnDate}
+                            passengers={passengers}
+                            setPassengers={setPassengers}
+                            uniqueStops={uniqueStops}
+                            handleSearch={handleSearch}
+                        />
+
+
+
+                        <div className="containerConsultas">
+                            <div className="Consultas">
+                                <label>Si no encuentras tu origen o destino, puedes consultar por WhatsApp</label>
+                                <form>
+                                    <div className="input-container">
+                                        <label>Origen</label>
+                                        <input
+                                            type="text"
+                                            className="input-field"
+                                            placeholder="Escribe el origen"
+                                            value={consultaOrigen}
+                                            onChange={(e) => setConsultaOrigen(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="input-container">
+                                        <label>Destino</label>
+                                        <input
+                                            type="text"
+                                            className="input-field"
+                                            placeholder="Escribe el destino"
+                                            value={consultaDestino}
+                                            onChange={(e) => setConsultaDestino(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="input-container">
+                                        <label>Fecha</label>
+                                        <input
+                                            type="date"
+                                            className="input-field"
+                                            value={consultaFecha}
+                                            onChange={(e) => setConsultaFecha(e.target.value)}
+                                        />
+                                    </div>
+                                </form>
+                                <button className="btnConsultas" onClick={handleWhatsAppConsulta}>
+                                    Enviar Consulta
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div className="image-container" > {/* Ajusta la altura del contenedor */}
+                       
+                    </div>
+
+
+                </div>
+
 
                 <div ref={resultsRef}>
                     {foundRoutes.length > 0 && (
@@ -144,47 +204,6 @@ const ViajesList = () => {
                         />
                     )}
                 </div>
-
-                <div className="containerConsultas">
-                    <div className="Consultas">
-                        <label>Si no encuentras tu origen o destino, puedes consultar por WhatsApp</label>
-                        <form>
-                            <div className="input-container">
-                                <label>Origen</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    placeholder="Escribe el origen"
-                                    value={consultaOrigen}
-                                    onChange={(e) => setConsultaOrigen(e.target.value)}
-                                />
-                            </div>
-                            <div className="input-container">
-                                <label>Destino</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    placeholder="Escribe el destino"
-                                    value={consultaDestino}
-                                    onChange={(e) => setConsultaDestino(e.target.value)}
-                                />
-                            </div>
-                            <div className="input-container">
-                                <label>Fecha</label>
-                                <input
-                                    type="date"
-                                    className="input-field"
-                                    value={consultaFecha}
-                                    onChange={(e) => setConsultaFecha(e.target.value)}
-                                />
-                            </div>
-                        </form>
-                        <button className="btnConsultas" onClick={handleWhatsAppConsulta}>
-                            Enviar Consulta
-                        </button>
-                    </div>
-                </div>
-
             </div>
 
         </div>

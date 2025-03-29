@@ -15,10 +15,13 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto"> {/* Cambiado a ms-auto */}
             <Link to="/Nosotros" className="navbar-brand navBarMe">
-              Agencias
+              <p>AGENCIAS</p> 
             </Link>
             <Link to="/catalogo" className="navbar-brand navBarMe">
-              Buscar Servicios
+              <p>BUSCAR SERVICIOS</p> 
+            </Link>
+            <Link to="/promociones" className="navbar-brand navBarMe">
+              <p>PROMOCIONES</p> 
             </Link>
          
           </Nav>

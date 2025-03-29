@@ -42,7 +42,7 @@ export const Cartelera = () => {
     };
 
     return (
-        <Container>
+        <Container className='containerCartelera'>
             {destinos.map((destino) => (
                 <div key={destino.nombre} className='cartelera-card'>
                     <img src={destino.imagen} alt={destino.nombre} className="cartelera-image" />

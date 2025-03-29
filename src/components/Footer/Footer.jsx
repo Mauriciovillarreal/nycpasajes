@@ -47,74 +47,84 @@ export const Footer = () => {
 
   return (
     <footer className="custom-footer">
-      <Container>
-        <div className="footer-content">
-          <div className="footer-info">
-            <img src="./img/logonyc.png" alt="Logonyc" className="footer-logo" />
-          </div>
-
-          <form onSubmit={handleSubscribe} className="email-form">
-            <h4>Suscríbete para descuentos exclusivos y los mejores precios para tu próximo viaje</h4>
-            <div className="inputEmail">
-              <input
-                type="email"
-                id="email"
-                placeholder="Ingresa tu email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button type="submit">Suscribirse</button>
-            </div>
-          </form>
-
-          <div className="carousel-div">
-            <Carousel interval={500} pause={false}>
-              {/* Carousel Items... */}
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/urquiza.jpg" alt="Urquiza" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/sierras-cordobesas.jpg" alt="sierras-cordobesas" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/arg.jpg" alt="arg" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/chevallier.jpg" alt="chevallier" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/flecha.jpg" alt="flecha" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/plusmar.jpg" alt="plusmar" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/ruta.jpg" alt="ruta" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/sdc.jpg" alt="sdc" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/singer.jpg" alt="singer" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/20dej.jpg" alt="20 de Junio" />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img className="d-block w-100" src="./img/andesmar.jpg" alt="Andesmar" />
-              </Carousel.Item>
-            </Carousel>
-          </div>
-
-          <div className="footer-info">
-            <Link href="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr" className="navbar-brand">
-              Instagram
-            </Link>
-            <p>Compra tus pasajes ahora</p>
-            <p>Encuentra las mejores ofertas para tus viajes.</p>
-          </div>
+      <Container className='desktop'>
+        <div className="footer-info">
+          <img src="./img/logonyc.png" alt="Logonyc" className="footer-logo" />
         </div>
+
+
+
+
+        <div className="footer-info instagram">
+          <a href="https://www.instagram.com/nycpasajes/?igsh=MTR3ejUzYjR5enJs&utm_source=qr" className="navbar-brand" target="_blank">
+            <img src="./img/insta.png" alt="" />
+
+          </a>
+          <p>Compra tus pasajes ahora</p>
+          <p>Encuentra las mejores ofertas para tus viajes</p>
+          <p>Venta personalizada por WhatsApp</p>
+        </div>
+
+
+
+        <form onSubmit={handleSubscribe} className="email-form">
+          <img src="./img/email.png" alt="" />
+          <h4>Newsletter</h4>
+          <div className="inputEmail">
+            <input
+              type="email"
+              id="email"
+              placeholder="Ingresa tu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit">ENVIAR</button>
+          </div>
+        </form>
+
+        <div className="carousel-div">
+          <Carousel interval={500} pause={false}>
+            {/* Carousel Items... */}
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/urquiza.jpg" alt="Urquiza" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/sierras-cordobesas.jpg" alt="sierras-cordobesas" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/arg.jpg" alt="arg" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/chevallier.jpg" alt="chevallier" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/flecha.jpg" alt="flecha" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/plusmar.jpg" alt="plusmar" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/ruta.jpg" alt="ruta" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/sdc.jpg" alt="sdc" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/singer.jpg" alt="singer" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/20dej.jpg" alt="20 de Junio" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src="./img/andesmar.jpg" alt="Andesmar" />
+            </Carousel.Item>
+          </Carousel>
+        </div>
+
+
+
+
       </Container>
       <div className="text-center copyright">
         <p>&copy; {new Date().getFullYear()} NYC Travel. Todos los derechos reservados.</p>

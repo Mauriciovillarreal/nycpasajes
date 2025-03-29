@@ -4,23 +4,31 @@
     border-top: 1px solid rgb(233, 233, 233);
 }
 
+.carousel-inner {
+    height: 100px !important;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
     display: none;
 }
 
 .carousel-item img {
-
     object-fit: contain;
     height: 90px;
     width: 90%;
     margin-bottom: 50px;
-    border-bottom: 1px solid rgb(240, 240, 240);
-    border-top: 1px solid rgb(240, 240, 240);
 }
 
 .carousel-div {
-    margin-bottom: -30px;
+    margin-bottom: 1px;
+    height: 100px;
+}
+
+.carousel-indicators {
+    margin: 0px;
+    top: 80px;
+    bottom: 5px;
 }
 
 .footer-logo {
@@ -30,58 +38,50 @@
 }
 
 .footer-info p {
-    margin-top: 20px;
+    margin-top: 17px;
     font-size: 14px;
-    color: #6c757d;
+    color: #000000;
     margin-bottom: 20px;
 }
-
-
-
-
 
 .copyright {
     padding-top: 25px;
     padding-bottom: 25px;
-    background-color: rgb(235, 235, 235);
+    background-color: #202020;
     margin-top: 20px;
-    color: #313131;
-    font-size: 13px;
+    color: #ffffff;
+    font-size: 14px;
 }
 
 
 
-.footer-info {
-    padding: 0 20px;
+.footer-info img {
+    margin-left: 0 !important;
+    width: 55px;
 }
 
 
-
-.footer-info {
-    display: flex;
-    flex-direction: column;
-    /* Asegura que los elementos se apilen verticalmente */
-    align-items: center;
-    /* Centra los elementos verticalmente */
-    padding: 0 20px;
-
-}
 
 .footer-logo {
     width: 80px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     margin-top: 10px;
 }
 
 .email-form {
+
     font-size: 14px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
     margin-bottom: 15px;
+}
+
+.email-form img {
+    margin-top: 30px;
+    width: 35px;
+    margin-bottom: 30px;
+    margin-left: 1px;
 }
 
 .email-form h4 {
@@ -89,6 +89,7 @@
 }
 
 .inputEmail {
+    margin-top: 20px;
     display: flex;
     width: 100%;
 }
@@ -104,38 +105,41 @@
 
 .inputEmail button {
     padding: 10px 15px;
-    background-color: rgb(235, 235, 235);
-    color: rgb(0, 0, 0);
+    background-color: #202020;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
 }
 
-.insta {
-    width: 30px;
-}
+.instagram img {
+    width: 35px;
+    margin-left: 2px  !important;}
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
     .email-form {
-        width: 90%;
+        width: 100%;
         /* Aumenta el ancho en móviles */
     }
-
-    .inputEmail {
-        flex-direction: column;
-        /* Cambia la dirección a columna en móviles */
-    }
-
-    .inputEmail input {
-        border-radius: 4px;
-        /* Bordes redondeados en móviles */
-        margin-bottom: 10px;
-        /* Espacio entre input y botón */
-    }
-
-    .inputEmail button {
-        border-radius: 4px;
-        /* Bordes redondeados en móviles */
-    }
 }
+
+@media (min-width: 950px) {
+    .desktop {
+        display: grid;
+        grid-template-columns: 10% 40% 40%;
+        gap: 50px;
+    }
+    .carousel-div {
+        display: none;
+    }
+    .email-form {
+        border: none
+    }
+    .email-form img {
+        margin-top: 5px;
+
+    }
+    
+}
+

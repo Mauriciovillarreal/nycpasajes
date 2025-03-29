@@ -8,6 +8,7 @@ import { Footer } from "./components/Footer/Footer";
 import AgregarViaje from "./components/AgregarViajes/AgregarViajes";
 import RutasFiltradas from "./components/RutasFiltradas/RutasFiltradas";
 import ReactGA from 'react-ga4';
+import Promociones from "./components/Promociones/Promociones";
 
 const TRACKING_ID = 'G-1G6HYY75P7'; // Reemplaza con tu ID de medición
 ReactGA.initialize(TRACKING_ID);
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/Nosotros" element={<Nosotros />} />
         <Route path="/agregarviajes" element={<AgregarViaje />} />
         <Route path="/verrutas" element={<RutasFiltradas />} />
+        <Route path="/promociones" element={<Promociones />} />
       </Routes>
       <Footer />
     </HashRouter>
