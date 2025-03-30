@@ -68,7 +68,7 @@ export const Footer = () => {
 
 
         <form onSubmit={handleSubscribe} className="email-form">
-          <img src="./img/email.png" alt="" />
+        
           <h4>Newsletter</h4>
           <div className="inputEmail">
             <input

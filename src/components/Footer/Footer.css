@@ -75,6 +75,7 @@
     flex-direction: column;
     width: 100%;
     margin-bottom: 15px;
+    margin-top: 60px;
 }
 
 .email-form img {
@@ -114,7 +115,10 @@
 
 .instagram img {
     width: 35px;
-    margin-left: 2px  !important;}
+    margin-left: 2px  !important;   
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
