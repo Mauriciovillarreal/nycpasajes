@@ -56,7 +56,7 @@ export const Cartelera = () => {
                         {destino.rutas.map((ruta) => (
                             <IconRute key={ruta} ruta={ruta} /> // Usa el componente aquí
                         ))}
-                        <button onClick={() => handleWhatsAppClick(destino.nombre)}>CONSULTAS</button>
+                        <button onClick={() => handleWhatsAppClick(destino.nombre)}>CONSULTAR</button>
                     </div>
                 </div>
             ))}
