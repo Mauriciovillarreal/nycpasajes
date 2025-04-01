@@ -221,21 +221,56 @@ label {
 
 @media (min-width: 1210px) {
   .viajes-container {
-    margin: 0px 100px;
+    margin: 0px 0px;
+    padding: 0px 10px;
+  }
+
+  .filtros-form {
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(204, 204, 204, 0.39);
+    background-color: #ffffff88;
+  }
+
+  .containerConsultas {
+    border-radius: 16px;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(204, 204, 204, 0.39);
+    background-color: #ffffff88;
   }
 
   .containerForm {
     display: grid;
     grid-template-columns: 50% 50%;
-    gap: 10px;
-  }
+    gap: 1px;
+    }
+  .formSarch {
+    background-color: #ffffff00;
 
+  }
+  .Consultas {
+    background-color: #ffffff00;
+  }
   .containerForm .image-container {
-    width: 100%;
-    background-image: url('../../../public/img/baner.jpeg');
-    background-size: cover; /* Ajusta la imagen para cubrir el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    width: 90%;
+    background-image: url('../../../public/img/NYC.png');
+    background-size: cover;
+    /* Ajusta la imagen para cubrir el contenedor */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* E  vita que la imagen se repita */
+   margin: 50px 0px;
+  }
+  .fromSearch {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 650px) {
+  .viajes-container {
+    margin: 0px 0px;
   }
 }
 
@@ -243,8 +278,10 @@ label {
   .viajes-container {
     margin: 0px 100px;
   }
-
 }
 
-
-
+@media (min-width: 1210px) {
+  .viajes-container {
+    margin: 0px 0px;
+  }
+}

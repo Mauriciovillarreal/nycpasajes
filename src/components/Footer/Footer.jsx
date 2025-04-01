@@ -69,7 +69,7 @@ export const Footer = () => {
 
         <form onSubmit={handleSubscribe} className="email-form">
         
-          <h4>Newsletter</h4>
+          <h4>Suscribite al Newsletter y sé el primero en descubrir nuestras ofertas</h4>
           <div className="inputEmail">
             <input
               type="email"

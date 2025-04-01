@@ -51,9 +51,9 @@
   margin-bottom: 10px;
 }
 
-h1 span {
+.cartelera-content-top h1 span {
   font-family: "Kaushan Script", cursive;
-  font-size: 70px; /* Ajusta el tamaño de la fuente especial */
+  font-size: 40px; /* Ajusta el tamaño de la fuente especial */
   color: #CA2A31;
 }
 .cartelera-content-top p {

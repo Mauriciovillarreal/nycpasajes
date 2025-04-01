@@ -121,7 +121,7 @@ const ViajesList = () => {
 
                 <div className="containerForm">
 
-                    <div>
+                    <div className="fromSearch">
                         <ViajesSearchForm
                             origin={origin}
                             setOrigin={setOrigin}
@@ -141,7 +141,7 @@ const ViajesList = () => {
 
                         <div className="containerConsultas">
                             <div className="Consultas">
-                                <label>Si no encuentras tu origen o destino, puedes consultar por WhatsApp</label>
+                                <label>O si no encontras tu origen y destino, podes consultar por WhatsApp</label>
                                 <form>
                                     <div className="input-container">
                                         <label>Origen</label>
