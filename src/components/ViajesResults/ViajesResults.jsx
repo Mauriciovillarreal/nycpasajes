@@ -1,10 +1,11 @@
 import React from 'react';
 import ViajeDetalle from '../ViajeDetalle/ViajeDetalle';
+import { Container } from 'react-bootstrap';
 
 
 const ViajesResults = ({ foundRoutes, date, returnDate, passengers, origin, destination }) => {
     return (
-        <div className="routes-list">
+        <Container className="routes-list">
             {foundRoutes.map((route, index) => (
                 <ViajeDetalle 
                     key={index} 
@@ -16,7 +17,7 @@ const ViajesResults = ({ foundRoutes, date, returnDate, passengers, origin, dest
                     destination={destination} // Pasar destination como prop
                 />
             ))}
-        </div>
+        </Container>
     );
 };
 

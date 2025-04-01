@@ -6,28 +6,28 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
     const abrirWhatsApp = (originStop, destinationStop, price, empresa) => {
         const numero = "5491139505311";
         let mensaje = `Hola, quiero consultar por un viaje con ${empresa}:\n\n *Origen:* ${originStop?.nombre || "No especificado"}\n *Destino:* ${destinationStop?.nombre || "No especificado"}\n *Fecha de ida:* ${date || "Cualquier fecha"}`;
-    
+
         if (returnDate) {
             mensaje += `\n↩️ *Fecha de regreso:* ${returnDate}`;
         }
-    
+
         mensaje += `\n *Cantidad de pasajeros:* ${passengers}`;
-    
+
         if (price) {
             if (price.semiCama) mensaje += `\n *Precio semi-cama:* ARS${price.semiCama}`;
             if (price.cama) mensaje += `\n *Precio cama:* ARS${price.cama}`;
             if (price.estandar) mensaje += `\n *Precio estándar:* ARS${price.estandar}`;
         }
-    
+
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWeb = `https://wa.me/${numero}?text=${mensajeCodificado}`;
         const urlApp = `whatsapp://send?phone=${numero}&text=${mensajeCodificado}`;
-    
+
         // Mostrar alerta antes de redirigir a WhatsApp
         Swal.fire({
             icon: 'success',
             title: 'Consulta lista para enviar',
-            text: 'Serás redirigido a WhatsApp para enviar tu consulta.',
+            text: 'Serás redirigido a WhatsApp para enviar tu consulta y poder realizar la compra.',
             confirmButtonText: 'Ir a WhatsApp'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -39,7 +39,7 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
             }
         });
     };
-    
+
 
     const paradas1 = route.paradas.paradas1;
     const paradas2 = route.paradas.paradas2;
@@ -85,47 +85,61 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
             </div>
             <div className="viajeInfo">
                 <div><p>{originStopResult?.nombre}</p></div>
-                <div>→</div>
+                <div>
+                    <img src="./img/flecha.png" alt="" />
+                </div>
                 <div><p>{destinationStopResult?.nombre}</p></div>
             </div>
             <div className="precios">
                 {priceToUse?.semiCama && (
-                    <div>
+                    <div className='precio-container'> {/* Nuevo contenedor */}
                         <h6><span>SEMICAMA</span></h6>
                         <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3> {/* Agregado */}
-                            <h3><span>ARS</span> <b>{priceToUse?.semiCama}</b></h3>
+                            <h3><span>DESDE</span></h3>
+                            <h3><span>$</span> <b>{priceToUse?.semiCama}</b></h3>
                         </div>
                     </div>
                 )}
                 {priceToUse?.cama && (
-                    <div>
+                    <div className='precio-container'> {/* Nuevo contenedor */}
                         <h6><span>CAMA</span></h6>
                         <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3> {/* Agregado */}
-                            <h3><span>ARS</span> <b>{priceToUse?.cama}</b></h3>
+                            <h3><span>DESDE</span></h3>
+                            <h3><span>$</span> <b>{priceToUse?.cama}</b></h3>
                         </div>
                     </div>
                 )}
                 {priceToUse?.estandar && (
-                    <div>
+                    <div className='precio-container'> {/* Nuevo contenedor */}
                         <h6><span>ESTANDAR</span></h6>
                         <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3> {/* Agregado */}
-                            <h3><span>ARS</span> <b>{priceToUse?.estandar}</b></h3>
+                            <h3><span>DESDE</span></h3>
+                            <h3><span>$</span> <b>{priceToUse?.estandar}</b></h3>
                         </div>
                     </div>
                 )}
             </div>
-            <div className='notaBaja'>
-                <h2>Precios por tramo</h2>
+
+            <div className='desktopbtn'>
+
+                <div>
+                    <div className='notaBaja'>
+                        <h2>Precios por tramo</h2>
+                    </div>
+                </div>
+                <div>
+
+                    {priceToUse && (
+                        <button onClick={() => abrirWhatsApp(originStopResult, destinationStopResult, priceToUse, route.empresa)} className="whatsapp-btn">
+                            <img src="./img/wap.png" alt="" />
+                            Consultar
+                        </button>
+                    )}
+                </div>
+
             </div>
-            {priceToUse && (
-                <button onClick={() => abrirWhatsApp(originStopResult, destinationStopResult, priceToUse, route.empresa)} className="whatsapp-btn">
-                    <img src="./img/wap.png" alt="" />
-                    Consultar
-                </button>
-            )}
+
+
         </div>
     );
 };
