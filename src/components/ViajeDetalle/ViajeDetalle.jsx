@@ -17,6 +17,7 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
             if (price.semiCama) mensaje += `\n *Precio semi-cama:* ARS${price.semiCama}`;
             if (price.cama) mensaje += `\n *Precio cama:* ARS${price.cama}`;
             if (price.estandar) mensaje += `\n *Precio estándar:* ARS${price.estandar}`;
+            if (price.promoGeneral) mensaje += `\n *Promoción:* ${price.promoGeneral}`;
         }
 
         const mensajeCodificado = encodeURIComponent(mensaje);
@@ -62,17 +63,19 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
 
     let priceToUse = null;
 
-    if (destinationStopResult && (destinationStopResult.precioSemi || destinationStopResult.precioCama || destinationStopResult.precioEstandar)) {
+    if (destinationStopResult && (destinationStopResult.precioSemi || destinationStopResult.precioCama || destinationStopResult.precioEstandar || destinationStopResult.precioPromo)) {
         priceToUse = {
             semiCama: destinationStopResult.precioSemi,
             cama: destinationStopResult.precioCama,
-            estandar: destinationStopResult.precioEstandar
+            estandar: destinationStopResult.precioEstandar,
+            promo: destinationStopResult.precioPromo
         };
-    } else if (originStopResult && (originStopResult.precioSemi || originStopResult.precioCama || originStopResult.precioEstandar)) {
+    } else if (originStopResult && (originStopResult.precioSemi || originStopResult.precioCama || originStopResult.precioEstandar || originStopResult.precioPromo)) {
         priceToUse = {
             semiCama: originStopResult.precioSemi,
             cama: originStopResult.precioCama,
-            estandar: originStopResult.precioEstandar
+            estandar: originStopResult.precioEstandar,
+            promo: originStopResult.precioPromo
         };
     }
 
@@ -90,43 +93,69 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
                 </div>
                 <div><p>{destinationStopResult?.nombre}</p></div>
             </div>
-            <div className="precios">
-                {priceToUse?.semiCama && (
-                    <div className='precio-container'> {/* Nuevo contenedor */}
-                        <h6><span>SEMICAMA</span></h6>
-                        <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3>
-                            <h3><span>$</span> <b>{priceToUse?.semiCama}</b></h3>
+            <div className='containerPrice'>
+                <div className="precios">
+                    {priceToUse?.semiCama && (
+                        <div className='precio-container'> {/* Nuevo contenedor */}
+                            <h6><span>SEMICAMA</span></h6>
+                            <div className='precioDetalle'>
+                                <h3><span>DESDE</span></h3>
+                                <h3><span>$</span> <b>{priceToUse?.semiCama}</b></h3>
+                            </div>
                         </div>
-                    </div>
-                )}
-                {priceToUse?.cama && (
-                    <div className='precio-container'> {/* Nuevo contenedor */}
-                        <h6><span>CAMA</span></h6>
-                        <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3>
-                            <h3><span>$</span> <b>{priceToUse?.cama}</b></h3>
+                    )}
+                    {priceToUse?.cama && (
+                        <div className='precio-container'> {/* Nuevo contenedor */}
+                            <h6><span>CAMA</span></h6>
+                            <div className='precioDetalle'>
+                                <h3><span>DESDE</span></h3>
+                                <h3><span>$</span> <b>{priceToUse?.cama}</b></h3>
+                            </div>
                         </div>
-                    </div>
-                )}
-                {priceToUse?.estandar && (
-                    <div className='precio-container'> {/* Nuevo contenedor */}
-                        <h6><span>ESTANDAR</span></h6>
-                        <div className='precioDetalle'>
-                            <h3><span>DESDE</span></h3>
-                            <h3><span>$</span> <b>{priceToUse?.estandar}</b></h3>
+                    )}
+                    {priceToUse?.estandar && (
+                        <div className='precio-container'> {/* Nuevo contenedor */}
+                            <h6><span>ESTANDAR</span></h6>
+                            <div className='precioDetalle'>
+                                <h3><span>DESDE</span></h3>
+                                <h3><span>$</span> <b>{priceToUse?.estandar}</b></h3>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
+                    )}
+                    {priceToUse?.promo && (
 
-            <div className='desktopbtn'>
 
+                        <div className='precio-container'> {/* Nuevo contenedor */}
+                            <h6><span>PROMO 🔥</span></h6>
+                            <div className='precioDetalle'>
+                                <h3><span>DESDE</span></h3>
+                                <h3><span>$</span> <b>{priceToUse?.promo}</b></h3>
+                            </div>
+
+                        </div>
+
+                    )}
+                </div>
+                {priceToUse?.promo && (
+                    <div className='notaBaja'>
+
+                        <h2>🔥 Butacas seleccionadas</h2>
+                    </div>
+                )}
                 <div>
                     <div className='notaBaja'>
                         <h2>Precios por tramo</h2>
                     </div>
                 </div>
+            </div>
+
+
+
+
+
+
+            <div className='desktopbtn'>
+
                 <div>
 
                     {priceToUse && (

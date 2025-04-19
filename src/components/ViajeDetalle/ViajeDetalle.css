@@ -51,13 +51,21 @@
   font-family: 50px !important;
 }
 
+h5 span {
+  font-size: 10px;
+}
+
 .precios {
   text-align: center;
-  margin-top: 15px;
+
   margin-bottom: 10px;
   display: flex; /* Cambiado a flex para control total */
   justify-content: center; /* Centrar horizontalmente */
   gap: 30px; /* Añade espacio entre los contenedores */
+}
+
+.containerPrice {
+  text-align: center;
 }
 
 .precio-container {
@@ -77,12 +85,12 @@
 }
 
 h3 span {
-  font-size: 12px;
+  font-size: 10px;
   color: gray;
 }
 
 .precioDetalle b {
-  font-size: 26px;
+  font-size: 20px;
   color: black;
 }
 
@@ -121,7 +129,7 @@ h3 span {
 @media (min-width: 995px) {
   .detalleViaje {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     border: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px 10px;
@@ -129,7 +137,7 @@ h3 span {
 
   .precios {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto;
   }
 
   .viajeInfo {
@@ -142,7 +150,7 @@ h3 span {
   }
 
   .desktopbtn {
-    margin-top: 22px;
+    margin-top: 20%;
   }
 
   .viaje-header {
