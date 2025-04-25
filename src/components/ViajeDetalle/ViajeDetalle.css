@@ -57,7 +57,6 @@ h5 span {
 
 .precios {
   text-align: center;
-
   margin-bottom: 10px;
   display: flex; /* Cambiado a flex para control total */
   justify-content: center; /* Centrar horizontalmente */

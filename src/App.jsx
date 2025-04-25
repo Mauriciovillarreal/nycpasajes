@@ -16,7 +16,7 @@ import { auth } from './services/config';
 import AdminViajesPanel from './components/AdminViajesPanel/AdminViajesPanel';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminEmpresasList from './components/Admin/AdminEmpresasList';
-
+import AgregarViaje from './components/AgregarViajes/AgregarViajes';
 
 // --- Configuración Google Analytics (sin cambios) ---
 const TRACKING_ID = 'G-1G6HYY75P7';
@@ -64,44 +64,48 @@ const App = () => {
 
   return (
     <HashRouter>
-    <Analytics />
-    <NavBar currentUser={currentUser} handleLogout={handleLogout} />
-    <Routes>
-      {/* --- Rutas Públicas --- */}
-      <Route path="/" element={<Home />} />
-      {/* ... otras rutas públicas ... */}
-      <Route path="/catalogo" element={<ViajesList />} />
-      <Route path="/nosotros" element={<Nosotros />} />
-      <Route path="/verrutas" element={<RutasFiltradas />} />
-      <Route path="/promociones" element={<Promociones />} />
-      <Route path="/login" element={<Login />} />
+      <Analytics />
+      <NavBar currentUser={currentUser} handleLogout={handleLogout} />
+      <Routes>
+        {/* --- Rutas Públicas --- */}
+        <Route path="/" element={<Home />} />
+        {/* ... otras rutas públicas ... */}
+        <Route path="/catalogo" element={<ViajesList />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/verrutas" element={<RutasFiltradas />} />
+        <Route path="/promociones" element={<Promociones />} />
+        <Route path="/login" element={<Login />} />
 
-      {/* --- Rutas de Admin Protegidas --- */}
-      <Route
-        path="/admin" // Ruta principal del admin
-        element={
-          <ProtectedRoute user={currentUser} isLoading={isLoadingAuth}>
-            {/* Renderiza la lista de empresas/viajes */}
-            <AdminEmpresasList />
-          </ProtectedRoute>
-        }
-      />
-       <Route
-        path="/admin/edit/:id" // Ruta para editar un viaje específico (:id es el parámetro)
-        element={
-          <ProtectedRoute user={currentUser} isLoading={isLoadingAuth}>
-            {/* Renderiza el panel de edición, que tomará el ID de la URL */}
-            <AdminViajesPanel />
-          </ProtectedRoute>
-        }
-      />
+        {/* --- Rutas de Admin Protegidas --- */}
+        <Route
+          path="/admin" // Ruta principal del admin
+          element={
+            <ProtectedRoute user={currentUser} isLoading={isLoadingAuth}>
+              {/* Renderiza la lista de empresas/viajes */}
+              <AdminEmpresasList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/edit/:id" // Ruta para editar un viaje específico (:id es el parámetro)
+          element={
+            <ProtectedRoute user={currentUser} isLoading={isLoadingAuth}>
+              {/* Renderiza el panel de edición, que tomará el ID de la URL */}
+              <AdminViajesPanel />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/add" // <-- NUEVA RUTA
+          element={<ProtectedRoute user={currentUser} isLoading={isLoadingAuth}> <AgregarViaje /> </ProtectedRoute>}
+        />
 
-      {/* Considera proteger también AgregarViaje si es necesario */}
-      {/* <Route path="/agregarviajes" element={...} /> */}
+        {/* Considera proteger también AgregarViaje si es necesario */}
+        {/* <Route path="/agregarviajes" element={...} /> */}
 
-    </Routes>
-    <Footer />
-  </HashRouter>
+      </Routes>
+      <Footer />
+    </HashRouter>
   );
 };
 

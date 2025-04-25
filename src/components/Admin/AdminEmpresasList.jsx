@@ -1,9 +1,11 @@
-
+// src/components/Admin/AdminEmpresasList.js
 import React, { useState, useEffect } from 'react';
+// ... otros imports (db, collection, getDocs, react-bootstrap, LinkContainer, FaPlus) ...
 import { db } from '../../services/config';
 import { collection, getDocs } from 'firebase/firestore';
-import { Container, Table, Button, Spinner, Alert } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'; // Para enlaces de botón
+import { Container, Table, Button, Spinner, Alert, Row, Col, Image } from 'react-bootstrap'; // Importa Image
+import { LinkContainer } from 'react-router-bootstrap';
+import { FaPlus } from 'react-icons/fa';
 
 function AdminEmpresasList() {
   const [empresas, setEmpresas] = useState([]);
@@ -11,14 +13,15 @@ function AdminEmpresasList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // ... fetchEmpresas (sin cambios) ...
     const fetchEmpresas = async () => {
       setLoading(true);
       setError(null);
       try {
-        const querySnapshot = await getDocs(collection(db, "viajes")); // <-- Obtiene todos los docs de "viajes"
+        const querySnapshot = await getDocs(collection(db, "viajes"));
         const empresasList = querySnapshot.docs.map(doc => ({
-          id: doc.id, // Guarda el ID del documento
-          ...doc.data() // Guarda el resto de los datos (empresa, rutas, etc.)
+          id: doc.id,
+          ...doc.data()
         }));
         setEmpresas(empresasList);
       } catch (err) {
@@ -28,66 +31,86 @@ function AdminEmpresasList() {
         setLoading(false);
       }
     };
-
     fetchEmpresas();
-  }, []); // Se ejecuta solo una vez al montar
+  }, []);
 
-  if (loading) {
-    return (
-      <Container className="text-center mt-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Cargando lista...</span>
-        </Spinner>
-        <p>Cargando lista de viajes...</p>
-      </Container>
-    );
-  }
 
-  if (error) {
-    return (
-      <Container className="mt-4">
-        <Alert variant="danger">Error: {error}</Alert>
-      </Container>
-    );
-  }
+  if (loading) { /* ... spinner ... */ }
+  if (error) { /* ... alert error ... */ }
 
   return (
     <Container className="py-4">
-      <h2>Administrar Viajes / Empresas</h2>
+      {/* --- Fila para Título y Botón Añadir (sin cambios) --- */}
+      <Row className="mb-3 align-items-center justify-content-between">
+        <Col xs="auto">
+          <h2>Administrar Viajes / Empresas</h2>
+        </Col>
+        <Col xs="auto">
+           <LinkContainer to="/admin/add">
+              <Button variant="success">
+                 <FaPlus className="me-1" /> Añadir Nuevo Viaje
+              </Button>
+           </LinkContainer>
+        </Col>
+      </Row>
+
+      {/* --- Tabla Modificada --- */}
       {empresas.length === 0 ? (
         <Alert variant="info">No hay viajes/empresas para mostrar.</Alert>
       ) : (
-        <Table striped bordered hover responsive className='shadow-sm'>
+        <Table striped bordered hover responsive className='shadow-sm align-middle'> {/* align-middle para centrar verticalmente */}
           <thead>
             <tr>
               <th>#</th>
               <th>Nombre Empresa</th>
-              <th>ID Documento</th>
+              {/* NUEVAS COLUMNAS */}
+              <th>Primer Destino</th>
+              <th>Imagen (Ej.)</th>
+              {/* FIN NUEVAS COLUMNAS */}
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {empresas.map((empresa, index) => (
-              <tr key={empresa.id}>
-                <td>{index + 1}</td>
-                <td>{empresa.empresa || 'Nombre no disponible'}</td>
-                <td>{empresa.id}</td>
-                <td>
-                  {/* Este botón llevará a la página de edición específica */}
-                  <LinkContainer to={`/admin/edit/${empresa.id}`}>
-                    <Button variant="outline-primary" size="sm">
-                      Editar
-                    </Button>
-                  </LinkContainer>
-                  {/* Aquí podrías añadir un botón de "Eliminar" en el futuro */}
-                </td>
-              </tr>
-            ))}
+            {empresas.map((empresa, index) => {
+              // Obtenemos datos de la primera ruta de forma segura
+              const primeraRuta = empresa.rutas?.[0]; // Acceso seguro a la primera ruta
+              const primerDestino = primeraRuta?.destino_final || 'N/A';
+              const urlImagen = primeraRuta?.img; // Puede ser undefined si no hay imagen
+
+              return (
+                <tr key={empresa.id}>
+                  <td>{index + 1}</td>
+                  <td>{empresa.empresa || 'Nombre no disponible'}</td>
+                  {/* NUEVAS CELDAS */}
+                  <td>{primerDestino}</td>
+                  <td>
+                    {urlImagen ? (
+                      <Image
+                        src={urlImagen}
+                        alt={`Imagen de ${empresa.empresa || 'viaje'}`}
+                        style={{ maxHeight: '40px', width: 'auto', maxWidth: '80px' }} // Estilo para miniatura
+                        thumbnail // Añade un borde ligero
+                      />
+                    ) : (
+                      <span className="text-muted">Sin imagen</span> // Mensaje si no hay URL
+                    )}
+                  </td>
+                  {/* FIN NUEVAS CELDAS */}
+                  <td>
+                    {/* El LinkContainer sigue usando empresa.id internamente */}
+                    <LinkContainer to={`/admin/edit/${empresa.id}`}>
+                      <Button variant="outline-primary" size="sm">
+                        Editar
+                      </Button>
+                    </LinkContainer>
+                    {/* Botón Eliminar (futuro) */}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       )}
-       {/* Aquí podrías añadir un botón para "Crear Nueva Empresa/Viaje" */}
-       {/* <Button variant="success" className="mt-3">Crear Nuevo Viaje</Button> */}
     </Container>
   );
 }

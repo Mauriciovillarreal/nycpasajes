@@ -97,7 +97,10 @@ const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination
                 <div className="precios">
                     {priceToUse?.semiCama && (
                         <div className='precio-container'> {/* Nuevo contenedor */}
+                            <div>
+
                             <h6><span>SEMICAMA</span></h6>
+                            </div>
                             <div className='precioDetalle'>
                                 <h3><span>DESDE</span></h3>
                                 <h3><span>$</span> <b>{priceToUse?.semiCama}</b></h3>
