@@ -41,21 +41,21 @@ export const Cartelera = () => {
             imagen: "https://media.airedesantafe.com.ar/p/765e9ee77df61d86f3753cf2acc78b51/adjuntos/268/imagenes/003/302/0003302832/1200x0/smart/imagepng.png",
             rutas: ['LAS TONINAS', 'STA. TERESITA' , 'MAR DE TUYU', 'SAN BERNARDO' ,'MAR DE AJO', 'PINAMAR'],
             descuento: '50',
-        }, 
+        },
 
         {
             nombre: 'Tucuman',
             imagen: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/88/76/3b/casa-de-gobierno-de-tucuman.jpg?w=900&h=500&s=1",
-            rutas:  ['BSAS → TUCUMAN', 'TUCUMAN → BSAS'],
+            rutas:  ['BSAS → TUCUMAN', 'TUCUMAN → BSAS'],
             descuento: '20',
-        }, 
+        },
         // Puedes agregar más destinos aquí
     ];
 
     const whatsappNumber = '5491139505311';
 
-    const handleWhatsAppClick = (destino) => {
-        const whatsappMessage = `Hola, quiero más información sobre los descuentos a ${destino} de un 20%`;
+    const handleWhatsAppClick = (destino, descuento) => {
+        const whatsappMessage = `Hola, quiero más información sobre los descuentos a ${destino} de un ${descuento}%`;
         const encodedMessage = encodeURIComponent(whatsappMessage);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     };
@@ -75,7 +75,7 @@ export const Cartelera = () => {
                         {destino.rutas.map((ruta) => (
                             <IconRute key={ruta} ruta={ruta} /> // Usa el componente aquí
                         ))}
-                        <button onClick={() => handleWhatsAppClick(destino.nombre)}>CONSULTAR</button>
+                        <button onClick={() => handleWhatsAppClick(destino.nombre, destino.descuento)}>CONSULTAR</button>
                     </div>
                 </div>
             ))}
