@@ -36,7 +36,9 @@
   padding: 20px;
 }
 
-
+.price-amount {
+  font-size: 28px;
+}
 
 .cartelera-content-bottom {
   position: absolute;
