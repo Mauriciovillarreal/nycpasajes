@@ -1,0 +1,309 @@
+/* Estilos para el contenedor principal del detalle del viaje */
+.detalleViaje {
+  display: grid;
+  /* Columnas: ajusta 'auto auto' según necesites, o usa fr */
+  grid-template-columns: 20% auto auto 20%;
+  box-shadow: 2px 2px 10px rgb(202, 202, 202);
+  border-radius: 0.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  gap: 0.1rem; /* Espacio ENTRE las columnas */
+  align-items: center; /* Centra verticalmente las columnas entre sí */
+}
+
+/* --- Columna 1: Info Viaje y Logo --- */
+.grid-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Espacio entre Info y Logo */
+    align-items: flex-start; /* Alinea contenido a la izquierda de la columna */
+    justify-content: center; /* Centra verticalmente dentro de su espacio si es necesario */
+}
+
+/* Estilos para el encabezado del viaje (logo) */
+.viaje-header {
+  display: flex;
+  /* justify-content: left; Ya controlado por align-items en .grid-detalles */
+}
+
+.viaje-header img {
+  max-height: 45px; /* Ligeramente más pequeño */
+  width: auto;
+}
+
+/* Estilos para la información del viaje (origen, destino, flecha) */
+.viajeInfo {
+  display: flex;
+  gap: 5px; /* Espacio reducido entre Origen - Flecha - Destino */
+  align-items: center; /* Centra verticalmente Origen, Flecha, Destino */
+  width: 100%;
+}
+
+.viajeInfo div {
+  text-align: center;
+}
+
+.viajeInfo div p {
+  font-size: 0.95rem; /* Ligeramente más pequeño */
+  color: #495057;
+  margin: 0;
+  white-space: nowrap; /* Evita que el nombre se parta en dos líneas */
+}
+
+.viajeInfo div i {
+  margin: 0 10px; /* Margen reducido alrededor de la flecha */
+  width: 8px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* --- Columna 2: Precios --- */
+.containerPrice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Espacio entre .precios y .notaBaja */
+    align-items: center; /* Centra horizontalmente los precios y la nota */
+    justify-content: center; /* Centra verticalmente dentro de su espacio */
+}
+
+/* Estilos para la sección de precios (lista) */
+.precios {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que se envuelvan si no caben */
+  gap: 0.5rem; /* Espacio reducido entre contenedores de precio */
+  justify-content: center; /* Centra los contenedores de precio en la fila */
+  width: 100%; /* Asegura que ocupe el ancho para centrar */
+}
+
+/* Estilos para cada contenedor de precio (semicama, cama, etc.) */
+.precio-container {
+
+  background-color: #fdfdfd;
+  border-radius: 0.25rem;
+  padding: 0.5rem; /* Padding reducido */
+  text-align: center;
+  flex-grow: 1; /* Se expanden para llenar espacio */
+  flex-basis: 90px; /* Base mínima antes de crecer/encoger */
+  min-width: 90px; /* Ancho mínimo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Separa etiqueta y precio */
+  gap: 0.25rem; /* Espacio interno */
+}
+
+.precio-container h6 {
+  font-size: 0.75rem; /* Más pequeño */
+  color: #6c757d;
+  margin: 0; /* Quitar márgenes */
+  font-weight: normal;
+}
+
+/* Etiqueta dentro de h6 (Semicama, Cama) */
+.precio-container h6 span {
+  background-color: #000000;
+  padding: 0.2rem 0.4rem; /* Padding reducido */
+  border-radius: 50px; /* Mantenido */
+  display: inline-block;
+  color: white;
+  font-size: 0.7rem; /* Más pequeño */
+}
+
+.precioDetalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.precioDetalle h3 {
+  font-size: 0.7rem;
+  color: #495057;
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.2; /* Ajuste de interlineado */
+}
+
+/* 'Desde' o texto similar */
+.precioDetalle h3 span {
+  margin-right: 0.15rem; /* Espacio reducido */
+}
+
+/* El precio en sí */
+.precioDetalle h3 b {
+  color: #000000;
+  font-size: 1.1rem; /* Ligeramente más pequeño */
+  font-weight: bold;
+}
+
+/* Estilos para la nota inferior (promoción, precios por tramo) */
+.notaBaja {
+  text-align: center;
+  color: #6c757d;
+}
+
+.notaBaja h2 {
+  font-size: 0.75rem; /* Más pequeño */
+  margin: 0; /* Sin margen vertical */
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.notaBaja h2.promo {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* --- Columna 3: Botón --- */
+.desktopbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra botón horizontalmente */
+  justify-content: center; /* Centra botón verticalmente */
+  height: 100%; 
+}
+
+.whatsapp-btn {
+  background-color: #fff; 
+  color: #aaaaaa; 
+  border: 1px solid #e4e4e4;
+  padding: 0.5rem 1rem; 
+  border-radius: 0.3rem;
+  font-size: 0.9rem; 
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0rem; /* Aumenta un poco el espacio si es necesario */
+  white-space: nowrap; 
+}
+
+.whatsapp-btn:hover {
+  background-color: #25D366; 
+  color: white;
+}
+
+/* Estilo para el icono Font Awesome DENTRO del botón */
+.whatsapp-btn i.fab.fa-whatsapp { /* Selector más específico */
+  font-size: 1.2em; /* Ajusta el tamaño del icono relativo al texto del botón */
+  /* width: auto; height: auto; */ /* No necesitas width/height para iconos de fuente */
+  line-height: 1; /* Asegura que no añada espacio vertical extra */
+  /* Puedes añadir un margen si el 'gap' no es suficiente */
+  /* margin-right: 3px; */ 
+}
+
+/* ---------------------------------------------------------- */
+/* --- Media Query para Pantallas Pequeñas (Móviles) --- */
+/* ---------------------------------------------------------- */
+@media (max-width: 1066px) {
+
+  /* ... (otros estilos existentes) ... */
+
+  .detalleViaje {
+    margin: 30px 10px 50px 10px;
+    padding: 0.75rem;
+    gap: 1rem; 
+    /* align-items: center; -- Lo quitamos aquí si queremos centrar independientemente en cada sección */
+    display: flex; /* Convertir el grid de una columna en flex para mejor control */
+    flex-direction: column; /* Apilar las secciones */
+    align-items: stretch; /* Hacer que las secciones ocupen el ancho por defecto */
+  }
+
+  /* Contenedores de sección en móvil */
+  .grid-detalles, .containerPrice, .desktopbtn {
+      width: 100%; 
+      display: flex; /* Asegurar que sean flex containers */
+      flex-direction: column; /* Apilar contenido interno */
+      align-items: center; /* Centrar contenido interno horizontalmente */
+      text-align: center; /* Para texto que no esté en flex items */
+      padding: 0.5rem 0; /* Añadir algo de padding vertical si se desea */
+  }
+
+  .viaje-header {
+     justify-content: center; 
+     order: -1; 
+     margin-bottom: 0.5rem; 
+     width: 100%; /* Asegurar que ocupe ancho para centrar logo */
+     display: flex; /* Añadido para asegurar centrado */
+  }
+
+  /* Contenedor específico de la info del viaje */
+  .viajeInfo {
+    display: flex;
+    flex-direction: row;       /* ¡CAMBIO! -> Fuerza la línea horizontal */
+    align-items: center;      /* Centra verticalmente los items en la línea */
+    justify-content: center;  /* ¡AÑADIDO! -> Centra el grupo horizontalmente */
+    gap: 8px;                 /* Espacio HORIZONTAL entre origen/flecha/destino */
+    width: 100%;              /* Ocupa ancho para permitir el centrado */
+    flex-wrap: wrap;          /* Permite envolver en pantallas MUY pequeñas como respaldo */
+}
+
+   .viajeInfo div {
+      /* El text-align: center en .grid-detalles debería ser suficiente */
+      /* pero podemos asegurar aquí también */
+       width: auto; /* Ancho automático */
+       display: inline-block; /* Para que text-align funcione bien */
+   }
+
+   .viajeInfo div p {
+     font-size: 0.9rem; 
+     text-align: center;
+     margin: 0; /* Asegurar que no haya márgenes extra */
+     padding: 0; /* Asegurar que no haya padding extra */
+   }
+
+   /* Para el icono/flecha */
+    .viajeInfo div i.fab.fa-whatsapp, /* O img si usas imagen */
+    .viajeInfo div img { 
+    
+        margin: 3px 0; 
+        /* Ajustar width/font-size si se usa icono */
+        font-size: 1em; /* O el tamaño que necesites */
+        line-height: 1;
+   }
+
+
+  /* ... (resto de estilos para precios, botón, etc.) ... */
+   .precios {
+     gap: 0.5rem; 
+     justify-content: center; 
+     width: 100%; /* Asegurar que ocupe ancho para centrar */
+     display: flex; /* Añadido para asegurar */
+     flex-wrap: wrap; /* Añadido para asegurar */
+   }
+
+   .precio-container {
+     min-width: 110px; 
+     flex-basis: calc(33.33% - 0.4rem); 
+     padding: 0.4rem;
+     /* Asegurarse de que sea flex para alinear contenido */
+     display: flex;
+     flex-direction: column;
+   }
+
+   .notaBaja {
+       width: 100%; /* Ocupar ancho para centrar texto */
+   }
+
+   .desktopbtn {
+     margin-top: 0.5rem; 
+     /* display: flex, align-items, justify-content ya están heredados/definidos */
+   }
+
+} /* Fin de @media (max-width: 900px) */
+
+/* Ajuste adicional para pantallas muy pequeñas (menos de 450px) */
+@media (max-width: 450px) {
+  .precio-container {
+    flex-basis: calc(50% - 0.4rem); /* 2 por fila */
+    min-width: 100px;
+  }
+}
+
+/* Ajuste aún más pequeño si es necesario */
+/* @media (max-width: 350px) {
+  .precio-container {
+    flex-basis: 100%; /* 1 por fila */
+/* }
+} */

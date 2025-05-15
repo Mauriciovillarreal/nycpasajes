@@ -1,0 +1,78 @@
+.containerContent {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 30px;
+
+}
+
+.containerPromo {
+    background: linear-gradient(90deg, #062a3b, #9cb5c4);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}
+
+.logo img {
+    width: 160px;
+}
+
+.textLogo {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+.textLogo h1 {
+    font-size: 60px;
+}
+
+.textLogo h6 {
+    margin-top: -20px;
+}
+.spanCuota {
+    font-size: 20px !important;
+    margin-bottom: -50px;
+}
+
+.simple img{
+    width: 140px;
+}
+.botText {
+    padding: 0px 0px 1px 0px;
+}
+.containerPromociones h2 {
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.estudiantes {
+    margin-bottom: 25px;
+}
+
+.estudiantes p {
+    font-size: 14px;
+}
+
+.simple {
+    margin-bottom: 50px;
+}
+
+.simple p {
+    font-size: 14px;
+}
+
+@media (max-width: 950px) {
+    .containerContent {
+        display: block;
+    }
+    
+    }

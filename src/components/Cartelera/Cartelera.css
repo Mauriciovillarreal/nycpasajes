@@ -1,0 +1,326 @@
+.cartelera-card {
+  position: relative;
+  width: 80%;
+  /* Ajusta el ancho para que se vea mejor en escritorio */
+  max-width: 1200px;
+  /* Añade un ancho máximo para evitar que se estire demasiado */
+  margin: 5px auto;
+  /* Centra el contenedor en la pantalla */
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.cartelera-image {
+  width: 100%;
+  height: 420px;
+  /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover;
+  /* Mantiene la proporción sin distorsionar */
+  display: block;
+  transition: transform 6s ease;
+}
+
+
+.cartelera-image:hover {
+  transform: scale(1.1);
+  /* Reduce el efecto de zoom para que no se vea tan exagerado */
+}
+
+.cartelera-content-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+
+
+.cartelera-content-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  background-color: rgba(14, 14, 14, 0.274);
+}
+
+.cartelera-content-top h1 {
+  font-weight: bold;
+  font-size: 2em;
+  /* Aumenta un poco el tamaño en escritorio */
+  margin-bottom: 10px;
+}
+
+.cartelera-content-top h1 span {
+  font-family: "Kaushan Script", cursive;
+  font-size: 1px;
+  /* Ajusta el tamaño de la fuente especial */
+  color: #CA2A31;
+}
+
+.cartelera-content-top p {
+  margin-bottom: 5px;
+}
+
+.cartelera-content-bottom p {
+  margin-bottom: 5px;
+}
+
+.cartelera-content-bottom button {
+  padding: 5px;
+  background-color: #CA2A31;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cartelera-content-bottom button:hover {
+  background-color: #CA2A31;
+}
+
+.categori {
+  font-weight: bold;
+}
+
+.fa-whatsapp {
+  padding-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .cartelera-card {
+    width: 100%;
+    /* Ocupa todo el ancho en móviles */
+    margin: 1px 0px 40px 0px;
+    /* Menos margen en móviles */
+  }
+
+  .cartelera-content-top h1 {
+    font-size: 22px;
+    /* Ajusta el tamaño del texto en móviles */
+  }
+
+  h1 span {
+    font-size: 48px;
+    /* Ajusta el tamaño de la fuente especial en móviles */
+  }
+
+  .cartelera-image {
+    max-height: 500px;
+    /* Reduce la altura máxima en móviles */
+  }
+}
+
+
+@media (min-width: 768px) {
+  .containerCartelera {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    justify-items: center;
+    /* Centra cada tarjeta en su columna */
+    padding: 20px;
+  }
+
+  .cartelera-card {
+    width: 100%;
+    /* Ocupa el espacio completo de la columna */
+    margin: 0;
+    /* Elimina el margen para un mejor ajuste */
+  }
+
+  h1 span {
+    font-size: 48px;
+    /* Ajusta el tamaño de la fuente especial en móviles */
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Estilos existentes para móviles que quieras conservar */
+  .cartelera-content-top h1 {
+    font-size: 220px;
+  }
+
+  /* Ajusta el tamaño de la fuente especial si es necesario */
+  /* Nota: Ya tenías 'h1 span' fuera de la media query, asegúrate de que el tamaño sea el correcto para móvil.
+     Si necesitas uno específico para móvil, ponlo aquí. Por ejemplo: */
+  .cartelera-content-top h1 span {
+    font-size: 35px;
+    /* O el tamaño que prefieras para móvil */
+  }
+
+  .cartelera-image {
+    /* Mantén o ajusta la altura si es necesario */
+    max-height: 450px;
+    /* Puedes ajustar esto */
+  }
+
+  /* --- NUEVOS ESTILOS PARA EL CARRUSEL --- */
+
+  .containerCartelera {
+    display: flex;
+    /* Coloca los hijos (tarjetas) en una fila */
+    overflow-x: auto;
+    /* Permite el scroll horizontal */
+    scroll-snap-type: x mandatory;
+    /* Fuerza el "snap" al detener el scroll en el eje X */
+    -webkit-overflow-scrolling: touch;
+    /* Scrolling más suave en iOS */
+    padding: 0 10px;
+    /* Añade un poco de padding lateral si quieres que no pegue a los bordes */
+    gap: 15px;
+    /* Espacio entre las tarjetas */
+    /* Opcional: Ocultar la barra de scroll */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE y Edge */
+  }
+
+  .containerCartelera::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari y Opera */
+  }
+
+
+  .cartelera-card {
+    flex: 0 0 90%;
+    /* Cada tarjeta ocupa el 90% del ancho del contenedor, no crece, no se encoge */
+    scroll-snap-align: center;
+    /* Alinea la tarjeta al centro del viewport al hacer snap */
+    width: 90%;
+    /* Asegura el ancho (redundante con flex-basis pero más explícito) */
+    margin: 0 0 40px 0;
+    /* Mantiene el margen inferior, elimina los laterales que controla el 'gap' */
+    /* Asegúrate de resetear cualquier propiedad de grid si la hubiera heredado */
+  }
+
+  /* --- FIN NUEVOS ESTILOS PARA EL CARRUSEL --- */
+}
+
+/* --- Estilos para Desktop (min-width: 768px) --- */
+/* Asegúrate de que estos estilos NO se apliquen en móvil */
+@media (min-width: 769px) {
+
+  /* Usar 769px para evitar solapamiento */
+  .containerCartelera {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    justify-items: center;
+    padding: 20px;
+    /* Importante: Resetea las propiedades del carrusel */
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .cartelera-card {
+    width: 100%;
+    /* Ocupa el espacio completo de la columna del grid */
+    margin: 0;
+    /* Sin margen extra, el 'gap' del grid se encarga */
+    /* Importante: Resetea las propiedades del carrusel */
+    flex: none;
+    /* Quita las propiedades flex */
+    scroll-snap-align: none;
+  }
+
+  .cartelera-content-top h1 span {
+    font-size: 36px;
+    /* Tamaño para desktop */
+  }
+}
+
+/* --- Estilos Base (aplican siempre a menos que se sobrescriban) --- */
+/* Coloca aquí los estilos que son comunes a móvil y desktop */
+.cartelera-card {
+  position: relative;
+  /* width: 80%; ya no es necesario aquí, se define en las media queries */
+  /* max-width: 1200px; puede seguir aquí o ir a la media query de desktop */
+  /* margin: 5px auto; se maneja en las media queries */
+  margin-bottom: 50px;
+  /* Se ajustará en las media queries */
+  overflow: hidden;
+}
+
+.cartelera-image {
+  width: 100%;
+  height: 420px;
+  /* Puedes ajustar esto o hacerlo diferente en móvil/desktop */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  /* Reduje un poco la duración */
+}
+
+.cartelera-image:hover {
+  transform: scale(1.1);
+}
+
+.cartelera-content-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  /* Añadir un gradiente sutil puede ayudar a la legibilidad */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+}
+
+.cartelera-content-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  background-color: rgba(14, 14, 14, 0.4);
+  /* Un poco más opaco */
+}
+
+/* ... resto de tus estilos base ... */
+.cartelera-content-top h1 {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 10px;
+  /* Sombra para mejorar legibilidad */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* El span con la fuente especial ya se maneja en las media queries */
+
+.cartelera-content-top p {
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.cartelera-content-bottom p {
+  margin-bottom: 5px;
+}
+
+.cartelera-content-bottom button {
+  padding: 8px 15px;
+  /* Un poco más de padding */
+  background-color: #CA2A31;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cartelera-content-bottom button:hover {
+  background-color: #a72228;
+  /* Un tono ligeramente más oscuro al hacer hover */
+}

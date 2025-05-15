@@ -1,0 +1,388 @@
+/* Estilos generales */
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  margin-bottom: 1px !important;
+}
+.navBar-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96%;
+  /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta real de tu imagen */
+  background-image: url('../../../public/img/banner.jpg');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  opacity: 0.7; /* Ajusta la opacidad si lo deseas */
+  z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+/* Estilos para formularios de filtros */
+.filtros-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.filtros-form h5 {
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.filtros-form h6 {
+  font-size: 11px;
+  color: red;
+  margin-top: 10px;
+}
+
+.formSarch {
+  background-color: #ffffff79;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.search-title {
+  font-size: 13px;
+}
+
+/* Estilos para campos de entrada */
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 13px;
+  margin-bottom: 0.5rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+.input-field {
+  padding: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: white;
+  width: 100%;
+}
+
+.input-field:focus {
+  border-color: #2185f8;
+}
+
+.input-with-icon {
+  position: relative;
+  margin: 0;
+}
+
+.input-with-icon input {
+  padding-right: 30px;
+  /* Espacio para el icono */
+}
+
+.input-with-icon i {
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  padding: 6px;
+}
+
+/* Botones */
+.search-button,
+.btnConsultas {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #CA2A31;
+  color: white;
+  padding: 6px;
+  margin-top: 25px;
+}
+
+.whatsapp-btn {
+  width: 100%;
+  padding: 1px;
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+}
+
+.whatsapp-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.whatsapp-btn img {
+  width: 38px;
+  margin-bottom: 3px;
+  padding: 1px;
+  margin-right: 5px;
+}
+
+.whatsapp-icon {
+  width: 35px;
+  margin-right: 10px;
+  /* Espacio entre el icono y el texto */
+}
+
+/* Estilos para la lista de viajes */
+.viaje-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.viaje-info div {
+  text-align: center;
+}
+
+.viaje-horario {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.viaje-detalle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.result {
+  margin: 10px;
+}
+
+.routes-list {
+  padding-top: 20px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+/* Estilos para la selección de fechas */
+.date-picker-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.izq {
+  margin-right: 10px;
+}
+
+.der {
+  margin-left: 10px;
+}
+
+.pasajeros {
+  padding-left: 14px;
+}
+
+.fromSearch {
+  padding-bottom: 50px;
+}
+
+.containerForm {
+  margin-bottom: 20px;
+}
+.ToWhatsApp {
+    position: fixed;
+    bottom: 20px;
+    right: -65px;
+    z-index: 1000;
+    /* Asegura que el botón esté encima de otros elementos */
+}
+
+.ToWhatsApp a img {
+    width: 60px;
+}
+
+.btn-wa {
+    position: relative;
+    bottom: 10px;
+    right: 90px;
+}
+
+a img {
+    width: 100px;
+}
+
+.btn-wa:before,
+.btn-wa:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 16px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    background-color: #258d25;
+    border-radius: 50%;
+    animation: onda 1.7s infinite;
+}
+
+.btn-wa::before {
+    animation-delay: 1s;
+}
+
+.btn-wa::after {
+    animation-delay: 1.5s;
+}
+
+.btn-wa img {
+    position: relative;
+    z-index: 2;
+}
+
+
+@keyframes onda {
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}
+
+
+.containerBaner {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.bannerHome {
+    padding: 60px 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(238, 238, 238, 0.5);
+    text-align: center;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+/* Titulares grandes */
+.bannerHome h1 {
+    font-weight: bold;
+    font-size: 8vw;
+    /* Escala con el ancho del viewport */
+    line-height: 0.8;
+    margin: 10px 0;
+}
+
+.bannerHome h6  {
+    line-height: 1.5;
+
+}
+
+.bannerHome h2  {
+    line-height: 0.8;
+
+}
+/* El número del descuento */
+.bannerHome h2 {
+    font-weight: 900;
+    font-size: 60px;
+    /* Escala con pantalla */
+
+    color: crimson;
+    margin: 10px 0;
+}
+
+/* Subtítulos */
+.bannerHome h6 {
+    font-size: 4vw;
+    margin: 5px 0;
+}
+
+/* Mejora en pantallas medianas y grandes */
+@media (min-width: 768px) {
+    .bannerHome h1 {
+        font-size: 40px;
+    }
+    .bannerHome h6 {
+        font-size: 16px;
+    }
+}
+
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .Consultas form div {
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .input-with-icon i {
+    display: none;
+  }
+
+}
+
+
+@media (min-width: 1210px) {
+  .viajes-container {
+    margin: 0px 0px;
+    padding: 0px 10px;
+  }
+
+  .filtros-form {
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
+    background-color: #ffffff88;
+  }
+
+  .containerConsultas {
+    border-radius: 16px;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(204, 204, 204, 0.39);
+    background-color: #ffffff88;
+  }
+
+  .containerForm {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1px;
+    }
+  .formSarch {
+    background-color: #ffffff00;
+
+  }
+  .Consultas {
+    background-color: #ffffff00;
+  }
+
+  .fromSearch {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navBar-background-image {
+    height: 68%;
+  }
+}
