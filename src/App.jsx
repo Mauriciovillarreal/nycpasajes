@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { Nosotros } from './components/Nosotros/Nosotros';
 import Promociones from './components/Promociones/Promociones';
+import Login from './components/Login/Login';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/agencias" element={<Nosotros />} />
         <Route path="/Promociones" element={<Promociones />} />
+         <Route path="/login" element={<Login />} />
       </Routes>
 
       <Footer />
