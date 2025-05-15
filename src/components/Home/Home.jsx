@@ -122,7 +122,7 @@ const ViajesList = () => {
                                 <h1>A LA COSTA</h1>
                                 <h6>HASTA UN</h6>
                                 <h2>50%OFF</h2>
-                                <h6>EN BUTACAS Y EMPRESAS SELECCINADAS</h6>
+                                <h6>EN BUTACAS Y EMPRESAS SELECCIONADAS</h6>
                             </div>
                         </div>
 
