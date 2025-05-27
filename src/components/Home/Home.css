@@ -11,7 +11,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: 96%;
+  height: 100%;
   /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta real de tu imagen */
   background-image: url('../../../public/img/banner.jpg');
   background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
@@ -24,7 +24,6 @@ p {
 .filtros-form {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .filtros-form h5 {
@@ -268,7 +267,7 @@ a img {
     align-items: center;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 60px 0px;
 }
 
 .bannerHome {
@@ -383,6 +382,6 @@ a img {
 
 @media screen and (min-width: 768px) {
   .navBar-background-image {
-    height: 68%;
+    height: 100%;
   }
 }

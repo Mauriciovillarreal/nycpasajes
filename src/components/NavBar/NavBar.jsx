@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <Container className='navBar'>
+    <div className='navBar'>
       <div className='navBar-header'> {/* Contenedor para la imagen de fondo */}
     
         <Container className='containerNav nav'>
@@ -23,7 +23,7 @@ function NavBar() {
           </div>
         </Container>
       </div>
-    </Container>
+    </div>
   );
 }
 
