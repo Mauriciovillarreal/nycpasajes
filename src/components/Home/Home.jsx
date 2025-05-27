@@ -89,15 +89,7 @@ const ViajesList = () => {
         });
 
     return (
-        <div>
-            <Container className="containerMe">
-                <div className='navBar-background-image'>
-                </div>
-                <div className="viajes-container">
-
-                    <div className="containerForm">
-
-                        <div className="fromSearch">
+        <div>    <div className="fromSearch">
                             <ViajesSearchForm
                                 origin={origin}
                                 setOrigin={setOrigin}
@@ -114,17 +106,15 @@ const ViajesList = () => {
 
                             />
                         </div>
+            <Container className="containerMe">
+               
+                <div className="viajes-container">
 
-                        <div className='containerBaner'>
-                            <div className='bannerHome'>
-                                <h1>DESCUENTOS</h1>
-                                <h1>IMPERDIBLES</h1>
-                                <h1>A LA COSTA</h1>
-                                <h6>HASTA UN</h6>
-                                <h2>50%OFF</h2>
-                                <h6>EN BUTACAS Y EMPRESAS SELECCIONADAS</h6>
-                            </div>
-                        </div>
+                    <div className="containerForm">
+
+                    
+
+                
 
                     </div>
 

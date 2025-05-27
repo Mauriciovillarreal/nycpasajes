@@ -183,6 +183,7 @@
     /* Firefox */
     -ms-overflow-style: none;
     /* IE y Edge */
+    margin-top: 10px;
   }
 
   .containerCartelera::-webkit-scrollbar {

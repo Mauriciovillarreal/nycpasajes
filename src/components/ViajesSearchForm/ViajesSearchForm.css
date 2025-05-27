@@ -1,6 +1,227 @@
-.formSarch h6 {
-    text-align: center;
+.filtros-form {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Fondo */
+.navBar-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../public/img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -50;
+}
+
+
+.formSarch {
+    background-color: rgba(238, 238, 238, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+    height: 100%;
+    padding-top: 10px;
+}
+
+.formSarch h2 {
     font-size: 13px;
-    color: black;
-    margin-top: 22px;
+}
+
+.formSarch label {
+  font-size: 13px;
+  margin-bottom: 0.5rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+.formSarch h6 {
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+
+/* Estilos para la selección de fechas */
+.date-picker-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.izq {
+    margin-right: 2px;
+}
+
+.der {
+    margin-left: 2px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+    margin-top: 10px;
+    color: #333;
+}
+
+.pasajeros {
+    padding: 3px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: white;
+    width: 100%;
+}
+
+.pasajeros:focus {
+    border-color: #2185f8;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: white;
+    width: 88%;
+}
+
+.input-field:focus {
+    border-color: #2185f8;
+}
+
+.input-with-icon {
+    position: relative;
+    margin: 0;
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    padding: 6px;
+}
+
+.search-button, .btnConsultas {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #ca2a31;
+    color: #fff;
+    padding: 6px;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+/* CARTEL */
+.containerBaner {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.bannerHome {
+    padding: 60px 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(238, 238, 238, 0.5);
+    text-align: center;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.bannerHome h1 {
+    font-weight: bold;
+    font-size: 8vw;
+    /* Escala con el ancho del viewport */
+    line-height: 0.8;
+    margin: 10px 0;
+}
+
+.bannerHome h6 {
+    line-height: 1.5;
+
+}
+
+.bannerHome h2 {
+    line-height: 0.8;
+
+}
+
+.bannerHome h2 {
+    font-weight: 900;
+    font-size: 60px;
+    color: crimson;
+    margin: 10px 0;
+}
+
+.bannerHome h6 {
+    font-size: 4vw;
+    margin: 5px 0;
+}
+
+
+
+@media (min-width: 768px) {
+    .bannerHome h1 {
+        font-size: 40px;
+    }
+
+    .bannerHome h6 {
+        font-size: 16px;
+    }
+}
+
+
+
+@media (min-width: 1000px) {
+    .containerIndex {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 10px;
+        padding-top: 0px;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+}
+
+@media (max-width: 999px) {
+    .formSarch {
+        margin-top: 48px;
+    }
+
+    .containerBaner {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
 }

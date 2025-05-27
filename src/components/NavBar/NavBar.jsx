@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function NavBar() {
   return (
     <div className='navBar'>
-      <div className='navBar-header'> {/* Contenedor para la imagen de fondo */}
+      <div>
     
         <Container className='containerNav nav'>
           <div>
