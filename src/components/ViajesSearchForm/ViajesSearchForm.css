@@ -31,6 +31,7 @@
     padding: 10px;
     height: 100%;
     padding-top: 10px;
+     box-shadow: 2px 2px 10px rgba(110, 110, 110, 0.658);
 }
 
 .formSarch h2 {
@@ -116,10 +117,10 @@ label {
 
 .input-with-icon i {
     position: absolute;
-    right: 6px;
+    right: 2px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
+    font-size: 14px;
     padding: 6px;
 }
 
@@ -156,6 +157,7 @@ label {
     text-align: center;
     border-radius: 20px;
     box-sizing: border-box;
+    box-shadow: 2px 2px 10px rgba(110, 110, 110, 0.658);
 }
 
 .bannerHome h1 {
@@ -206,7 +208,7 @@ label {
     .containerIndex {
         display: grid;
         grid-template-columns: 50% 50%;
-        gap: 10px;
+        gap: 20px;
         padding-top: 0px;
     }
 

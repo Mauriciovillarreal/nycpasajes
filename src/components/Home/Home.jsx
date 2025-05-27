@@ -62,7 +62,7 @@ const ViajesList = () => {
             setFoundRoutes(foundRoutes);
             setTimeout(() => {
                 if (resultsRef.current) {
-                    const yOffset = -4; // Ajusta este valor según cuán arriba quieras el scroll
+                    const yOffset = -100; // Ajusta este valor según cuán arriba quieras el scroll
                     const y = resultsRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                 }
@@ -89,32 +89,33 @@ const ViajesList = () => {
         });
 
     return (
-        <div>    <div className="fromSearch">
-                            <ViajesSearchForm
-                                origin={origin}
-                                setOrigin={setOrigin}
-                                destination={destination}
-                                setDestination={setDestination}
-                                date={date}
-                                setDate={setDate}
-                                returnDate={returnDate}
-                                setReturnDate={setReturnDate}
-                                passengers={passengers}
-                                setPassengers={setPassengers}
-                                uniqueStops={uniqueStops}
-                                handleSearch={handleSearch}
+        <div>
+            <div className="fromSearch">
+                <ViajesSearchForm
+                    origin={origin}
+                    setOrigin={setOrigin}
+                    destination={destination}
+                    setDestination={setDestination}
+                    date={date}
+                    setDate={setDate}
+                    returnDate={returnDate}
+                    setReturnDate={setReturnDate}
+                    passengers={passengers}
+                    setPassengers={setPassengers}
+                    uniqueStops={uniqueStops}
+                    handleSearch={handleSearch}
 
-                            />
-                        </div>
+                />
+            </div>
             <Container className="containerMe">
-               
+
                 <div className="viajes-container">
 
                     <div className="containerForm">
 
-                    
 
-                
+
+
 
                     </div>
 
@@ -132,8 +133,8 @@ const ViajesList = () => {
                     </div>
 
                 </div>
-                 <Cartelera/>
-                       
+                <Cartelera />
+
                 <div className='ToWhatsApp'>
                     <Link to="http://wa.me/5491139505311" className='btn-wa'>
                         <img src="./img/wap1.png" alt="WhatsApp" />

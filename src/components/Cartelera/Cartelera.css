@@ -240,6 +240,9 @@
   }
 }
 
+.containerCartelera  {
+  margin-top: 30px;
+}
 /* --- Estilos Base (aplican siempre a menos que se sobrescriban) --- */
 /* Coloca aquí los estilos que son comunes a móvil y desktop */
 .cartelera-card {
@@ -247,7 +250,6 @@
   /* width: 80%; ya no es necesario aquí, se define en las media queries */
   /* max-width: 1200px; puede seguir aquí o ir a la media query de desktop */
   /* margin: 5px auto; se maneja en las media queries */
-  margin-bottom: 50px;
   /* Se ajustará en las media queries */
   overflow: hidden;
 }
