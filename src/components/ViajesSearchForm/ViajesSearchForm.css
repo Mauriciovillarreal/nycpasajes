@@ -96,7 +96,7 @@ label {
 }
 
 .input-field {
-    padding: 10px;
+    padding: 9px -2px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -136,59 +136,27 @@ label {
 
 
 
-
-
-
-
-
-
-/* CARTEL */
-.containerBaner {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
 .bannerHome {
-    padding: 60px 20px;
-    width: 100%;
-    max-width: 800px;
-    background-color: rgba(238, 238, 238, 0.5);
-    text-align: center;
-    border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 2px 2px 10px rgba(110, 110, 110, 0.658);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+  overflow: hidden; /* para que respete el borde redondeado */
+  box-shadow: 2px 2px 10px rgba(110, 110, 110, 0.658);
 }
 
-.bannerHome h1 {
-    font-weight: bold;
-    font-size: 8vw;
-    /* Escala con el ancho del viewport */
-    line-height: 0.8;
-    margin: 10px 0;
+.bannerHome img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* se adapta bien sin deformarse */
+  border-radius: 20px;
 }
 
-.bannerHome h6 {
-    line-height: 1.5;
 
-}
 
-.bannerHome h2 {
-    line-height: 0.8;
 
-}
-
-.bannerHome h2 {
-    font-weight: 900;
-    font-size: 60px;
-    color: crimson;
-    margin: 10px 0;
-}
-
-.bannerHome h6 {
-    font-size: 4vw;
-    margin: 5px 0;
-}
 
 
 
@@ -208,13 +176,14 @@ label {
     .containerIndex {
         display: grid;
         grid-template-columns: 50% 50%;
-        gap: 20px;
+        gap: 10px;
         padding-top: 0px;
     }
 
     .input-field {
         width: 100%;
     }
+
 }
 
 @media (max-width: 999px) {
@@ -223,6 +192,7 @@ label {
     }
 
     .containerBaner {
+        margin: 10px 0px;
         padding-top: 50px;
         padding-bottom: 50px;
     }

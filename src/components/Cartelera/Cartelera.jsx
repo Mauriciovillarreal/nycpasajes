@@ -8,15 +8,15 @@ const destinos = [
         nombre: 'Mendoza',
         imagen: './img/mendoza.jpg', // Asume que esta ruta es correcta desde tu carpeta public
         rutas: ['BSAS → MENDOZA', 'MENDOZA → BSAS'],
-        semiCama: '41535',
-        cama: '55384',
+        semiCama: '57816',
+        cama: '63296',
     },
     {
         nombre: 'Mar del Plata',
         imagen: './img/mdq.jpg',
         rutas: ['BSAS → MDQ', 'MDQ → BSAS'],
-        semiCama: '25000',
-        cama: '43540',
+        semiCama: '44160',
+        cama: '49760',
     },
     {
         nombre: 'Córdoba',
@@ -29,22 +29,22 @@ const destinos = [
         nombre: 'Pto. Iguazu',
         imagen: './img/iguazu.jpeg',
         rutas: ['BSAS → PTO. IGUAZU', 'PTO. IGUAZU → BSAS'],
-        semiCama: '76790',
-        cama: '83930',
+        semiCama: '87760',
+        cama: '95920',
     },
     {
         nombre: 'Bariloche',
         imagen: './img/bariloche.jpeg',
         rutas: ['BSAS → BARILOCHE', 'BARILOCHE → BSAS'],
-        semiCama: '48800',
-        cama: '93640',
+        semiCama: '94400',
+        cama: '113299',
     },
     {
         nombre: 'Tucuman',
         imagen: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/88/76/3b/casa-de-gobierno-de-tucuman.jpg?w=900&h=500&s=1",
         rutas: ['BSAS → TUCUMAN', 'TUCUMAN → BSAS'],
-        semiCama: '61760',
-        cama: '76160',
+        semiCama: '81200',
+        cama: '101200',
     },
 ];
 
@@ -75,7 +75,7 @@ export const Cartelera = () => {
                     <img src={destino.imagen} alt={`Viaje a ${destino.nombre}`} className="cartelera-image" />
                     <div className="cartelera-content-top">
                         <h1>
-                            VIAJA A <div><span>{destino.nombre}</span></div>
+                          <div><span>{destino.nombre}</span></div>
                         </h1>
                         <div className='categorias-precio'> {/* Nombre de clase corregido y más descriptivo */}
                             <div>
