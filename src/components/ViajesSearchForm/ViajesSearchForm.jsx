@@ -82,7 +82,7 @@ const ViajesSearchForm = ({ origin, setOrigin, destination, setDestination, date
 
                 <div className="containerBaner">
                     <div className="bannerHome">
-                    <img src="./img/bannerform.png" alt="" />
+                    <img src="./img/bannerform.jpg" alt="" />
                     </div>
                 </div>
 
