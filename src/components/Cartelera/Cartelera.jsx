@@ -22,8 +22,8 @@ const destinos = [
         nombre: 'Córdoba',
         imagen: './img/cordoba.jpeg',
         rutas: ['BSAS → CÓRDOBA', 'CÓRDOBA → BSAS'],
-        semiCama: '25800',
-        cama: '36800',
+        semiCama: '50000',
+        cama: '59000',
     },
     {
         nombre: 'Pto. Iguazu',
