@@ -8,8 +8,8 @@ const destinos = [
         nombre: 'Mendoza',
         imagen: './img/mendoza.jpg', // Asume que esta ruta es correcta desde tu carpeta public
         rutas: ['BSAS → MENDOZA', 'MENDOZA → BSAS'],
-        semiCama: '57816',
-        cama: '63296',
+        semiCama: '59120',
+        cama: '70960',
     },
     {
         nombre: 'Mar del Plata',
