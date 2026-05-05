@@ -1,0 +1,151 @@
+.custom-footer {
+    background-color: #ffffff;
+    padding: 20px 0 0 0;
+    border-top: 1px solid rgb(233, 233, 233);
+}
+
+.carousel-inner {
+    height: 100px !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+}
+
+.carousel-item img {
+    object-fit: contain;
+    height: 90px;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.carousel-div {
+    margin-bottom: 1px;
+    height: 100px;
+}
+
+.carousel-indicators {
+    margin: 0px;
+    top: 80px;
+    bottom: 5px;
+}
+
+.footer-logo {
+    text-align: center;
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin-top: 17px;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #202020;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+
+.footer-info img {
+    margin-left: 0 !important;
+    width: 55px;
+}
+
+
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
+.email-form {
+
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 60px;
+}
+
+.email-form img {
+    margin-top: 30px;
+    width: 35px;
+    margin-bottom: 30px;
+    margin-left: 1px;
+}
+
+.email-form h4 {
+    font-size: 14px;
+}
+
+.inputEmail {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+}
+
+.inputEmail input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+
+.inputEmail button {
+    padding: 10px 15px;
+    background-color: #202020;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.instagram img {
+    width: 26px;
+    margin-left: 2px  !important;   
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .email-form {
+        width: 100%;
+    }
+}
+
+@media (min-width: 950px) {
+    .desktop {
+        display: grid;
+        grid-template-columns: 10% 40% 40%;
+        gap: 50px;
+    }
+    .carousel-div {
+        display: none;
+    }
+    .email-form {
+        margin-top: 2px;
+        border: none;
+    }
+    .email-form img {
+        margin-top: 5px;
+    }
+    .instagram img {
+        margin-top: 5px;
+    }
+    
+}
+
