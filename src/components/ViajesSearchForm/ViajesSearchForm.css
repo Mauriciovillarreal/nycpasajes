@@ -24,18 +24,18 @@
     z-index: -50;
 }
 
-
-
+/* GRID PRINCIPAL */
 .formGrid {
     display: grid;
     grid-template-columns:
-        1.3fr 1.3fr 0fr 0fr 0.3fr 0.80fr;
-    gap: 5px;
+        1.3fr 1.3fr 0.8fr 0.8fr 0.5fr 0.9fr;
+    gap: 8px;
     align-items: end;
     width: 100%;
     background: #fff;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
 }
 
 /* LABELS */
@@ -45,6 +45,12 @@
     font-weight: 600;
     margin-bottom: 8px;
     color: #222;
+}
+
+/* CONTENEDORES */
+.input-container {
+    width: 100%;
+    min-width: 0;
 }
 
 /* INPUTS */
@@ -57,6 +63,14 @@
     padding: 0 14px;
     font-size: 15px;
     background: white;
+    box-sizing: border-box;
+}
+
+/* FIX IOS */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 0;
 }
 
 /* BOTON */
@@ -73,19 +87,18 @@
 }
 
 .search-button:disabled {
-    height: 38px;
     background: #b8c7d9;
     cursor: not-allowed;
-    border-radius: 2px;
 }
 
-/* FECHAS */
+/* FECHAS DESKTOP */
 .date-row {
     display: contents;
 }
 
-/* MOBILE */
+/* MOBILE / TABLET */
 @media (max-width: 1208px) {
+
     .formSarch {
         padding: 20px 10px;
     }
@@ -94,6 +107,7 @@
         grid-template-columns: 1fr;
     }
 
+    /* IMPORTANTE PARA IOS */
     .date-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -101,12 +115,16 @@
         width: 100%;
     }
 
-    .input-container {
+    .search-button {
         width: 100%;
-        min-width: 0;
+    }
+}
+
+/* MOBILE CHICO */
+@media (max-width: 600px) {
+
+    .date-row {
+        grid-template-columns: 1fr;
     }
 
-    .input-field {
-        box-sizing: border-box;
-    }
 }
