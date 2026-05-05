@@ -29,7 +29,7 @@
 .formGrid {
     display: grid;
     grid-template-columns:
-        1.3fr 1.3fr 0fr 0fr 0.3fr 0.70fr;
+        1.3fr 1.3fr 0fr 0fr 0.3fr 0.80fr;
     gap: 5px;
     align-items: end;
     width: 100%;

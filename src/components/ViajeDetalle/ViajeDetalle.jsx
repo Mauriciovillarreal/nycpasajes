@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const WHATSAPP_NUMBER = "5491139505311";
 
-const ViajeDetalle = ({ route, date, returnDate, passengers, origin, destination }) => {
+const ViajeDetalle = ({ route, empresa, date, returnDate, passengers, origin, destination }) => {
 
     const formatDateForWhatsapp = (dateString) => {
         if (!dateString) return "A definir"; // O el texto que prefieras para fecha no especificada

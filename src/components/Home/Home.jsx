@@ -25,15 +25,16 @@ const ViajesList = () => {
             try {
                 const querySnapshot = await getDocs(collection(db, "viajes"));
 
-           
+
 
                 const routesData = querySnapshot.docs.flatMap(doc => {
                     const data = doc.data();
-            
 
-                    return data.rutas || [];
+                    return (data.rutas || []).map(ruta => ({
+                        ...ruta,
+                        empresa: data.empresa
+                    }));
                 });
-
 
                 setRoutes(routesData);
             } catch (error) {
@@ -79,7 +80,7 @@ const ViajesList = () => {
 
             setTimeout(() => {
                 if (resultsRef.current) {
-                    const yOffset = -100;
+                    const yOffset = -80;
                     const y = resultsRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                 }

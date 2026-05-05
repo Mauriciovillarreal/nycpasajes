@@ -20,10 +20,11 @@ const ViajesSearchForm = ({
     <div className="filtros-form">
       <div className="navBar-background-image" />
 
-      <Container className='containerIndex'>
+      <div className='containerIndex'>
         <div className="formSarch">
 
-          <div className="formGrid">
+         <Container>
+           <div className="formGrid">
             {/* ORIGEN */}
             <div>
               <label>Origen</label>
@@ -93,12 +94,13 @@ const ViajesSearchForm = ({
               Buscar pasajes
             </button>
           </div>
+         </Container>
 
 
         </div>
 
 
-      </Container>
+      </div>
     </div>
   );
 };
