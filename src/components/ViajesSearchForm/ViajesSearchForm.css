@@ -87,7 +87,7 @@
 /* MOBILE */
 @media (max-width: 1208px) {
     .formSarch {
-        padding: 5px;
+        padding: 2px;
     }
     .formGrid {
         grid-template-columns: 1fr;
@@ -95,7 +95,7 @@
 
     .date-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: px;
+        grid-template-columns: 50% 50%;
+        gap: 2px;
     }
 }
