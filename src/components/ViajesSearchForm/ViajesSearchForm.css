@@ -89,13 +89,24 @@
     .formSarch {
         padding: 20px 10px;
     }
+
     .formGrid {
         grid-template-columns: 1fr;
     }
 
     .date-row {
         display: grid;
-        grid-template-columns: 50% 50%;
-        gap: 2px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .input-container {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .input-field {
+        box-sizing: border-box;
     }
 }
