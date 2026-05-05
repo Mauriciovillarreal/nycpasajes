@@ -19,11 +19,11 @@ const ViajesSearchForm = ({
   return (
     <div className="filtros-form">
       <div className="navBar-background-image" />
+      <Container>
 
       <div className='containerIndex'>
         <div className="formSarch">
 
-         <Container>
            <div className="formGrid">
             {/* ORIGEN */}
             <div>
@@ -94,13 +94,13 @@ const ViajesSearchForm = ({
               Buscar pasajes
             </button>
           </div>
-         </Container>
 
 
         </div>
 
 
       </div>
+         </Container>
     </div>
   );
 };
