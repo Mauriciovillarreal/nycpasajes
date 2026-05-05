@@ -22,37 +22,36 @@ const ViajesSearchForm = ({
 
       <Container className='containerIndex'>
         <div className="formSarch">
-          <h2 className="search-title">Busca tus pasajes</h2>
 
-          {/* ORIGEN */}
-          <div>
-            <label>Origen</label>
-            <Select
-              value={origin}
-              onChange={(selected) => setOrigin(selected)}
-              options={uniqueStops}
-              placeholder="Selecciona el origen"
-              isClearable
-            />
-          </div>
+          <div className="formGrid">
+            {/* ORIGEN */}
+            <div>
+              <label>Origen</label>
+              <Select
+                value={origin}
+                onChange={(selected) => setOrigin(selected)}
+                options={uniqueStops}
+                placeholder="Selecciona el origen"
+                isClearable
+              />
+            </div>
 
-          {/* DESTINO */}
-          <div className="input-container">
-            <label>Destino</label>
-            <Select
-              value={destination}
-              onChange={(selected) => setDestination(selected)}
-              options={uniqueStops}
-              placeholder="Selecciona el destino"
-              isClearable
-            />
-          </div>
+            {/* DESTINO */}
+            <div className="input-container">
+              <label>Destino</label>
+              <Select
+                value={destination}
+                onChange={(selected) => setDestination(selected)}
+                options={uniqueStops}
+                placeholder="Selecciona el destino"
+                isClearable
+              />
+            </div>
 
-          {/* FECHAS */}
-          <div className="date-picker-container">
-            <div className="input-container izq">
-              <label>Partida</label>
-              <div className="input-with-icon">
+            {/* FECHAS */}
+            <div className="date-row">
+              <div className="input-container">
+                <label>Partida</label>
                 <input
                   type="date"
                   value={date}
@@ -60,11 +59,9 @@ const ViajesSearchForm = ({
                   className="input-field"
                 />
               </div>
-            </div>
 
-            <div className="input-container der">
-              <label>Regreso (opcional)</label>
-              <div className="input-with-icon">
+              <div className="input-container">
+                <label>Regreso (opcional)</label>
                 <input
                   type="date"
                   value={returnDate}
@@ -73,39 +70,34 @@ const ViajesSearchForm = ({
                 />
               </div>
             </div>
+
+
+            {/* PASAJEROS */}
+            <div className="input-container">
+              <label>Pasajeros</label>
+              <input
+                type="number"
+                value={passengers}
+                onChange={(e) => setPassengers(Number(e.target.value))}
+                min="1"
+                className="pasajeros"
+              />
+            </div>
+
+            {/* BOTON */}
+            <button
+              onClick={handleSearch}
+              className="search-button"
+              disabled={!origin || !destination} // 👈 importante
+            >
+              Buscar pasajes
+            </button>
           </div>
 
-          {/* PASAJEROS */}
-          <div className="input-container">
-            <label>Cantidad de pasajeros</label>
-            <input
-              type="number"
-              value={passengers}
-              onChange={(e) => setPassengers(Number(e.target.value))}
-              min="1"
-              className="pasajeros"
-            />
-          </div>
 
-          {/* BOTON */}
-          <button
-            onClick={handleSearch}
-            className="search-button"
-            disabled={!origin || !destination} // 👈 importante
-          >
-            Buscar pasajes
-          </button>
-
-          <h6>
-            Si no encontrás tu origen y destino podés consultar por Whatsapp
-          </h6>
         </div>
 
-        <div className="containerBaner">
-          <div className="bannerHome">
-            <img src="./img/bannerform.jpg" alt="" />
-          </div>
-        </div>
+
       </Container>
     </div>
   );
